@@ -1,0 +1,61 @@
+.players-container {
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.player-card {
+    position: relative;
+    margin-right: 10px; /* Adjust margin as needed */
+    transition: margin-right 0.5s ease;
+    cursor: pointer;
+}
+
+.player-card img {
+    width: 150px;
+    min-width: 150px;
+    filter: grayscale(100%);
+}
+
+.player-card:hover {
+    margin-right: 160px; /* Adjust the amount to make space for the name */
+}
+
+.player-card:hover img {
+    filter: grayscale(0);
+}
+
+.player-details {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-items: baseline;
+}
+
+.player-name {
+    position: absolute;
+    top: 25px;
+    left: 100%;
+    transform: translate(10px, 0%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.player-name span {
+    font-size: 1.5rem;
+}
+
+.player-name span:nth-of-type(2) {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.player-card:hover .player-name {
+    opacity: 1;
+    transform: translate(0, 0%);
+}
