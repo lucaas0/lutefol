@@ -1,22 +1,30 @@
 import PlayerCard from './PlayerCard';
 import '../assets/styles/playerCard.css';
+import PlayerPhoto from '../../public/player.png';
+import { Player, PlayersArr } from '@/utils';
 
-const PlayersRow = () => {
+type PlayersRowProps = {
+    selectedPlayer: Player;
+    onPlayerClick(player: Player): void;
+};
+
+const PlayersRow = (props: PlayersRowProps) => {
+    const { selectedPlayer, onPlayerClick } = props;
     return (
         <div className='players-container no-scrollbar'>
-            <PlayerCard firstname='Lucas' lastname='Garcia' />
-            <PlayerCard firstname='Ruben' lastname='Rodrigues' />
-            <PlayerCard firstname='Andre' lastname='Salvado' />
-            <PlayerCard firstname='Diogo' lastname='Domingues' />
-            <PlayerCard firstname='Joao' lastname='Ferreira' />
-            <PlayerCard firstname='Ivo' lastname='Oliveira' />
-            <PlayerCard firstname='Gustavo' lastname='Carreira' />
-            <PlayerCard firstname='Rodrigo' lastname='Alves' />
-            <PlayerCard firstname='Bernardo' lastname='Figueiredo' />
-            <PlayerCard firstname='Nuno' lastname='Reis' />
-            <PlayerCard firstname='Jorge' lastname='Ferreira' />
-            <PlayerCard firstname='Alexandre' lastname='Santos' />
-            <PlayerCard firstname='Francisco' lastname='Machado' />
+            {PlayersArr.map((player) => {
+                return (
+                    <PlayerCard
+                        player={player}
+                        onPlayerClick={() => onPlayerClick(player)}
+                        isSelected={
+                            player.firstname === selectedPlayer.firstname &&
+                            player.lastname === selectedPlayer.lastname
+                        }
+                        key={`player-${player.firstname}-${player.lastname}`}
+                    />
+                );
+            })}
         </div>
     );
 };

@@ -1,21 +1,28 @@
-import Image from 'next/image';
+import { Player } from '@/utils';
+import Image, { StaticImageData } from 'next/image';
 import '../assets/styles/playerCard.css';
-import PlayerPhoto from '../../public/player.png';
 
 interface PlayerProps {
-    firstname: string;
-    lastname: string;
+    player: Player;
+    onPlayerClick(player: Player): void;
+    isSelected: boolean;
 }
 
 const PlayerCard = (props: PlayerProps) => {
-    const { firstname, lastname } = props;
+    const { player, onPlayerClick, isSelected } = props;
+
     return (
-        <div className='player-card'>
+        <div
+            className={`player-card ${
+                isSelected ? 'player-card--selected' : ''
+            }`}
+            onClick={() => onPlayerClick(player)}
+        >
             <div className='player-details'>
-                <Image src={PlayerPhoto} alt='' />
+                <Image src={player.photoUrl} alt='' width={150} height={150} />
                 <div className='player-name'>
-                    <span>{firstname}</span>
-                    <span>{lastname}</span>
+                    <span>{player.firstname}</span>
+                    <span>{player.lastname}</span>
                 </div>
             </div>
         </div>

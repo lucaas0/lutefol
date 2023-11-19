@@ -1,0 +1,94 @@
+.background-div {
+    position: relative;
+    width: 100vw;
+    height: 300px; /* Adjust height as needed */
+    overflow: hidden; /* Hides the overflow from blurry background */
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.blurry-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+        to right,
+        #487bff,
+        #6249ff,
+        #ff4848,
+        #ff7448
+    );
+    filter: blur(99999px);
+}
+
+.blurry-background::before,
+.blurry-background::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    background-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black 5%,
+        #487bff 5%,
+        #487bff 30%,
+        #6249ff 30%,
+        #6249ff 70%,
+        #ff4848 70%,
+        #ff4848 95%,
+        black 95%,
+        black 100%
+    );
+}
+
+.blurry-background::before {
+    top: 0;
+}
+
+.blurry-background::after {
+    bottom: 0;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.content img {
+    width: 17.75rem;
+    height: 14.5rem;
+    align-self: flex-end;
+}
+
+.player-banner__lastname {
+    position: absolute;
+    font-size: 10rem;
+    line-height: 11rem;
+    letter-spacing: 6rem;
+    opacity: 0.4;
+}
+
+.player-banner__details__name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    margin-top: 5rem;
+}
+
+.player-banner__details__name span {
+    font-size: 2.5rem;
+    line-height: normal;
+}
+
+.player-banner__details__name span:nth-of-type(2) {
+    font-weight: bold;
+    font-size: 4rem;
+    line-height: normal;
+}
