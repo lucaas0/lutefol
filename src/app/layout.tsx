@@ -1,8 +1,22 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import localFont from 'next/font/local';
 
-const inter = Inter({ subsets: ['latin'] });
+const danish = localFont({
+    src: [
+        {
+            path: '../assets/fonts/DinishCondensed-Regular.woff2',
+            weight: '400',
+            style: 'normal',
+        },
+        {
+            path: '../assets/fonts/DinishCondensed-Bold.woff2',
+            weight: '700',
+            style: 'normal',
+        },
+    ],
+})
 
 export const metadata: Metadata = {
     title: 'lutefol',
@@ -16,7 +30,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang='en'>
-            <body className={inter.className}>{children}</body>
+            <body className={danish.className}>{children}</body>
         </html>
     );
 }

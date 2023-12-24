@@ -1,5 +1,8 @@
 import { StaticImageData } from 'next/image';
 import PlayerPhoto from '../public/player.png';
+import Banner1 from '../public/banner-1.jpeg';
+import Banner2 from '../public/banner-2.jpeg';
+import { Banner } from './misc';
 
 export type Player = {
     firstname: string;
@@ -74,3 +77,12 @@ export const PlayersArr: Player[] = [
         photoUrl: PlayerPhoto,
     },
 ];
+
+export const Banners: Banner[] = [{
+    imageSrc: Banner1,
+    title: "Title 1"
+},
+{
+    imageSrc: Banner2,
+    title: "Title 2"
+}];
