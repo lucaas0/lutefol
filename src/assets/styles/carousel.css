@@ -77,9 +77,13 @@
   background-image: url('../../../public/banner-2.jpeg');
 }
 .slide-3 {
-  background-image: url('../../../public/banner-1.jpeg');
+  background-image: url('../../../public/banner-3.jpeg');
 }
 
 .slide-4 {
-  background-image: url('../../../public/banner-2.jpeg');
+  background-image: url('../../../public/banner-4.jpeg');
+}
+
+.slide-5 {
+  background-image: url('../../../public/banner-5.jpeg');
 }

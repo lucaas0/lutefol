@@ -8,7 +8,7 @@ const ImageCarousel = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            setBanner((prevBanner) => prevBanner === 4 ? 1 : prevBanner + 1);
+            setBanner((prevBanner) => prevBanner === 5 ? 1 : prevBanner + 1);
         }, 5000);
     }, [banner]);
 
@@ -50,20 +50,24 @@ const ImageCarousel = () => {
                     <label htmlFor="slide-dot-2" className={`${banner === 2 ? 'label-selected' : ''}`}></label>
                     <label htmlFor="slide-dot-3" className={`${banner === 3 ? 'label-selected' : ''}`}></label>
                     <label htmlFor="slide-dot-4" className={`${banner === 4 ? 'label-selected' : ''}`}></label>
+                    <label htmlFor="slide-dot-5" className={`${banner === 5 ? 'label-selected' : ''}`}></label>
                 </div>
             </div>
 
-            <input id="slide-dot-1" type="radio" name="slides" checked={banner === 1 ? true : false} />
+            <input id="slide-dot-1" type="radio" name="slides" checked={banner === 1 ? true : false} onChange={() => {}} />
             <div className="slide slide-1"></div>
 
-            <input id="slide-dot-2" type="radio" name="slides" checked={banner === 2 ? true : false} />
+            <input id="slide-dot-2" type="radio" name="slides" checked={banner === 2 ? true : false} onChange={() => { }} />
             <div className="slide slide-2"></div>
 
-            <input id="slide-dot-3" type="radio" name="slides" checked={banner === 3 ? true : false} />
+            <input id="slide-dot-3" type="radio" name="slides" checked={banner === 3 ? true : false} onChange={() => { }} />
             <div className="slide slide-3"></div>
 
-            <input id="slide-dot-3" type="radio" name="slides" checked={banner === 4 ? true : false} />
+            <input id="slide-dot-4" type="radio" name="slides" checked={banner === 4 ? true : false} onChange={() => { }} />
             <div className="slide slide-4"></div>
+
+            <input id="slide-dot-5" type="radio" name="slides" checked={banner === 5 ? true : false} onChange={() => { }} />
+            <div className="slide slide-5"></div>
         </div>
     )
 }
