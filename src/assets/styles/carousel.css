@@ -87,3 +87,9 @@
 .slide-5 {
   background-image: url('../../../public/banner-5.jpeg');
 }
+
+@media only screen and (max-width: 700px) {
+  .menu label {
+    width: 55px;
+  }
+}
