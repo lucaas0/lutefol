@@ -1,14 +1,7 @@
-import { StaticImageData } from 'next/image';
 import PlayerPhoto from '../public/player.png';
-import Banner1 from '../public/banner-1.jpeg';
-import Banner2 from '../public/banner-2.jpeg';
-import { Banner } from './misc';
-
-export type Player = {
-    firstname: string;
-    lastname: string;
-    photoUrl: StaticImageData;
-};
+import LogoRed from '../public/logo-red.svg';
+import LogoGreen from '../public/logo-green.svg';
+import { Banner, Match, Player } from './misc';
 
 export const PlayersArr: Player[] = [
     {
@@ -78,11 +71,58 @@ export const PlayersArr: Player[] = [
     },
 ];
 
-export const Banners: Banner[] = [{
-    imageSrc: Banner1,
-    title: "Title 1"
-},
-{
-    imageSrc: Banner2,
-    title: "Title 2"
-}];
+export const UpcomingMatches: Match[] = [
+    {
+        team1: { name: 'Ressabiados F.C', logo: LogoRed  },
+        team2: { name: 'Negacionistas F.C', logo: LogoGreen },
+        date: new Date(Date.UTC(2024, 0, 8)),
+        time: '18:30',
+        location: 'LeiriFoot'
+    },
+    {
+        team1: { name: 'Ressabiados F.C', logo: LogoRed  },
+        team2: { name: 'Negacionistas F.C', logo: LogoGreen },
+        date: new Date(Date.UTC(2024, 0, 11)),
+        time: '18:30',
+        location: 'LeiriFoot'
+    },
+    {
+        team1: { name: 'Ressabiados F.C', logo: LogoRed  },
+        team2: { name: 'Negacionistas F.C', logo: LogoGreen },
+        date: new Date(Date.UTC(2024, 0, 15)),
+        time: '18:30',
+        location: 'LeiriFoot'
+    },
+    {
+        team1: { name: 'Ressabiados F.C', logo: LogoRed  },
+        team2: { name: 'Negacionistas F.C', logo: LogoGreen },
+        date: new Date(Date.UTC(2024, 0, 18)),
+        time: '18:30',
+        location: 'LeiriFoot'
+    },
+    {
+        team1: { name: 'Ressabiados F.C', logo: LogoRed  },
+        team2: { name: 'Negacionistas F.C', logo: LogoGreen },
+        date: new Date(Date.UTC(2024, 0, 22)),
+        time: '18:30',
+        location: 'LeiriFoot'
+    },
+    {
+        team1: { name: 'Ressabiados F.C', logo: LogoRed  },
+        team2: { name: 'Negacionistas F.C', logo: LogoGreen },
+        date: new Date(Date.UTC(2024, 0, 25)),
+        time: '18:30',
+        location: 'LeiriFoot'
+    },
+    {
+        team1: { name: 'Ressabiados F.C', logo: LogoRed  },
+        team2: { name: 'Negacionistas F.C', logo: LogoGreen },
+        date: new Date(Date.UTC(2024, 0, 29)),
+        time: '18:30',
+        location: 'LeiriFoot'
+    }
+];
+
+export const Weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+export const Months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
