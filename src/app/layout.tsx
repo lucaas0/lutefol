@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import localFont from 'next/font/local';
+import Navbar from '@/components/Navbar';
 
 const danish = localFont({
     src: [
@@ -30,7 +31,10 @@ export default function RootLayout({
 }) {
     return (
         <html lang='en'>
-            <body className={danish.className}>{children}</body>
+            <body className={danish.className}>
+                <Navbar />
+                {children}
+            </body>
         </html>
     );
 }

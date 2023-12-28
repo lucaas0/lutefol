@@ -3,9 +3,12 @@ import Image from 'next/image';
 import '../assets/styles/navbar.css';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const route = usePathname();
 
     useEffect(() => {
         const onWindowResize = () => {
@@ -25,36 +28,40 @@ const Navbar = () => {
         <nav className="w-full">
             <div className="flex flex-wrap items-center justify-between mx-auto px-12 py-4 md:py-0  ">
                 <div className='flex gap-4 justify-center items-center'>
-                    <Image
-                        src='/pirates-logo.svg'
-                        alt=''
-                        width={48}
-                        height={48}
-                        className="cursor-pointer"
-                    />
-                    <Image
-                        src='/void-logo.svg'
-                        alt=''
-                        width={60}
-                        height={60}
-                    />
+                    <Link href='/'>
+                        <Image
+                            src='/pirates-logo.svg'
+                            alt=''
+                            width={48}
+                            height={48}
+                            className="cursor-pointer"
+                        />
+                    </Link>
+                    <Link href='https://void.pt' target='_blank'>
+                        <Image
+                            src='/void-logo.svg'
+                            alt=''
+                            width={60}
+                            height={60}
+                        />
+                    </Link>
                     <hr className="divider hidden md:block" />
                     <div className="hidden w-full md:block md:w-auto" id="navbar-default">
                         <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row rtl:space-x-reverse md:mt-0">
-                            <li className='link-effect'>
-                                <a href="#" className="block py-2 px-3 text-white dark:text-white" aria-current="page">News</a>
+                            <li className={`link-effect${route === '/news' ? ' link-effect__selected' : ''}`}>
+                                <a href="/news" className="block py-2 px-3 text-white dark:text-white" aria-current="page">News</a>
                             </li>
-                            <li className='link-effect'>
-                                <a href="#" className="block py-2 px-3 text-white dark:text-white">Matches</a>
+                            <li className={`link-effect${route === '/matches' ? ' link-effect__selected' : ''}`}>
+                                <a href="/matches" className="block py-2 px-3 text-white dark:text-white">Matches</a>
                             </li>
-                            <li className='link-effect'>
-                                <a href="#" className="block py-2 px-3 text-white dark:text-white">Teams</a>
+                            <li className={`link-effect${route === '/teams' ? ' link-effect__selected' : ''}`}>
+                                <a href="/teams" className="block py-2 px-3 text-white dark:text-white">Teams</a>
                             </li>
-                            <li className='link-effect'>
-                                <a href="#" className="block py-2 px-3 text-white dark:text-white">Stats</a>
+                            <li className={`link-effect${route === '/stats' ? ' link-effect__selected' : ''}`}>
+                                <a href="/stats" className="block py-2 px-3 text-white dark:text-white">Stats</a>
                             </li>
-                            <li className='link-effect'>
-                                <a href="#" className="block py-2 px-3 text-white dark:text-white">Media</a>
+                            <li className={`link-effect${route === '/media' ? ' link-effect__selected' : ''}`}>
+                                <a href="/media" className="block py-2 px-3 text-white dark:text-white">Media</a>
                             </li>
                         </ul>
                     </div>
@@ -70,20 +77,20 @@ const Navbar = () => {
                 isMenuOpen && (
                     <div className='md:hidden absolute w-full bg-black' id="navbar-mobile">
                         <ul className='flex flex-col'>
-                            <li className='link-effect'>
-                                <a href="#" className="block py-2 px-3 text-white dark:text-white" aria-current="page">News</a>
+                            <li className={`link-effect${route === '/news' ? ' link-effect__selected' : ''}`}>
+                                <a href="/news" className="block py-2 px-3 text-white dark:text-white" aria-current="page">News</a>
                             </li>
-                            <li className='link-effect'>
-                                <a href="#" className="block py-2 px-3 text-white dark:text-white">Matches</a>
+                            <li className={`link-effect${route === '/matches' ? ' link-effect__selected' : ''}`}>
+                                <a href="/matches" className="block py-2 px-3 text-white dark:text-white">Matches</a>
                             </li>
-                            <li className='link-effect'>
-                                <a href="#" className="block py-2 px-3 text-white dark:text-white">Teams</a>
+                            <li className={`link-effect${route === '/teams' ? ' link-effect__selected' : ''}`}>
+                                <a href="/teams" className="block py-2 px-3 text-white dark:text-white">Teams</a>
                             </li>
-                            <li className='link-effect'>
-                                <a href="#" className="block py-2 px-3 text-white dark:text-white">Stats</a>
+                            <li className={`link-effect${route === '/stats' ? ' link-effect__selected' : ''}`}>
+                                <a href="/stats" className="block py-2 px-3 text-white dark:text-white">Stats</a>
                             </li>
-                            <li className='link-effect'>
-                                <a href="#" className="block py-2 px-3 text-white dark:text-white">Media</a>
+                            <li className={`link-effect${route === '/media' ? ' link-effect__selected' : ''}`}>
+                                <a href="/media" className="block py-2 px-3 text-white dark:text-white">Media</a>
                             </li>
                         </ul>
                     </div>

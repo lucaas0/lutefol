@@ -1,11 +1,10 @@
 import ImageCarousel from '@/components/ImageCarousel';
-import Navbar from '@/components/Navbar';
+import PageWrapper from '@/components/PageWrapper';
 
 export default function Home() {
     return (
-        <main className='flex min-h-screen flex-col items-center'>
-            <Navbar />
+        <PageWrapper>
             <ImageCarousel />
-        </main>
+        </PageWrapper>
     );
 }

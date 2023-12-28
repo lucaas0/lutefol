@@ -1,5 +1,8 @@
+nav {
+     border-bottom: 1px solid #262626;
+}
+
 .navbar {
-    border-bottom: 1px solid #262626;
     position: sticky;
 }
 
@@ -70,7 +73,7 @@ li:before, li:after {
 .link-effect__selected:before {
     width: 100%;
     height: 3px;
-    background: #BB9A58;
+    background: #13D4C8;
     transform:  translateX(0);
 }
 
