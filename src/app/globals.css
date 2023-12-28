@@ -37,6 +37,9 @@ body {
             rgb(var(--background-end-rgb))
         )
         rgb(var(--background-start-rgb));
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 .fade-hr {
@@ -53,5 +56,5 @@ body {
 }
 
 .page-wrapper {
-    height: calc(100vh - 87px);
+    height: 100%;
 }
