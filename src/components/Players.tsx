@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Player, PlayersArr } from '@/utils';
+import { PlayersArr } from '@/utils';
 import PlayerBanner from './PlayerBanner';
 import PlayersRow from './PlayersRow';
 

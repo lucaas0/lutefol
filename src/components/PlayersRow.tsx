@@ -1,7 +1,7 @@
 import PlayerCard from './PlayerCard';
 import '../assets/styles/playerCard.css';
-import PlayerPhoto from '../../public/player.png';
-import { Player, PlayersArr } from '@/utils';
+import { PlayersArr } from '@/utils';
+import { Player } from '@/misc';
 
 type PlayersRowProps = {
     selectedPlayer: Player;

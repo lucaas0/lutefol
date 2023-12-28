@@ -1,6 +1,6 @@
-import { Player } from '@/utils';
 import Image, { StaticImageData } from 'next/image';
 import '../assets/styles/playerCard.css';
+import { Player } from '@/misc';
 
 interface PlayerProps {
     player: Player;
