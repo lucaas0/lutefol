@@ -1,7 +1,7 @@
 import PlayerPhoto from '../public/player.png';
 import LogoRed from '../public/logo-red.svg';
 import LogoGreen from '../public/logo-green.svg';
-import { Banner, Match, Player } from './misc';
+import { Match, Player } from './misc';
 
 export const PlayersArr: Player[] = [
     {

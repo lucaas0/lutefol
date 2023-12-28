@@ -1,5 +1,4 @@
 'use client';
-import { Banners } from "@/utils";
 import '../assets/styles/carousel.css';
 import { useEffect, useState } from "react";
 
