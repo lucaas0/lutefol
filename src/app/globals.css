@@ -41,6 +41,7 @@ body {
     flex-direction: column;
     height: 100vh;
     max-height: -webkit-fill-available;
+    color: white;
 }
 
 .fade-hr {
@@ -54,8 +55,4 @@ body {
         rgba(58, 58, 58, 0.2) 98%
     );
     margin-top: -2px;
-}
-
-.page-wrapper {
-    height: 100%;
 }
