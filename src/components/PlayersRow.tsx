@@ -17,10 +17,6 @@ const PlayersRow = (props: PlayersRowProps) => {
                     <PlayerCard
                         player={player}
                         onPlayerClick={() => onPlayerClick(player)}
-                        isSelected={
-                            player.firstname === selectedPlayer.firstname &&
-                            player.lastname === selectedPlayer.lastname
-                        }
                         key={`player-${player.firstname}-${player.lastname}`}
                     />
                 );
