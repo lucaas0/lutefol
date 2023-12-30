@@ -8,66 +8,79 @@ export const PlayersArr: Player[] = [
         firstname: 'Lucas',
         lastname: 'Garcia',
         photoUrl: PlayerPhoto,
+        number: 9,
     },
     {
-        firstname: 'Ruben',
+        firstname: 'Rúben',
         lastname: 'Rodrigues',
         photoUrl: PlayerPhoto,
+        number: 66,
     },
     {
-        firstname: 'Andre',
+        firstname: 'André',
         lastname: 'Salvado',
         photoUrl: PlayerPhoto,
+        number: 8,
     },
     {
         firstname: 'Diogo',
         lastname: 'Domingues',
         photoUrl: PlayerPhoto,
+        number: 1,
     },
     {
-        firstname: 'Joao',
+        firstname: 'João',
         lastname: 'Ferreira',
         photoUrl: PlayerPhoto,
+        number: 10,
     },
     {
         firstname: 'Ivo',
         lastname: 'Oliveira',
         photoUrl: PlayerPhoto,
+        number: 11,
     },
     {
         firstname: 'Gustavo',
         lastname: 'Carreira',
         photoUrl: PlayerPhoto,
+        number: 65,
     },
     {
         firstname: 'Rodrigo',
         lastname: 'Alves',
         photoUrl: PlayerPhoto,
+        number: 24,
     },
     {
         firstname: 'Bernardo',
         lastname: 'Figueiredo',
         photoUrl: PlayerPhoto,
+        number: 13,
     },
     {
         firstname: 'Nuno',
         lastname: 'Reis',
         photoUrl: PlayerPhoto,
+        number: 77,
     },
     {
         firstname: 'Jorge',
         lastname: 'Ferreira',
         photoUrl: PlayerPhoto,
+        number: 4
     },
     {
         firstname: 'Alexandre',
         lastname: 'Santos',
         photoUrl: PlayerPhoto,
+        number: 38,
     },
     {
         firstname: 'Francisco',
         lastname: 'Machado',
         photoUrl: PlayerPhoto,
+        number: 5
     },
 ];
 

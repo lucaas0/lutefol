@@ -9,6 +9,7 @@ export type Player = {
     firstname: string;
     lastname: string;
     photoUrl: StaticImageData;
+    number: number;
 };
 
 export type Team = {

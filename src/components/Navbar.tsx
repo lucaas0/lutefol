@@ -55,7 +55,7 @@ const Navbar = () => {
                                 <a href="/matches" className="block py-2 px-3 text-white dark:text-white">Matches</a>
                             </li>
                             <li className={`link-effect${route === '/teams' ? ' link-effect__selected' : ''}`}>
-                                <a href="/teams" className="block py-2 px-3 text-white dark:text-white">Teams</a>
+                                <a href="/teams" className="block py-2 px-3 text-white dark:text-white">Team</a>
                             </li>
                             <li className={`link-effect${route === '/stats' ? ' link-effect__selected' : ''}`}>
                                 <a href="/stats" className="block py-2 px-3 text-white dark:text-white">Stats</a>
@@ -84,7 +84,7 @@ const Navbar = () => {
                                 <a href="/matches" className="block py-2 px-3 text-white dark:text-white">Matches</a>
                             </li>
                             <li className={`link-effect${route === '/teams' ? ' link-effect__selected' : ''}`}>
-                                <a href="/teams" className="block py-2 px-3 text-white dark:text-white">Teams</a>
+                                <a href="/teams" className="block py-2 px-3 text-white dark:text-white">Team</a>
                             </li>
                             <li className={`link-effect${route === '/stats' ? ' link-effect__selected' : ''}`}>
                                 <a href="/stats" className="block py-2 px-3 text-white dark:text-white">Stats</a>

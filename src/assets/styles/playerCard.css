@@ -1,74 +1,64 @@
-.players-container {
-    display: flex;
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
+.player-container {
+  position: relative;
+  width: 281px; /* Adjust as needed */
+  height: 351px; /* Adjust as needed */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.player-card {
-    position: relative;
-    margin-right: 10px; /* Adjust margin as needed */
-    transition: margin-right 0.5s ease;
-    cursor: pointer;
+.player-background-image {
+  width: 100%;
+  height: 100%;
+  background-image: url('../../../public/page-header-bg.png');
+  background-size: cover;
+  transition: transform 0.5s ease; /* Smooth transition effect */
+  filter: grayscale(100%);
 }
 
-.player-card img {
-    width: 150px;
-    min-width: 150px;
-    filter: grayscale(100%);
+.player-container:hover .player-background-image {
+  /* Apply styles to the background image on container hover */
+  transform: scale(1.2); /* Adjust the scale factor as needed */
+  transition: transform 0.5s ease; /* Smooth transition effect */
 }
 
-.player-card:hover {
-    margin-right: 160px; /* Adjust the amount to make space for the name */
+.player-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+  width: 192px;
 }
 
-.player-card--selected {
-    margin-right: 160px; /* Adjust the amount to make space for the name */
+.player-overlay > img {
+    width: 192px;
 }
 
-.player-card:hover img {
-    filter: grayscale(0);
-}
-
-.player-card--selected img {
-    filter: grayscale(0);
-}
-
-.player-details {
-    display: flex;
-    align-items: center;
-    position: relative;
-    justify-items: baseline;
+.player-number {
+  position: absolute;
+  top: 10px; /* Adjust as needed */
+  left: 10px; /* Adjust as needed */
+  color: white; /* Text color */
+  z-index: 2; /* Ensure text is above other elements */
 }
 
 .player-name {
-    position: absolute;
-    top: 25px;
-    left: 100%;
-    transform: translate(10px, 0%);
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
+    margin-top: 18px;
+    line-height: normal;
 }
 
-.player-name span {
-    font-size: 1.5rem;
+.player-firstname {
+    font-size: 18px;
 }
 
-.player-name span:nth-of-type(2) {
+.player-lastname {
+    color: white;
+    transition: color 0.3s ease; /* Smooth color transition effect */
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 22px;
 }
 
-.player-card:hover .player-name {
-    opacity: 1;
-    transform: translate(0, 0%);
-}
-
-.player-card--selected .player-name {
-    opacity: 1;
-    transform: translate(0, 0%);
+.player-wrapper:hover .player-lastname {
+  color: #13D4C8; /* Change color on container hover */
 }
