@@ -1,0 +1,75 @@
+.stats-table > thead > tr > th {
+    text-align: center;
+    color: #6C6C6C;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.14px;
+    padding-bottom: 30px;
+}
+
+.stats-table > thead > tr > th:first-of-type {
+    text-align: left;
+}
+
+.stats-table > thead {
+    margin-bottom: 24px;
+}
+
+.stats-player-name {
+    line-height: normal;
+    letter-spacing: 0.14px;
+}
+
+.stats-table > tbody > tr > td:not(:first-of-type) {
+    min-width: 75px;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.stats-table > tbody > tr:nth-child(odd) {
+    background: #151515;
+}
+
+.badge {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 16px; /* 133.333% */
+}
+
+.badge--green {
+    background: linear-gradient(90deg, #428F6A -0.05%, #4EA881 31.2%, #07673D 75.92%, #92ACBA 100.02%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.badge--yellow {
+    background: linear-gradient(90deg, #AAA87D -0.05%, #B57B0E 31.2%, #A08042 75.92%, #BCAC66 100.02%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.badge--blue {
+    background: linear-gradient(90deg, #41B8FD -0.05%, #0013BD 31.2%, #5866E0 75.92%, #6CC7FD 100.02%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.badge--bronze {
+    background: linear-gradient(90deg, #6B3313 -0.05%, #DF7A32 31.2%, #AB5626 75.92%, #6B3313 100.02%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@media only screen and (max-width: 1200px) {
+  .stats-table > tbody > tr > td:not(:first-of-type) {
+    min-width: 30px;
+    padding: 5px 0;
+    text-align: center;
+}
+}

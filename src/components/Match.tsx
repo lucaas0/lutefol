@@ -1,4 +1,5 @@
-import { Months, UpcomingMatches, Weekday } from "@/utils";
+import { Months, Weekday } from "@/misc";
+import { UpcomingMatches } from "@/utils";
 import Image from "next/image";
 
 const Match = () => {
