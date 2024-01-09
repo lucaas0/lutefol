@@ -1,10 +1,10 @@
 .player-wrapper {
-  max-width: 281px;
+  max-width: 260px;
 }
 
 .player-container {
   position: relative;
-  width: 281px; /* Adjust as needed */
+  width: 260px; /* Adjust as needed */
   height: 351px; /* Adjust as needed */
   overflow: hidden;
   display: flex;

@@ -369,55 +369,66 @@ export const PlayersArr: Player[] = [
     },
 ];
 
-export const UpcomingMatches: Match[] = [
+export const Matches: Match[] = [
     {
-        team1: { name: 'Ressabiados F.C', logo: LogoRed  },
-        team2: { name: 'Negacionistas F.C', logo: LogoGreen },
+        team1: { name: 'Ressabiados F.C', logo: LogoRed, players: []  },
+        team2: { name: 'Negacionistas F.C', logo: LogoGreen, players: [] },
         date: new Date(Date.UTC(2024, 0, 8)),
         time: '18:30',
-        location: 'LeiriFoot'
+        location: 'LeiriFoot',
+        result: {
+            team1: 17,
+            team2: 19,
+        },
     },
     {
-        team1: { name: 'Ressabiados F.C', logo: LogoRed  },
-        team2: { name: 'Negacionistas F.C', logo: LogoGreen },
+        team1: { name: 'Ressabiados F.C', logo: LogoRed, players: []  },
+        team2: { name: 'Negacionistas F.C', logo: LogoGreen, players: [] },
         date: new Date(Date.UTC(2024, 0, 11)),
         time: '18:30',
-        location: 'LeiriFoot'
+        location: 'LeiriFoot',
+        result: null,
     },
     {
-        team1: { name: 'Ressabiados F.C', logo: LogoRed  },
-        team2: { name: 'Negacionistas F.C', logo: LogoGreen },
+        team1: { name: 'Ressabiados F.C', logo: LogoRed, players: []  },
+        team2: { name: 'Negacionistas F.C', logo: LogoGreen, players: [] },
         date: new Date(Date.UTC(2024, 0, 15)),
         time: '18:30',
-        location: 'LeiriFoot'
+        location: 'LeiriFoot',
+        result: null,
+
     },
     {
-        team1: { name: 'Ressabiados F.C', logo: LogoRed  },
-        team2: { name: 'Negacionistas F.C', logo: LogoGreen },
+        team1: { name: 'Ressabiados F.C', logo: LogoRed, players: []  },
+        team2: { name: 'Negacionistas F.C', logo: LogoGreen, players: [] },
         date: new Date(Date.UTC(2024, 0, 18)),
         time: '18:30',
-        location: 'LeiriFoot'
+        location: 'LeiriFoot',
+        result: null,
     },
     {
-        team1: { name: 'Ressabiados F.C', logo: LogoRed  },
-        team2: { name: 'Negacionistas F.C', logo: LogoGreen },
+        team1: { name: 'Ressabiados F.C', logo: LogoRed, players: []  },
+        team2: { name: 'Negacionistas F.C', logo: LogoGreen, players: [] },
         date: new Date(Date.UTC(2024, 0, 22)),
         time: '18:30',
-        location: 'LeiriFoot'
+        location: 'LeiriFoot',
+        result: null,
     },
     {
-        team1: { name: 'Ressabiados F.C', logo: LogoRed  },
-        team2: { name: 'Negacionistas F.C', logo: LogoGreen },
+        team1: { name: 'Ressabiados F.C', logo: LogoRed, players: []  },
+        team2: { name: 'Negacionistas F.C', logo: LogoGreen, players: [] },
         date: new Date(Date.UTC(2024, 0, 25)),
         time: '18:30',
-        location: 'LeiriFoot'
+        location: 'LeiriFoot',
+        result: null,
     },
     {
-        team1: { name: 'Ressabiados F.C', logo: LogoRed  },
-        team2: { name: 'Negacionistas F.C', logo: LogoGreen },
+        team1: { name: 'Ressabiados F.C', logo: LogoRed, players: []  },
+        team2: { name: 'Negacionistas F.C', logo: LogoGreen, players: [] },
         date: new Date(Date.UTC(2024, 0, 29)),
         time: '18:30',
-        location: 'LeiriFoot'
+        location: 'LeiriFoot',
+        result: null,
     }
 ];
 

@@ -32,6 +32,7 @@ export type Player = {
 export type Team = {
     name: string;
     logo: string;
+    players: Player[];
 }
 
 export type Match = {
@@ -40,4 +41,5 @@ export type Match = {
     team2: Team;
     date: Date;
     time: string;
+    result: { team1: number; team2: number } | null;
 }
