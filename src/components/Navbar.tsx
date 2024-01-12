@@ -51,7 +51,7 @@ const Navbar = () => {
                             <li className={`link-effect${route === '/news' ? ' link-effect__selected' : ''}`}>
                                 <a href="/news" className="block py-2 px-3 text-white dark:text-white" aria-current="page">News</a>
                             </li>
-                            <li className={`link-effect${route === '/matches' || route === '/matches/results' ? ' link-effect__selected' : ''}`}>
+                            <li className={`link-effect${route === '/matches' || route === '/matches/results' || route.includes('/match-center') ? ' link-effect__selected' : ''}`}>
                                 <a href="/matches" className="block py-2 px-3 text-white dark:text-white">Matches</a>
                             </li>
                             <li className={`link-effect${route === '/teams' ? ' link-effect__selected' : ''}`}>
@@ -80,7 +80,7 @@ const Navbar = () => {
                             <li className={`link-effect${route === '/news' ? ' link-effect__selected' : ''}`}>
                                 <a href="/news" className="block py-2 px-3 text-white dark:text-white" aria-current="page">News</a>
                             </li>
-                            <li className={`link-effect${route === '/matches' || route === '/matches/results' ? ' link-effect__selected' : ''}`}>
+                            <li className={`link-effect${route === '/matches' || route === '/matches/results' || route === '/match-center' ? ' link-effect__selected' : ''}`}>
                                 <a href="/matches" className="block py-2 px-3 text-white dark:text-white">Matches</a>
                             </li>
                             <li className={`link-effect${route === '/teams' ? ' link-effect__selected' : ''}`}>

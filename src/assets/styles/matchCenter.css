@@ -1,0 +1,8 @@
+.match-center-header {
+    min-height: 350px;
+}
+
+.match-center-header > img {
+    height: 100%;
+    object-fit: cover;
+}

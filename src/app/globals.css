@@ -61,3 +61,26 @@ body {
 .bg-true-gray-900 {
     background-color: #151515;
 }
+
+.left-47 {
+    left: 47%;
+}
+
+.left-35 {
+    left: 35%;
+}
+
+.center-absolute {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.goal-line {
+    width: 420px;
+    border-bottom: 1px solid #262626;
+}
+
+.lineup-wrapper {
+    border: 1px solid #262626;
+}

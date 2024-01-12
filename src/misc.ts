@@ -7,6 +7,8 @@ export enum Nationalities {
     PT = 'PT'
 }
 
+export type TeamName = 'Ressabiados F.C' | 'Negacionistas F.C';
+
 export const Weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
 export const Months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -30,16 +32,27 @@ export type Player = {
 };
 
 export type Team = {
-    name: string;
+    name: TeamName;
     logo: string;
     players: Player[];
 }
 
+export type Goal = {
+    Scorer: Player;
+    Assist: Player | null;
+    Team: TeamName;
+}
+
 export type Match = {
+    id: string;
     location: string;
     team1: Team;
     team2: Team;
     date: Date;
     time: string;
-    result: { team1: number; team2: number } | null;
+    result: {
+        team1: number;
+        team2: number;
+    } | null;
+    goals: Goal[];
 }

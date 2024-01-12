@@ -1,8 +1,9 @@
 'use client';
 import React, { useEffect } from 'react';
 import { Match, Months, Weekday } from "@/misc";
-import { Matches } from "@/utils";
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 type OwnProps = {
     match: Match;
@@ -10,9 +11,6 @@ type OwnProps = {
 
 const Match = (props: OwnProps) => {
     const { match } = props;
-    useEffect(() => {
-        console.log(match);
-    }, []);
 
     return (
                 <section className="flex flex-col gap-6 md:gap-0 md:flex-row justify-between bg-true-gray-900 p-6 items-center uppercase" key={`match-${match.date}`}>
@@ -44,11 +42,15 @@ const Match = (props: OwnProps) => {
                             <h2 className="font-bold text-xl text-center md:text-left">{match.team2.name}</h2>
                         </div>
                     </div>
-                    <div>
-                        <button type="button" className="border border-gray-800 border-solid py-2 px-4 text-base font-bold">
-                            MATCH CENTER
-                        </button>
-                    </div>
+                    <Link href={`/match-center/${match.id}/summary`}>
+                <button
+                    type="button"
+                    className="border
+                            border-gray-800 border-solid py-2 px-4 text-base font-bold"
+                >
+                    MATCH CENTER
+                </button>
+                    </Link>
                 </section>
     )
 }
