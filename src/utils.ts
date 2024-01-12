@@ -387,7 +387,10 @@ export const Matches: Match[] = [
         date: new Date(Date.UTC(2024, 0, 11)),
         time: '18:30',
         location: 'LeiriFoot',
-        result: null,
+        result: {
+            team1: 15,
+            team2: 8,
+        },
     },
     {
         team1: { name: 'Ressabiados F.C', logo: LogoRed, players: []  },
