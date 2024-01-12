@@ -45,15 +45,15 @@ export default function MatchesLayout({
                             </div>
                             <div className="center-absolute bottom-8 md:bottom-24 flex items-center gap-6">
                                 <div className="flex flex-col-reverse md:flex-row items-center gap-4 md:gap-8">
-                                    <h2 className="font-bold text-2xl text-center md:text-left">{match.team1.name}</h2>
+                                    <h2 className="font-bold text-xl md:text-2xl text-center md:text-left">{match.team1.name}</h2>
                                     <Image src={match.team1.logo} alt="" width={52} height={52} />
                                 </div>
                                 {
                                     match.result && (
                                         <React.Fragment>
-                                            <h2 className="font-bold text-5xl">{match.result.team1}</h2>
+                                            <h2 className="font-bold text-2xl md:text-5xl">{match.result.team1}</h2>
                                             <h2 className="font-bold text-xl">-</h2>
-                                            <h2 className="font-bold text-5xl">{match.result.team2}</h2>
+                                            <h2 className="font-bold text-2xl md:text-5xl">{match.result.team2}</h2>
                                         </React.Fragment>
                                     )
                                 }
@@ -64,7 +64,7 @@ export default function MatchesLayout({
                                 }
                                 <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
                                     <Image src={match.team2.logo} alt="" width={52} height={52} />
-                                    <h2 className="font-bold text-2xl text-center md:text-left">{match.team2.name}</h2>
+                                    <h2 className="font-bold text-xl md:text-2xl text-center md:text-left">{match.team2.name}</h2>
                                 </div>
                             </div>
                         </React.Fragment>
