@@ -15,7 +15,7 @@ const Match = (props: OwnProps) => {
     return (
                 <section className="flex flex-col gap-6 md:gap-0 md:flex-row justify-between bg-true-gray-900 p-6 items-center uppercase" key={`match-${match.date}`}>
                     <div className="flex flex-col text-sm md:text-sm text-center md:text-left">
-                        <h3 className="text-teal-400 font-bold">{`${Weekday[match.date.getDay()]} ${match.date.getDate()} ${Months[match.date.getMonth()]} ${match.date.getFullYear()}`}</h3>
+                        <h3 className="text-green font-bold">{`${Weekday[match.date.getDay()]} ${match.date.getDate()} ${Months[match.date.getMonth()]} ${match.date.getFullYear()}`}</h3>
                         <h4>{`${match.time} - ${match.location}`}</h4>
                     </div>
                     <div className="flex items-center gap-6">

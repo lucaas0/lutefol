@@ -2,8 +2,10 @@ import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
 import PlayersStatsTable from "@/components/PlayersStatsTable";
 import StatsCard from "@/components/StatsCard";
+import { topAssists, topScorers } from "@/utils";
 
 const Stats = () => {
+
     return (
         <PageWrapper>
             <PageHeader title="stats" />
@@ -13,27 +15,9 @@ const Stats = () => {
                         Top Stats
                     </h2>
                     <div className="flex gap-3 w-full flex-wrap">
-                        <StatsCard cardTitle="Goals" cardStats={[{
-                            title: 'oliveira',
-                            value: 100
-                        }, {
-                            title: 'lukaku',
-                            value: 80
-                        }, {
-                            title: 'aquaman',
-                            value: 75
-                        }]} />
+                        <StatsCard cardTitle="GOALS" cardStats={topScorers} />
 
-                        <StatsCard cardTitle="Assists" cardStats={[{
-                            title: 'oliveira',
-                            value: 100
-                        }, {
-                            title: 'lukaku',
-                            value: 80
-                        }, {
-                            title: 'aquaman',
-                            value: 75
-                        }]} />
+                        <StatsCard cardTitle="ASSISTS" cardStats={topAssists} />
                     </div>
                 </div>
                 <div className="flex flex-col gap-5">

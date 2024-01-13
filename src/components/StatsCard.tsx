@@ -1,10 +1,8 @@
+import { PlayerMatchStats } from "@/misc";
 
 type OwnProps = {
-    cardTitle: string;
-    cardStats: {
-        title: string,
-        value: string | number,
-    }[];
+    cardTitle: 'GOALS' | 'ASSISTS';
+    cardStats: PlayerMatchStats[];
 }
 const StatsCard = (props: OwnProps) => {
     const { cardTitle, cardStats } = props;
@@ -15,9 +13,9 @@ const StatsCard = (props: OwnProps) => {
                 {
                     cardStats.map((cardStat) => {
                         return (
-                            <div className="flex gap-4" key={`card-stat-${cardStat.title}-${cardStat.value}`}>
-                                <span className="font-bold text-lg w-6">{cardStat.value}</span>
-                                <span className="uppercase">{cardStat.title}</span>
+                            <div className="flex gap-4" key={`card-stat-${cardStat.player.firstname}-${cardStat.player.lastname}`}>
+                                <span className="font-bold text-lg w-6">{cardTitle === 'GOALS' ? cardStat.goals : cardStat.assists}</span>
+                                <span className="uppercase">{cardStat.player.label}</span>
                             </div>
                         )
                     })

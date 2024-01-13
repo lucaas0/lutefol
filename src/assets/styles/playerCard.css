@@ -15,16 +15,17 @@
 .player-background-image {
   width: 100%;
   height: 100%;
-  background-image: url('../../../public/page-header-bg.png');
+  background-image: url('../../../public/player-card-bg.png');
   background-size: cover;
   transition: transform 0.5s ease; /* Smooth transition effect */
-  filter: grayscale(100%);
+  opacity: 0.1;
 }
 
 .player-container:hover .player-background-image {
   /* Apply styles to the background image on container hover */
   transform: scale(1.3); /* Adjust the scale factor as needed */
   transition: transform 0.5s ease; /* Smooth transition effect */
+  opacity: 0.2;
 }
 
 .player-overlay {
@@ -64,5 +65,5 @@
 }
 
 .player-wrapper:hover .player-lastname {
-  color: #13D4C8; /* Change color on container hover */
+  color: #02E651; /* Change color on container hover */
 }

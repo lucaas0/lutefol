@@ -7,7 +7,7 @@ import BadgeBronze from '../public/badge-bronze.svg';
 import BadgeBlue from '../public/badge-blue.svg';
 import BadgeYellow from '../public/badge-yellow.svg';
 import BadgeGreen from '../public/badge-green.svg';
-import { Goal, Match, Nationalities, Player, TeamName } from './misc';
+import { Goal, Match, Nationalities, Player, PlayerMatchStats, TeamName } from './misc';
 import { AlexandreSantos, AndreSalvado, BernardoFigueiredo, DiogoDomingues, FranciscoMachado, GustavoCarreira,
 IvoOliveira, JoaoFerreira, JoaoMota, JoaoPaulino, JorgeFerreira, JosePedrosa, LucasGarcia, NunoReis,
 RenatoOliveira, RodrigoAlves, RubenRodrigues, TomasSantos, WildCard } from './playersDB';
@@ -202,3 +202,45 @@ export const getMatchGoalsById = (matchId: string) => {
 
     return match.goals;
 }
+
+// Function to sort players by OVR in ascending order
+export const sortByOVRAsc = (players: Player[]) => {
+  return players.slice().sort((a, b) => a.stats.OVR - b.stats.OVR);
+};
+
+// Function to sort players by OVR in descending order
+export const sortByOVRDesc = (players: Player[]) => {
+  return players.slice().sort((a, b) => b.stats.OVR - a.stats.OVR);
+};
+
+const getTopPlayers = (matches: Match[]): { topScorers: PlayerMatchStats[], topAssists: PlayerMatchStats[] } => {
+  const playerStatsMap: Map<string, PlayerMatchStats> = new Map();
+
+  // Loop through matches and accumulate goals and assists
+  matches.forEach((match) => {
+    match.goals.forEach((goal) => {
+      // Update scorer's stats
+      const scorerKey = `${goal.Scorer.firstname}-${goal.Scorer.lastname}`;
+      const scorerStats = playerStatsMap.get(scorerKey) || { player: goal.Scorer, goals: 0, assists: 0 };
+      scorerStats.goals += 1;
+      playerStatsMap.set(scorerKey, scorerStats);
+
+      // Update assist's stats if available
+      if (goal.Assist) {
+        const assistKey = `${goal.Assist.firstname}-${goal.Assist.lastname}`;
+        const assistStats = playerStatsMap.get(assistKey) || { player: goal.Assist, goals: 0, assists: 0 };
+        assistStats.assists += 1;
+        playerStatsMap.set(assistKey, assistStats);
+      }
+    });
+  });
+
+  // Convert the map to an array and sort by goals and assists
+  const playerStatsArray = Array.from(playerStatsMap.values());
+  const topScorers = playerStatsArray.sort((a, b) => b.goals - a.goals).slice(0, 3);
+  const topAssists = playerStatsArray.sort((a, b) => b.assists - a.assists).slice(0, 3);
+
+  return { topScorers, topAssists };
+};
+
+export const { topScorers, topAssists } = getTopPlayers(Matches);

@@ -25,6 +25,7 @@ export type PlayerStats = {
 export type Player = {
     firstname: string;
     lastname: string;
+    label: string;
     photoUrl: StaticImageData;
     number: number;
     stats: PlayerStats;
@@ -56,3 +57,9 @@ export type Match = {
     } | null;
     goals: Goal[];
 }
+
+export type PlayerMatchStats = {
+  player: Player;
+  goals: number;
+  assists: number;
+};

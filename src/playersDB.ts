@@ -20,7 +20,8 @@ export const AndreSalvado: Player = {
             TEC: 70,
             WR: 80,
         },
-        nationality: [Nationalities.PT]
+        nationality: [Nationalities.PT],
+        label: 'A. SALVADO'
 };
 
 export const AlexandreSantos: Player = {
@@ -42,7 +43,8 @@ export const AlexandreSantos: Player = {
         TEC: 88,
         WR: 63,
     },
-    nationality: [Nationalities.PT]
+    nationality: [Nationalities.PT],
+    label: 'LEVEZINHO',
 };
 
 export const BernardoFigueiredo: Player = {
@@ -64,7 +66,8 @@ export const BernardoFigueiredo: Player = {
             TEC: 51,
             WR: 99,
         },
-        nationality: [Nationalities.PT]
+        nationality: [Nationalities.PT],
+        label: 'BERNARDO',
 };
 
 export const DiogoDomingues: Player = {
@@ -86,10 +89,11 @@ export const DiogoDomingues: Player = {
             TEC: 50,
             WR: 88,
         },
-        nationality: [Nationalities.PT]
+        nationality: [Nationalities.PT],
+        label: 'PIRATA',
     };
 
-export const FranciscoMachado =     {
+export const FranciscoMachado: Player = {
         firstname: 'Francisco',
         lastname: 'Machado',
         photoUrl: PlayerPhoto,
@@ -108,10 +112,11 @@ export const FranciscoMachado =     {
             TEC: 40,
             WR: 41,
         },
-        nationality: [Nationalities.PT]
+        nationality: [Nationalities.PT],
+        label: 'MACHADO'
     };
 
-export const GustavoCarreira = {
+export const GustavoCarreira: Player = {
     firstname: 'Gustavo',
     lastname: 'Carreira',
     photoUrl: PlayerPhoto,
@@ -130,10 +135,11 @@ export const GustavoCarreira = {
         TEC: 41,
         WR: 51,
     },
-    nationality: [Nationalities.PT]
+    nationality: [Nationalities.PT],
+    label: 'CARREIRA'
 };
 
-export const IvoOliveira = {
+export const IvoOliveira: Player = {
     firstname: 'Ivo',
     lastname: 'Oliveira',
     photoUrl: PlayerPhoto,
@@ -152,10 +158,11 @@ export const IvoOliveira = {
             TEC: 90,
             WR: 63,
         },
-        nationality: [Nationalities.PT]
+        nationality: [Nationalities.PT],
+        label: 'OLIVEIRA'
     };
 
-export const JoaoFerreira = {
+export const JoaoFerreira: Player = {
         firstname: 'João',
         lastname: 'Ferreira',
         photoUrl: PlayerPhoto,
@@ -174,10 +181,11 @@ export const JoaoFerreira = {
             TEC: 90,
             WR: 80,
         },
-        nationality: [Nationalities.PT]
+        nationality: [Nationalities.PT],
+        label: 'J. FERREIRA'
     };
 
-export const JoaoMota = {
+export const JoaoMota: Player = {
         firstname: 'João',
         lastname: 'Mota',
         photoUrl: PlayerPhoto,
@@ -196,10 +204,12 @@ export const JoaoMota = {
             TEC: 40,
             WR: 45,
         },
-        nationality: [Nationalities.PT]
+        nationality: [Nationalities.PT],
+        label: 'MOTALLICA'
+
     };
 
-export const JoaoPaulino = {
+export const JoaoPaulino: Player = {
         firstname: 'João',
         lastname: 'Paulino',
         photoUrl: PlayerPhoto,
@@ -218,10 +228,11 @@ export const JoaoPaulino = {
             PAS: 75,
             OVR: 74,
         },
-        nationality: [Nationalities.PT]
+        nationality: [Nationalities.PT],
+        label: 'PAULINO',
     };
 
-export const JorgeFerreira = {
+export const JorgeFerreira: Player = {
         firstname: 'Jorge',
         lastname: 'Ferreira',
         photoUrl: PlayerPhoto,
@@ -240,10 +251,11 @@ export const JorgeFerreira = {
             TEC: 62,
             WR: 79,
         },
-        nationality: [Nationalities.PT]
+        nationality: [Nationalities.PT],
+        label: 'JORGE M.',
     };
 
-export const JosePedrosa = {
+export const JosePedrosa: Player = {
         firstname: 'José',
         lastname: 'Pedrosa',
         photoUrl: PlayerPhoto,
@@ -262,10 +274,11 @@ export const JosePedrosa = {
             PAS: 86,
             OVR: 79,
         },
-        nationality: [Nationalities.PT]
+        nationality: [Nationalities.PT],
+        label: 'PEDROSA',
     };
 
-export const LucasGarcia =     {
+export const LucasGarcia: Player = {
         firstname: 'Lucas',
         lastname: 'Garcia',
         photoUrl: PlayerPhoto,
@@ -284,10 +297,11 @@ export const LucasGarcia =     {
             TEC: 85,
             WR: 53,
         },
-        nationality: [Nationalities.BRA, Nationalities.PT]
+        nationality: [Nationalities.BRA, Nationalities.PT],
+        label: 'LUKAKU'
     };
 
-export const NunoReis = {
+export const NunoReis: Player = {
         firstname: 'Nuno',
         lastname: 'Reis',
         photoUrl: PlayerPhoto,
@@ -306,10 +320,11 @@ export const NunoReis = {
             TEC: 89,
             WR: 99,
         },
-        nationality: [Nationalities.PT]
+        nationality: [Nationalities.PT],
+        label: 'RUNO NEIS'
     };
 
-export const RenatoOliveira = {
+export const RenatoOliveira: Player = {
         firstname: 'Renato',
         lastname: 'Oliveira',
         photoUrl: PlayerPhoto,
@@ -328,10 +343,11 @@ export const RenatoOliveira = {
             PAS: 49,
             OVR: 53,
         },
-        nationality: [Nationalities.PT]
+        nationality: [Nationalities.PT],
+        label: 'RENATO'
     };
 
-export const RubenRodrigues =     {
+export const RubenRodrigues: Player = {
         firstname: 'Rúben',
         lastname: 'Rodrigues',
         photoUrl: PlayerPhoto,
@@ -350,10 +366,11 @@ export const RubenRodrigues =     {
             TEC: 84,
             WR: 61,
         },
-        nationality: [Nationalities.PT]
+        nationality: [Nationalities.PT],
+        label: 'AQUAMAN'
     };
 
-export const TomasSantos = {
+export const TomasSantos: Player = {
         firstname: 'Tomás',
         lastname: 'Santos',
         photoUrl: PlayerPhoto,
@@ -372,7 +389,8 @@ export const TomasSantos = {
             PAS: 55,
             OVR: 55,
         },
-        nationality: [Nationalities.PT]
+        nationality: [Nationalities.PT],
+        label: 'SANTOS',
     };
 
 export const RodrigoAlves: Player = {
@@ -394,7 +412,8 @@ export const RodrigoAlves: Player = {
             PAS: 55,
             OVR: 55,
         },
-        nationality: [Nationalities.PT]
+        nationality: [Nationalities.PT],
+        label: 'R. ALVES'
     }
 
 export const WildCard: Player = {
@@ -416,5 +435,6 @@ export const WildCard: Player = {
             PAS: 55,
             OVR: 55,
         },
-        nationality: [Nationalities.PT]
+        nationality: [Nationalities.PT],
+        label: 'WILDCARD #1'
     }

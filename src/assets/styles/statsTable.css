@@ -68,7 +68,11 @@
 
 @media only screen and (max-width: 1200px) {
   .stats-table > tbody > tr > td:not(:first-of-type) {
-    min-width: 30px;
-    text-align: center;
+        min-width: 30px;
+        text-align: center;
+    }
 }
+
+.caret-up {
+    transform: rotate(180deg);
 }
