@@ -16,7 +16,6 @@ const Stats = () => {
                     </h2>
                     <div className="flex gap-3 w-full flex-wrap">
                         <StatsCard cardTitle="GOALS" cardStats={topScorers} />
-
                         <StatsCard cardTitle="ASSISTS" cardStats={topAssists} />
                     </div>
                 </div>

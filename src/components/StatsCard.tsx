@@ -7,7 +7,7 @@ type OwnProps = {
 const StatsCard = (props: OwnProps) => {
     const { cardTitle, cardStats } = props;
     return (
-        <div className="flex flex-col gap-4 py-4 pe-36 ps-4 bg-true-gray-900">
+        <div className="flex flex-col gap-4 py-4 pe-36 ps-4 bg-true-gray-900 stats-card">
             <h4 className="text-xl font-bold uppercase">{cardTitle}</h4>
             <div className="flex flex-col gap-2">
                 {
