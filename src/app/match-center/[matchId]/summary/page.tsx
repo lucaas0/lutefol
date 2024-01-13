@@ -1,42 +1,53 @@
 'use client';
 import { getMatchById, getMatchGoalsById, shuffleGoalsArray } from '@/utils';
 import { useParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import '../../../../assets/styles/matchCenter.css';
 import Image from 'next/image';
-import { Match, Player } from '@/misc';
+import { Goal, Match, Player } from '@/misc';
 
 const MatchSummary = () => {
     const params: { matchId: string } = useParams();
-
-    const [match, setMatch] = useState<Match | undefined>(undefined);
-
-    useEffect(() => {
-        const getMatch = () => {
-            const m = getMatchById(params.matchId);
-            setMatch(m);
-        }
-        getMatch();
-    }, [params.matchId]);
 
     const getMatchGoals = () => {
         return getMatchGoalsById(params.matchId);
     }
 
-    const renderFirstTeamGoalLine = (scorer: Player) => {
+    const match = useMemo(() => getMatchById(params.matchId), [params.matchId])
+
+    const renderFirstTeamGoalLine = (goal: Goal) => {
+        let isOwnGoal = false;
+        if (match) {
+            const { team1 } = match;
+
+            if (team1.name === goal.Team && !team1.players.includes(goal.Scorer)) {
+                isOwnGoal = true;
+            }
+        }
+        
+        
         return (
             <div className='flex gap-3 py-2 w-2/3'>
-                <span>{`${scorer.firstname} ${scorer.lastname}`}</span>
-                <Image src="/football.svg" width={24} height={24} alt='' />
+                <span>{`${goal.Scorer.firstname} ${goal.Scorer.lastname}`}</span>
+                <Image src={isOwnGoal ? '/soccer-ball-red.svg' : '/football.svg'} width={24} height={24} alt='' />
             </div>
         )
     }
 
-    const renderSecondTeamGoalLine = (scorer: Player) => {
+    const renderSecondTeamGoalLine = (goal: Goal) => {
+        let isOwnGoal = false;
+        if (match) {
+            const { team2 } = match;
+
+            if (team2.name === goal.Team && !team2.players.includes(goal.Scorer)) {
+                isOwnGoal = true;
+            }
+        }
+
         return (
             <div className='flex gap-3 justify-end py-2 w-2/3'>
                 <Image src="/football.svg" width={24} height={24} alt='' />
-                <span>{`${scorer.firstname} ${scorer.lastname}`}</span>
+                <span>{`${goal.Scorer.firstname} ${goal.Scorer.lastname}`}</span>
             </div>
         )
     }
@@ -47,8 +58,8 @@ const MatchSummary = () => {
                 getMatchGoals().map((goal, index) => {
                     return (
                         <div key={`scorer-${goal.Scorer.firstname}-${index}`} className='goal-line flex justify-around'>
-                            {goal.Team === 'Ressabiados F.C' && (renderFirstTeamGoalLine(goal.Scorer))} 
-                            {goal.Team === 'Negacionistas F.C' && (renderSecondTeamGoalLine(goal.Scorer))} 
+                            {goal.Team === 'Ressabiados F.C' && (renderFirstTeamGoalLine(goal))} 
+                            {goal.Team === 'Negacionistas F.C' && (renderSecondTeamGoalLine(goal))} 
                         </div>
                     )
                 })
