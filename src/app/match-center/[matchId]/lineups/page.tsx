@@ -24,7 +24,7 @@ const MatchLineup = () => {
             <div className='flex flex-col gap-4 py-8 px-8 md:px-14 lineup-wrapper'>
                 <div className="flex flex-col-reverse md:flex-row items-center gap-4 md:gap-6">
                     <Image src={match?.team1.logo || ''} alt="" width={52} height={52} />
-                    <h2 className="font-bold text-base md:text-xl text-center md:text-left">{match?.team1.name}</h2>
+                    <h2 className="font-bold uppercase text-base md:text-xl text-center md:text-left">{match?.team1.name}</h2>
                 </div>
                 {
                     match?.team1.players.map((player) => {
@@ -39,7 +39,7 @@ const MatchLineup = () => {
             <div className='flex flex-col gap-4 p-8 px-8 md:px-14 lineup-wrapper'>
                 <div className="flex flex-col-reverse md:flex-row items-center gap-4 md:gap-6">
                     <Image src={match?.team2.logo || ''} alt="" width={52} height={52} />
-                    <h2 className="font-bold text-base md:text-xl text-center md:text-left">{match?.team2.name}</h2>
+                    <h2 className="font-bold uppercase text-base md:text-xl text-center md:text-left">{match?.team2.name}</h2>
                 </div>
                 {
                     match?.team2.players.map((player) => {

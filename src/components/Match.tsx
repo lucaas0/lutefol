@@ -20,7 +20,7 @@ const Match = (props: OwnProps) => {
                     </div>
                     <div className="flex items-center gap-6">
                         <div className="flex flex-col-reverse md:flex-row items-center gap-4 md:gap-8">
-                            <h2 className="font-bold text-sm md:text-xl text-center md:text-left">{match.team1.name}</h2>
+                            <h2 className="font-bold uppercase text-sm md:text-xl text-center md:text-left">{match.team1.name}</h2>
                             <Image src={match.team1.logo} alt="" width={52} height={52} />
                         </div>
                         {
@@ -39,7 +39,7 @@ const Match = (props: OwnProps) => {
                         }
                         <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
                             <Image src={match.team2.logo} alt="" width={52} height={52} />
-                            <h2 className="font-bold text-sm md:text-xl text-center md:text-left">{match.team2.name}</h2>
+                            <h2 className="font-bold uppercase text-sm md:text-xl text-center md:text-left">{match.team2.name}</h2>
                         </div>
                     </div>
                     <Link href={`/match-center/${match.id}/summary`}>
