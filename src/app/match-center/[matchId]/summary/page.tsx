@@ -58,8 +58,8 @@ const MatchSummary = () => {
                 getMatchGoals().map((goal, index) => {
                     return (
                         <div key={`scorer-${goal.Scorer.firstname}-${index}`} className='goal-line flex justify-around'>
-                            {goal.Team === 'Ressabiados F.C' && (renderFirstTeamGoalLine(goal))} 
-                            {goal.Team === 'Negacionistas F.C' && (renderSecondTeamGoalLine(goal))} 
+                            {goal.Team === 'Scallywags' && (renderFirstTeamGoalLine(goal))} 
+                            {goal.Team === 'Corsairs' && (renderSecondTeamGoalLine(goal))} 
                         </div>
                     )
                 })

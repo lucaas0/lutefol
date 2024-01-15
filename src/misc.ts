@@ -7,7 +7,7 @@ export enum Nationalities {
     PT = 'PT'
 }
 
-export type TeamName = 'Ressabiados F.C' | 'Negacionistas F.C';
+export type TeamName = 'Scallywags' | 'Corsairs';
 
 export const Weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
