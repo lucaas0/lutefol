@@ -185,8 +185,12 @@ export const Matches: Match[] = [
     },
     {
         id: '20240115',
-        team1: { name: 'Ressabiados F.C', logo: LogoRed, players: []  },
-        team2: { name: 'Negacionistas F.C', logo: LogoGreen, players: [] },
+        team1: { name: 'Ressabiados F.C', logo: LogoRed, players: [
+            NunoReis, LucasGarcia, WildCard, BernardoFigueiredo, RenatoOliveira,
+        ]  },
+        team2: { name: 'Negacionistas F.C', logo: LogoGreen, players: [
+            RubenRodrigues, JoaoFerreira, AndreSalvado, JoaoPaulino, TomasSantos
+        ] },
         date: new Date(Date.UTC(2024, 0, 15)),
         time: '18:30',
         location: 'LeiriFoot',
