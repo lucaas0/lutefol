@@ -8,9 +8,9 @@ import BadgeBlue from '../public/badge-blue.svg';
 import BadgeYellow from '../public/badge-yellow.svg';
 import BadgeGreen from '../public/badge-green.svg';
 import { Goal, Match, Nationalities, Player, PlayerMatchStats, TeamName } from './misc';
-import { AlexandreSantos, AndreSalvado, BernardoFigueiredo, DiogoDomingues, FranciscoMachado, GustavoCarreira,
+import { AlexandreLopes, AlexandreSantos, AndreSalvado, BernardoFigueiredo, DiogoDomingues, FranciscoMachado, GustavoCarreira,
 IvoOliveira, JoaoFerreira, JoaoMota, JoaoPaulino, JorgeFerreira, JosePedrosa, LucasGarcia, NunoReis,
-RenatoOliveira, RodrigoAlves, RubenRodrigues, TomasSantos, WildCard } from './playersDB';
+RenatoOliveira, RodrigoAlves, RubenRodrigues, TomasSantos } from './playersDB';
 
 export const PlayersArr: Player[] = [
     AndreSalvado,
@@ -30,6 +30,7 @@ export const PlayersArr: Player[] = [
     RenatoOliveira,
     RubenRodrigues,
     TomasSantos,
+    AlexandreLopes,
 ];
 
 export const shuffleGoalsArray = (array: Goal[]) => {
@@ -98,7 +99,7 @@ export const Matches: Match[] = [
             AndreSalvado, JoaoFerreira, JoaoPaulino, BernardoFigueiredo, DiogoDomingues, GustavoCarreira,
         ]  },
         team2: { name: 'Negacionistas F.C', logo: LogoGreen, players: [
-            RubenRodrigues, NunoReis, RenatoOliveira, LucasGarcia, WildCard, RodrigoAlves,
+            RubenRodrigues, NunoReis, RenatoOliveira, LucasGarcia, AlexandreLopes, RodrigoAlves,
         ] },
         date: new Date(Date.UTC(2024, 0, 8)),
         time: '18:30',
@@ -110,10 +111,10 @@ export const Matches: Match[] = [
         goals: [
         {Scorer:NunoReis,Assist: RubenRodrigues,Team:'Negacionistas F.C'},
         {Scorer:RubenRodrigues,Assist:null,Team:'Negacionistas F.C'},
-        {Scorer:WildCard,Assist:LucasGarcia,Team:'Negacionistas F.C'},
+        {Scorer:AlexandreLopes,Assist:LucasGarcia,Team:'Negacionistas F.C'},
         {Scorer:AndreSalvado,Assist:null,Team:'Ressabiados F.C'},
         {Scorer:LucasGarcia,Assist:null,Team:'Negacionistas F.C'},
-        {Scorer:LucasGarcia,Assist:WildCard,Team:'Negacionistas F.C'},
+        {Scorer:LucasGarcia,Assist:AlexandreLopes,Team:'Negacionistas F.C'},
         {Scorer:NunoReis,Assist:LucasGarcia,Team:'Negacionistas F.C'},
         {Scorer:AndreSalvado,Assist:null,Team:'Ressabiados F.C'},
         {Scorer:AndreSalvado,Assist:null,Team:'Ressabiados F.C'},
@@ -123,7 +124,7 @@ export const Matches: Match[] = [
         {Scorer:RubenRodrigues,Assist:NunoReis,Team:'Negacionistas F.C'},
         {Scorer:DiogoDomingues,Assist:null,Team:'Ressabiados F.C'},
         {Scorer:JoaoFerreira,Assist:null,Team:'Ressabiados F.C'},
-        {Scorer:WildCard,Assist:NunoReis,Team:'Negacionistas F.C'},
+        {Scorer:AlexandreLopes,Assist:NunoReis,Team:'Negacionistas F.C'},
         {Scorer:RodrigoAlves,Assist:NunoReis,Team:'Negacionistas F.C'},
         {Scorer:AndreSalvado,Assist:null,Team:'Ressabiados F.C'},
         {Scorer:JoaoPaulino,Assist:null,Team:'Ressabiados F.C'},
@@ -141,8 +142,8 @@ export const Matches: Match[] = [
         {Scorer:RenatoOliveira,Assist:null,Team:'Negacionistas F.C'},
         {Scorer:LucasGarcia,Assist:NunoReis,Team:'Negacionistas F.C'},
         {Scorer:AndreSalvado,Assist:null,Team:'Ressabiados F.C'},
-        {Scorer:NunoReis,Assist:WildCard,Team:'Negacionistas F.C'},
-        {Scorer:WildCard,Assist:NunoReis,Team:'Negacionistas F.C'},
+        {Scorer:NunoReis,Assist:AlexandreLopes,Team:'Negacionistas F.C'},
+        {Scorer:AlexandreLopes,Assist:NunoReis,Team:'Negacionistas F.C'},
         {Scorer:JoaoPaulino,Assist:null,Team:'Ressabiados F.C'},
     ]
     },
@@ -186,7 +187,7 @@ export const Matches: Match[] = [
     {
         id: '20240115',
         team1: { name: 'Ressabiados F.C', logo: LogoRed, players: [
-            NunoReis, LucasGarcia, WildCard, BernardoFigueiredo, RubenRodrigues,
+            NunoReis, LucasGarcia, AlexandreLopes, BernardoFigueiredo, RubenRodrigues,
         ]  },
         team2: { name: 'Negacionistas F.C', logo: LogoGreen, players: [
             JosePedrosa, JoaoFerreira, AndreSalvado, JoaoPaulino, TomasSantos, RenatoOliveira

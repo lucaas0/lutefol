@@ -437,4 +437,26 @@ export const WildCard: Player = {
         },
         nationality: [Nationalities.PT],
         label: 'WILDCARD #1'
+    };
+export const AlexandreLopes: Player = {
+    firstname: 'Alexandre',
+        lastname: 'Lopes',
+        photoUrl: PlayerPhoto,
+        number: 16,
+        stats: {
+            ATA: 56,
+            DEF: 51,
+            TEC: 56,
+            WR: 59,
+            AGRE: 55,
+            RES: 56,
+            FIN: 50,
+            SPE: 51,
+            DRI: 50,
+            PHY: 60,
+            PAS: 55,
+            OVR: 55,
+        },
+        nationality: [Nationalities.PT],
+        label: 'ALEX LOPES'
     }
