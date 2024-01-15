@@ -195,8 +195,7 @@ export const Matches: Match[] = [
         time: '18:30',
         location: 'LeiriFoot',
         result: null,
-        goals: []
-
+        goals: [],
     },
     {
         id: '20240118',
