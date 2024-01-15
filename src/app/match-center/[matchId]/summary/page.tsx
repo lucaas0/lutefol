@@ -27,8 +27,8 @@ const MatchSummary = () => {
         
         
         return (
-            <div className='flex gap-3 py-2 w-4/5 md:w-2/3'>
-                <span>{`${goal.Scorer.firstname} ${goal.Scorer.lastname}`}</span>
+            <div className='flex gap-3 py-2 w-4/5'>
+                <span>{`${goal.Scorer.firstname} ${goal.Scorer.lastname} ${goal.Assist ? `(${goal.Assist.firstname} ${goal.Assist.lastname})` : ''}`}</span>
                 <Image src={isOwnGoal ? '/soccer-ball-red.svg' : '/football.svg'} width={24} height={24} alt='' />
             </div>
         )
@@ -45,9 +45,9 @@ const MatchSummary = () => {
         }
 
         return (
-            <div className='flex gap-3 justify-end py-2 w-4/5 md:w-2/3'>
+            <div className='flex gap-3 justify-end py-2 w-4/5'>
                 <Image src="/football.svg" width={24} height={24} alt='' />
-                <span>{`${goal.Scorer.firstname} ${goal.Scorer.lastname}`}</span>
+                <span>{`${goal.Scorer.firstname} ${goal.Scorer.lastname} ${goal.Assist ? `(${goal.Assist.firstname} ${goal.Assist.lastname})` : ''}`}</span>
             </div>
         )
     }
