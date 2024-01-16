@@ -14,9 +14,8 @@ const PiratesTvSection = () => {
             <section className="grid grid-cols-1 justify-items-center md:flex md:flex-row md:flex-wrap justify-between gap-5 w-full">
                 <VideoContainer thumbnailUrl="/video-1-thumbnail.png" titleBgColor="video-title-text-bg-1" title="match highlight" duration="00:08" videoFileName="video-1.MOV" />
                 <VideoContainer thumbnailUrl="/video-2-thumbnail.png" titleBgColor="video-title-text-bg-2" title="match highlight" duration="00:10" videoFileName="video-2.MOV" />
-                <VideoContainer thumbnailUrl="/video-3-thumbnail.png" titleBgColor="video-title-text-bg-3" title="match highlight" duration="00:12" videoFileName="video-3.MOV" />
-                <VideoContainer thumbnailUrl="/video-4-thumbnail.png" titleBgColor="video-title-text-bg-1" title="match highlight" duration="00:06" videoFileName="video-4.MOV" />
-                <VideoContainer thumbnailUrl="/video-5-thumbnail.png" titleBgColor="video-title-text-bg-2" title="match highlight" duration="00:10" videoFileName="video-5.MOV" />
+                <VideoContainer thumbnailUrl="/video-4-thumbnail.png" titleBgColor="video-title-text-bg-3" title="match highlight" duration="00:06" videoFileName="video-4.MOV" />
+                <VideoContainer thumbnailUrl="/video-5-thumbnail.png" titleBgColor="video-title-text-bg-1" title="match highlight" duration="00:09" videoFileName="video-5.MOV" />
             </section>
         </div>
     )
