@@ -40,7 +40,7 @@ export default function MatchesLayout({
                     match && (
                         <React.Fragment>
                             <div className="center-absolute top-28 md:top-20 flex flex-col text-center">
-                                <h3 className="text-green font-bold">{`${Weekday[match.date.getDay()]} ${match.date.getDate()} ${Months[match.date.getMonth()]} ${match.date.getFullYear()}`}</h3>
+                                <h3 className="color-green font-bold">{`${Weekday[match.date.getDay()]} ${match.date.getDate()} ${Months[match.date.getMonth()]} ${match.date.getFullYear()}`}</h3>
                                 <h4>{`${match.time} - ${match.location}`}</h4>
                             </div>
                             <div className="center-absolute bottom-8 md:bottom-24 flex items-center gap-6">

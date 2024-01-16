@@ -25,7 +25,6 @@ const PlayerCard = (props: PlayerProps) => {
                 <span className="player-lastname">{player.lastname}</span>
             </div>
         </div>
-    
     );
 };
 

@@ -85,7 +85,7 @@ body {
     border: 1px solid #262626;
 }
 
-.text-green {
+.color-green {
     color: #02E651;
 }
 
@@ -95,6 +95,23 @@ body {
 
 .grey-949494 {
     color: #949494;
+}
+
+.video-wrapper {
+    width: 300px;
+    height: 200px;
+}
+
+.video-title-text-bg-1 {
+    background-color: #02E651;
+}
+
+.video-title-text-bg-2 {
+    background-color: #FF5146;
+}
+
+.video-title-text-bg-3 {
+    background-color: #E102E6;
 }
 
 @media only screen and (max-width: 700px) {
