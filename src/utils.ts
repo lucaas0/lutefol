@@ -7,10 +7,10 @@ import BadgeBronze from '../public/badge-bronze.svg';
 import BadgeBlue from '../public/badge-blue.svg';
 import BadgeYellow from '../public/badge-yellow.svg';
 import BadgeGreen from '../public/badge-green.svg';
-import { Goal, Match, Nationalities, Player, PlayerMatchStats, TeamName } from './misc';
+import { Goal, Match, Nationalities, Player, PlayerMatchStats } from './misc';
 import { AlexandreLopes, AlexandreSantos, AndreSalvado, BernardoFigueiredo, DiogoDomingues, FranciscoMachado, GustavoCarreira,
 IvoOliveira, JoaoFerreira, JoaoMota, JoaoPaulino, JorgeFerreira, JosePedrosa, LucasGarcia, NunoReis,
-RenatoOliveira, RodrigoAlves, RubenRodrigues, TomasSantos } from './playersDB';
+RenatoOliveira, RodrigoAlves, RubenRodrigues, TomasSantos, PedroLopes } from './playersDB';
 
 export const PlayersArr: Player[] = [
     AndreSalvado,
@@ -31,6 +31,7 @@ export const PlayersArr: Player[] = [
     RubenRodrigues,
     TomasSantos,
     AlexandreLopes,
+    PedroLopes,
 ];
 
 export const shuffleGoalsArray = (array: Goal[]) => {
@@ -233,8 +234,12 @@ export const Matches: Match[] = [
     },
     {
         id: '20240118',
-        team1: { name: 'Scallywags', logo: LogoRed, players: []  },
-        team2: { name: 'Corsairs', logo: LogoGreen, players: [] },
+        team1: { name: 'Scallywags', logo: LogoRed, players: [
+            AlexandreSantos, RubenRodrigues, JosePedrosa, LucasGarcia, BernardoFigueiredo
+        ]  },
+        team2: { name: 'Corsairs', logo: LogoGreen, players: [
+            JoaoFerreira, NunoReis, DiogoDomingues, PedroLopes, RodrigoAlves, RenatoOliveira
+        ] },
         date: new Date(Date.UTC(2024, 0, 18)),
         time: '18:30',
         location: 'LeiriFoot',

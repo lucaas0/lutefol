@@ -1,8 +1,3 @@
-import HeadlineCard from "./HeadlineCard";
-import HeadlineImg1 from '../../public/headline-1.jpeg';
-import HeadlineImg2 from '../../public/headline-2.jpeg';
-import HeadlineImg3 from '../../public/headline-3.jpeg';
-import HeadlineImg4 from '../../public/headline-4.jpeg';
 import VideoContainer from "./VideoContainer";
 
 const PiratesTvSection = () => {
