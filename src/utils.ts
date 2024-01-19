@@ -1,16 +1,15 @@
-
-import LogoRed from '../public/logo-red.svg';
-import LogoGreen from '../public/logo-green.svg';
 import FlagPT from '../public/flag-pt.svg';
 import FlagBR from '../public/flag-br.svg';
 import BadgeBronze from '../public/badge-bronze.svg';
 import BadgeBlue from '../public/badge-blue.svg';
 import BadgeYellow from '../public/badge-yellow.svg';
 import BadgeGreen from '../public/badge-green.svg';
-import { Goal, Match, Nationalities, Player, PlayerMatchStats } from './misc';
+import { Goal, Match, Nationalities, Player, PlayerMatchStats, PlayerSeasonStats } from './misc';
 import { AlexandreLopes, AlexandreSantos, AndreSalvado, BernardoFigueiredo, DiogoDomingues, FranciscoMachado, GustavoCarreira,
 IvoOliveira, JoaoFerreira, JoaoMota, JoaoPaulino, JorgeFerreira, JosePedrosa, LucasGarcia, NunoReis,
 RenatoOliveira, RodrigoAlves, RubenRodrigues, TomasSantos, PedroLopes } from './playersDB';
+import { Matches } from './MatchesDB';
+
 
 export const PlayersArr: Player[] = [
     AndreSalvado,
@@ -32,275 +31,6 @@ export const PlayersArr: Player[] = [
     TomasSantos,
     AlexandreLopes,
     PedroLopes,
-];
-
-export const shuffleGoalsArray = (array: Goal[]) => {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-
-    return array;
-}
-
-export const Matches: Match[] = [
-    {
-        id: '20240104',
-        team1: { name: 'Scallywags', logo: LogoRed, players: [
-            AndreSalvado, JoaoFerreira, BernardoFigueiredo, DiogoDomingues, RodrigoAlves, AlexandreSantos,
-        ]  },
-        team2: { name: 'Corsairs', logo: LogoGreen, players: [
-            RubenRodrigues, NunoReis, RenatoOliveira, LucasGarcia, JosePedrosa, GustavoCarreira,
-        ] },
-        date: new Date(Date.UTC(2024, 0, 4)),
-        time: '18:30',
-        location: 'LeiriFoot',
-        result: {
-            team1: 12,
-            team2: 21,
-        },
-        goals: [
-            {Scorer:DiogoDomingues,Assist:AndreSalvado,Team:'Scallywags'},
-            {Scorer:NunoReis,Assist:null,Team:'Corsairs'},
-            {Scorer:RubenRodrigues,Assist:JosePedrosa,Team:'Corsairs'},
-            {Scorer:JosePedrosa,Assist:null,Team:'Corsairs'},
-            {Scorer:LucasGarcia,Assist:null,Team:'Corsairs'},
-            {Scorer:NunoReis,Assist:LucasGarcia,Team:'Corsairs'},
-            {Scorer:RenatoOliveira,Assist:JosePedrosa,Team:'Corsairs'},
-            {Scorer:LucasGarcia,Assist:RubenRodrigues,Team:'Corsairs'},
-            {Scorer:JoaoFerreira,Assist:AndreSalvado,Team:'Scallywags'},
-            {Scorer:JosePedrosa,Assist:LucasGarcia,Team:'Corsairs'},
-            {Scorer:RubenRodrigues,Assist:null,Team:'Corsairs'},
-            {Scorer:JoaoFerreira,Assist:null,Team:'Scallywags'},
-            {Scorer:DiogoDomingues,Assist:null,Team:'Scallywags'},
-            {Scorer:JosePedrosa,Assist:null,Team:'Corsairs'},
-            {Scorer:NunoReis,Assist:null,Team:'Corsairs'},
-            {Scorer:JosePedrosa,Assist:null,Team:'Corsairs'},
-            {Scorer:JosePedrosa,Assist:RubenRodrigues,Team:'Corsairs'},
-            {Scorer:RubenRodrigues,Assist:null,Team:'Corsairs'},
-            {Scorer:JoaoFerreira,Assist:RodrigoAlves,Team:'Scallywags'},
-            {Scorer:RubenRodrigues,Assist:JosePedrosa,Team:'Corsairs'},
-            {Scorer:DiogoDomingues,Assist:null,Team:'Scallywags'},
-            {Scorer:AlexandreSantos,Assist:RodrigoAlves,Team:'Scallywags'},
-            {Scorer:JosePedrosa,Assist:null,Team:'Corsairs'},
-            {Scorer:NunoReis,Assist:null,Team:'Corsairs'},
-            {Scorer:JosePedrosa,Assist:null,Team:'Corsairs'},
-            {Scorer:BernardoFigueiredo,Assist:DiogoDomingues,Team:'Scallywags'},
-            {Scorer:DiogoDomingues,Assist:null,Team:'Scallywags'},
-            {Scorer:RodrigoAlves,Assist:DiogoDomingues,Team:'Scallywags'},
-            {Scorer:GustavoCarreira,Assist:JosePedrosa,Team:'Corsairs'},
-            {Scorer:NunoReis,Assist:null,Team:'Corsairs'},
-            {Scorer:JosePedrosa,Assist:null,Team:'Corsairs'},
-            {Scorer:BernardoFigueiredo,Assist:AndreSalvado,Team:'Scallywags'},
-            {Scorer:AndreSalvado,Assist:null,Team:'Scallywags'}]
-    },
-    {
-        id: '20240108',
-        team1: { name: 'Scallywags', logo: LogoRed, players: [
-            AndreSalvado, JoaoFerreira, JoaoPaulino, BernardoFigueiredo, DiogoDomingues, GustavoCarreira,
-        ]  },
-        team2: { name: 'Corsairs', logo: LogoGreen, players: [
-            RubenRodrigues, NunoReis, RenatoOliveira, LucasGarcia, AlexandreLopes, RodrigoAlves,
-        ] },
-        date: new Date(Date.UTC(2024, 0, 8)),
-        time: '18:30',
-        location: 'LeiriFoot',
-        result: {
-            team1: 17,
-            team2: 19,
-        },
-        goals: [
-        {Scorer:NunoReis,Assist: RubenRodrigues,Team:'Corsairs'},
-        {Scorer:RubenRodrigues,Assist:null,Team:'Corsairs'},
-        {Scorer:AlexandreLopes,Assist:LucasGarcia,Team:'Corsairs'},
-        {Scorer:AndreSalvado,Assist:null,Team:'Scallywags'},
-        {Scorer:LucasGarcia,Assist:null,Team:'Corsairs'},
-        {Scorer:LucasGarcia,Assist:AlexandreLopes,Team:'Corsairs'},
-        {Scorer:NunoReis,Assist:LucasGarcia,Team:'Corsairs'},
-        {Scorer:AndreSalvado,Assist:null,Team:'Scallywags'},
-        {Scorer:AndreSalvado,Assist:null,Team:'Scallywags'},
-        {Scorer:LucasGarcia,Assist:NunoReis,Team:'Corsairs'},
-        {Scorer:NunoReis,Assist:null,Team:'Corsairs'},
-        {Scorer:GustavoCarreira,Assist:null,Team:'Scallywags'},
-        {Scorer:RubenRodrigues,Assist:NunoReis,Team:'Corsairs'},
-        {Scorer:DiogoDomingues,Assist:null,Team:'Scallywags'},
-        {Scorer:JoaoFerreira,Assist:null,Team:'Scallywags'},
-        {Scorer:AlexandreLopes,Assist:NunoReis,Team:'Corsairs'},
-        {Scorer:RodrigoAlves,Assist:NunoReis,Team:'Corsairs'},
-        {Scorer:AndreSalvado,Assist:null,Team:'Scallywags'},
-        {Scorer:JoaoPaulino,Assist:null,Team:'Scallywags'},
-        {Scorer:JoaoFerreira,Assist:AndreSalvado,Team:'Scallywags'},
-        {Scorer:JoaoFerreira,Assist:null,Team:'Scallywags'},
-        {Scorer:BernardoFigueiredo,Assist:null,Team:'Scallywags'},
-        {Scorer:AndreSalvado,Assist:BernardoFigueiredo,Team:'Scallywags'},
-        {Scorer:JoaoPaulino,Assist:null,Team:'Scallywags'},
-        {Scorer:AndreSalvado,Assist:null,Team:'Scallywags'},
-        {Scorer:RubenRodrigues,Assist:null,Team:'Corsairs'},
-        {Scorer:LucasGarcia,Assist:null,Team:'Corsairs'},
-        {Scorer:LucasGarcia,Assist:RodrigoAlves,Team:'Corsairs'},
-        {Scorer:DiogoDomingues,Assist:null,Team:'Scallywags'},
-        {Scorer:NunoReis,Assist:LucasGarcia,Team:'Corsairs'},
-        {Scorer:RenatoOliveira,Assist:null,Team:'Corsairs'},
-        {Scorer:LucasGarcia,Assist:NunoReis,Team:'Corsairs'},
-        {Scorer:AndreSalvado,Assist:null,Team:'Scallywags'},
-        {Scorer:NunoReis,Assist:AlexandreLopes,Team:'Corsairs'},
-        {Scorer:AlexandreLopes,Assist:NunoReis,Team:'Corsairs'},
-        {Scorer:JoaoPaulino,Assist:null,Team:'Scallywags'},
-    ]
-    },
-    {
-        id: '20240111',
-        team1: { name: 'Scallywags', logo: LogoRed, players: [TomasSantos, JoaoFerreira, RodrigoAlves, DiogoDomingues, LucasGarcia]  },
-        team2: { name: 'Corsairs', logo: LogoGreen, players: [RubenRodrigues, AlexandreSantos, JorgeFerreira, GustavoCarreira, NunoReis, JoaoMota] },
-        date: new Date(Date.UTC(2024, 0, 11)),
-        time: '18:30',
-        location: 'LeiriFoot',
-        result: {
-            team1: 15,
-            team2: 8,
-        },
-        goals: [
-            {Scorer:GustavoCarreira,Assist:null,Team:'Corsairs'},
-            {Scorer:DiogoDomingues,Assist:LucasGarcia,Team:'Scallywags'},
-            {Scorer:RubenRodrigues,Assist:AlexandreSantos,Team:'Corsairs'},
-            {Scorer:AlexandreSantos,Assist:NunoReis,Team:'Corsairs'},
-            {Scorer:JoaoFerreira,Assist:LucasGarcia,Team:'Scallywags'},
-            {Scorer:JoaoFerreira,Assist:DiogoDomingues,Team:'Scallywags'},
-            {Scorer:JoaoFerreira,Assist:null,Team:'Scallywags'},
-            {Scorer:JoaoFerreira,Assist:null,Team:'Scallywags'},
-            {Scorer:JoaoMota,Assist:null,Team:'Scallywags'},
-            {Scorer:DiogoDomingues,Assist:JoaoFerreira,Team:'Scallywags'},
-            {Scorer:RodrigoAlves,Assist:null,Team:'Scallywags'},
-            {Scorer:GustavoCarreira,Assist:JoaoMota,Team:'Corsairs'},
-            {Scorer:RubenRodrigues,Assist:null,Team:'Corsairs'},
-            {Scorer:JoaoFerreira,Assist:null,Team:'Scallywags'},
-            {Scorer:JorgeFerreira,Assist:NunoReis,Team:'Corsairs'},
-            {Scorer:DiogoDomingues,Assist:TomasSantos,Team:'Scallywags'},
-            {Scorer:JoaoMota,Assist:NunoReis,Team:'Corsairs'},
-            {Scorer:TomasSantos,Assist:null,Team:'Scallywags'},
-            {Scorer:LucasGarcia,Assist:null,Team:'Scallywags'},
-            {Scorer:RodrigoAlves,Assist:JoaoFerreira,Team:'Scallywags'},
-            {Scorer:TomasSantos,Assist:null,Team:'Scallywags'},
-            {Scorer:RodrigoAlves,Assist:LucasGarcia,Team:'Scallywags'},
-            {Scorer:RubenRodrigues,Assist:null,Team:'Corsairs'}
-        ]
-    },
-    {
-        id: '20240115',
-        team1: { name: 'Scallywags', logo: LogoRed, players: [
-            NunoReis, LucasGarcia, AlexandreLopes, BernardoFigueiredo, RubenRodrigues,
-        ]  },
-        team2: { name: 'Corsairs', logo: LogoGreen, players: [
-            JosePedrosa, JoaoFerreira, AndreSalvado, JoaoPaulino, TomasSantos, RenatoOliveira
-        ] },
-        date: new Date(Date.UTC(2024, 0, 15)),
-        time: '18:30',
-        location: 'LeiriFoot',
-        result: {
-            team1: 16,
-            team2: 13,
-        },
-        goals: [
-            { Scorer: LucasGarcia, Assist: BernardoFigueiredo, Team: 'Scallywags' },
-            { Scorer: TomasSantos, Assist: AndreSalvado, Team: 'Corsairs' },
-            { Scorer: LucasGarcia, Assist: null, Team: 'Scallywags' },
-            { Scorer: JoaoPaulino, Assist: JoaoFerreira, Team: 'Corsairs' },
-            { Scorer: AlexandreLopes, Assist: LucasGarcia, Team: 'Scallywags' },
-            { Scorer: NunoReis, Assist: RubenRodrigues, Team: 'Scallywags' },
-            { Scorer: LucasGarcia, Assist: AlexandreLopes, Team: 'Scallywags' },
-            { Scorer: LucasGarcia, Assist: null, Team: 'Scallywags' },
-            { Scorer: AlexandreLopes, Assist: LucasGarcia, Team: 'Scallywags' },
-            { Scorer: JosePedrosa, Assist: null, Team: 'Corsairs' },
-            { Scorer: NunoReis, Assist: AlexandreLopes, Team: 'Scallywags' },
-            { Scorer: JoaoFerreira, Assist: JoaoPaulino, Team: 'Corsairs' },
-            { Scorer: JoaoPaulino, Assist: JoaoFerreira, Team: 'Corsairs' },
-            { Scorer: AndreSalvado, Assist: JoaoPaulino, Team: 'Corsairs' },
-            { Scorer: NunoReis, Assist: TomasSantos, Team: 'Scallywags' },
-            { Scorer: NunoReis, Assist: null, Team: 'Scallywags' },
-            { Scorer: JoaoFerreira, Assist: JoaoPaulino, Team: 'Corsairs' },
-            { Scorer: AlexandreLopes, Assist: LucasGarcia, Team: 'Scallywags' },
-            { Scorer: JoaoFerreira, Assist: JoaoPaulino, Team: 'Corsairs' },
-            { Scorer: AndreSalvado, Assist: JosePedrosa, Team: 'Corsairs' },
-            { Scorer: RubenRodrigues, Assist: AlexandreLopes, Team: 'Scallywags' },
-            { Scorer: JosePedrosa, Assist: AndreSalvado, Team: 'Corsairs' },
-            { Scorer: NunoReis, Assist: LucasGarcia, Team: 'Scallywags' },
-            { Scorer: AlexandreLopes, Assist: LucasGarcia, Team: 'Scallywags' },
-            { Scorer: AlexandreLopes, Assist: LucasGarcia, Team: 'Scallywags' },
-            { Scorer: JoaoPaulino, Assist: null, Team: 'Corsairs' },
-            { Scorer: AndreSalvado, Assist: JoaoFerreira, Team: 'Corsairs' },
-            { Scorer: AndreSalvado, Assist: RenatoOliveira, Team: 'Corsairs' },
-            { Scorer: NunoReis, Assist: AlexandreLopes, Team: 'Scallywags' },
-        ],
-    },
-    {
-        id: '20240118',
-        team1: { name: 'Scallywags', logo: LogoRed, players: [
-            AlexandreSantos, RubenRodrigues, JosePedrosa, LucasGarcia, BernardoFigueiredo
-        ]  },
-        team2: { name: 'Corsairs', logo: LogoGreen, players: [
-            JoaoFerreira, NunoReis, DiogoDomingues, PedroLopes, RodrigoAlves, RenatoOliveira
-        ] },
-        date: new Date(Date.UTC(2024, 0, 18)),
-        time: '18:30',
-        location: 'LeiriFoot',
-        result: {
-            team1: 14,
-            team2: 7
-        },
-        goals: [
-            {Team: 'Corsairs', Scorer: NunoReis, Assist: DiogoDomingues},
-            {Team: 'Scallywags', Scorer: RubenRodrigues, Assist: null},
-            {Team: 'Corsairs', Scorer: JoaoFerreira, Assist: NunoReis},
-            {Team: 'Scallywags', Scorer: DiogoDomingues, Assist: JosePedrosa},
-            {Team: 'Corsairs', Scorer: NunoReis, Assist: JoaoFerreira},
-            {Team: 'Scallywags', Scorer: LucasGarcia, Assist: BernardoFigueiredo},
-            {Team: 'Scallywags', Scorer: LucasGarcia, Assist: JosePedrosa},
-            {Team: 'Scallywags', Scorer: RubenRodrigues, Assist: BernardoFigueiredo},
-            {Team: 'Scallywags', Scorer: JosePedrosa, Assist: null},
-            {Team: 'Scallywags', Scorer: JosePedrosa, Assist: null},
-            {Team: 'Corsairs', Scorer: NunoReis, Assist: DiogoDomingues},
-            {Team: 'Scallywags', Scorer: RubenRodrigues, Assist: BernardoFigueiredo},
-            {Team: 'Scallywags', Scorer: LucasGarcia, Assist: JosePedrosa},
-            {Team: 'Corsairs', Scorer: DiogoDomingues, Assist: null},
-            {Team: 'Corsairs', Scorer: RodrigoAlves, Assist: null},
-            {Team: 'Scallywags', Scorer: AlexandreSantos, Assist: JosePedrosa},
-            {Team: 'Scallywags', Scorer: AlexandreSantos, Assist: JosePedrosa},
-            {Team: 'Scallywags', Scorer: LucasGarcia, Assist: null},
-            {Team: 'Scallywags', Scorer: AlexandreSantos, Assist: LucasGarcia},
-            {Team: 'Scallywags', Scorer: JosePedrosa, Assist: AlexandreSantos},
-            {Team: 'Corsairs', Scorer: JoaoFerreira, Assist: null},
-        ]
-    },
-    {
-        id: '20240122',
-        team1: { name: 'Scallywags', logo: LogoRed, players: []  },
-        team2: { name: 'Corsairs', logo: LogoGreen, players: [] },
-        date: new Date(Date.UTC(2024, 0, 22)),
-        time: '18:30',
-        location: 'LeiriFoot',
-        result: null,
-        goals: []
-    },
-    {
-        id: '20240125',
-        team1: { name: 'Scallywags', logo: LogoRed, players: []  },
-        team2: { name: 'Corsairs', logo: LogoGreen, players: [] },
-        date: new Date(Date.UTC(2024, 0, 25)),
-        time: '18:30',
-        location: 'LeiriFoot',
-        result: null,
-        goals: []
-    },
-    {
-        id: '20240129',
-        team1: { name: 'Scallywags', logo: LogoRed, players: []  },
-        team2: { name: 'Corsairs', logo: LogoGreen, players: [] },
-        date: new Date(Date.UTC(2024, 0, 29)),
-        time: '18:30',
-        location: 'LeiriFoot',
-        result: null,
-        goals: []
-    }
 ];
 
 export const getNationalityFlag = (nationality: Nationalities) => {
@@ -355,6 +85,26 @@ export const sortByOVRDesc = (players: Player[]) => {
   return players.slice().sort((a, b) => b.stats.OVR - a.stats.OVR);
 };
 
+// Function to sort players by GOALS in ascending order
+export const sortByGoalsAsc = (players: Player[]) => {
+    return players.slice().sort((a, b) => a.goals - b.goals);
+};
+
+// Function to sort players by GOALS in descending order
+export const sortByGoalsDesc = (players: Player[]) => {
+    return players.slice().sort((a, b) => b.goals - a.goals);
+};
+
+// Function to sort players by ASSISTS in ascending order
+export const sortByAssistsAsc = (players: Player[]) => {
+    return players.slice().sort((a, b) => a.assists - b.assists);
+};
+
+// Function to sort players by ASSISTS in descending order
+export const sortByAssistsDesc = (players: Player[]) => {
+    return players.slice().sort((a, b) => b.assists - a.assists);
+};
+
 const getTopPlayers = (matches: Match[]): { topScorers: PlayerMatchStats[], topAssists: PlayerMatchStats[] } => {
   const playerStatsMap: Map<string, PlayerMatchStats> = new Map();
 
@@ -386,3 +136,5 @@ const getTopPlayers = (matches: Match[]): { topScorers: PlayerMatchStats[], topA
 };
 
 export const { topScorers, topAssists } = getTopPlayers(Matches);
+
+

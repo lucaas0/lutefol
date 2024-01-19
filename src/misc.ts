@@ -30,6 +30,8 @@ export type Player = {
     number: number;
     stats: PlayerStats;
     nationality: Nationalities[];
+    goals: number;
+    assists: number;
 };
 
 export type Team = {
@@ -62,4 +64,9 @@ export type PlayerMatchStats = {
   player: Player;
   goals: number;
   assists: number;
+};
+
+export type PlayerSeasonStats = {
+    goals: number;
+    assists: number;
 };

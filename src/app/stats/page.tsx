@@ -9,7 +9,7 @@ const Stats = () => {
     return (
         <PageWrapper>
             <PageHeader title="stats" />
-            <div className="flex flex-col gap-10 my-10 w-full px-8 md:px-32">
+            <div className="flex flex-col gap-10 my-10 w-full px-8 md:px-16">
                 <div className="flex flex-col gap-4">
                     <h2 className="text-4xl font-bold uppercase">
                         Top Stats
