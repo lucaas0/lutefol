@@ -243,8 +243,33 @@ export const Matches: Match[] = [
         date: new Date(Date.UTC(2024, 0, 18)),
         time: '18:30',
         location: 'LeiriFoot',
-        result: null,
-        goals: []
+        result: {
+            team1: 14,
+            team2: 7
+        },
+        goals: [
+            {Team: 'Corsairs', Scorer: NunoReis, Assist: DiogoDomingues},
+            {Team: 'Scallywags', Scorer: RubenRodrigues, Assist: null},
+            {Team: 'Corsairs', Scorer: JoaoFerreira, Assist: NunoReis},
+            {Team: 'Scallywags', Scorer: DiogoDomingues, Assist: JosePedrosa},
+            {Team: 'Corsairs', Scorer: NunoReis, Assist: JoaoFerreira},
+            {Team: 'Scallywags', Scorer: LucasGarcia, Assist: BernardoFigueiredo},
+            {Team: 'Scallywags', Scorer: LucasGarcia, Assist: JosePedrosa},
+            {Team: 'Scallywags', Scorer: RubenRodrigues, Assist: BernardoFigueiredo},
+            {Team: 'Scallywags', Scorer: JosePedrosa, Assist: null},
+            {Team: 'Scallywags', Scorer: JosePedrosa, Assist: null},
+            {Team: 'Corsairs', Scorer: NunoReis, Assist: DiogoDomingues},
+            {Team: 'Scallywags', Scorer: RubenRodrigues, Assist: BernardoFigueiredo},
+            {Team: 'Scallywags', Scorer: LucasGarcia, Assist: JosePedrosa},
+            {Team: 'Corsairs', Scorer: DiogoDomingues, Assist: null},
+            {Team: 'Corsairs', Scorer: RodrigoAlves, Assist: null},
+            {Team: 'Scallywags', Scorer: AlexandreSantos, Assist: JosePedrosa},
+            {Team: 'Scallywags', Scorer: AlexandreSantos, Assist: JosePedrosa},
+            {Team: 'Scallywags', Scorer: LucasGarcia, Assist: null},
+            {Team: 'Scallywags', Scorer: AlexandreSantos, Assist: LucasGarcia},
+            {Team: 'Scallywags', Scorer: JosePedrosa, Assist: AlexandreSantos},
+            {Team: 'Corsairs', Scorer: JoaoFerreira, Assist: null},
+        ]
     },
     {
         id: '20240122',
