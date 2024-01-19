@@ -1,5 +1,5 @@
+import { Matches } from "@/MatchesDB";
 import Match from "@/components/Match";
-import { Matches } from "@/utils";
 
 const UpcomingMatches = () => {
     const currentDateTime = new Date();

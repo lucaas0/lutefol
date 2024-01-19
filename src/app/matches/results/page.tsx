@@ -1,5 +1,5 @@
+import { Matches } from "@/MatchesDB";
 import Match from "@/components/Match";
-import { Matches } from "@/utils";
 
 const MatchesResults = () => {
     const matchesResults = Matches.filter((match) => match.result !== null).sort((a: { date: Date }, b: { date: Date }): number => b.date.getTime() - a.date.getTime());
