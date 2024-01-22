@@ -2,7 +2,7 @@
 import LogoRed from '../public/logo-red.svg';
 import LogoGreen from '../public/logo-green.svg';
 import { Match } from "@/misc";
-import { AlexandreLopes, AlexandreSantos, AndreSalvado, BernardoFigueiredo, DiogoDomingues, GustavoCarreira, JoaoFerreira, JoaoMota, JoaoPaulino, JorgeFerreira, JosePedrosa, LucasGarcia, NunoReis, PedroLopes, RenatoOliveira, RodrigoAlves, RubenRodrigues, TomasSantos } from "@/playersDB";
+import { AlexandreLopes, AlexandreSantos, AndreSalvado, BernardoFigueiredo, DiogoDomingues, GustavoCarreira, JoaoFerreira, JoaoMota, JoaoPaulino, JorgeFerreira, JosePedrosa, LucasGarcia, NunoReis, PedroLopes, RenatoOliveira, RodrigoAlves, RubenRodrigues, TomasSantos, WildCard } from "@/playersDB";
 
 export const Matches: Match[] = [
     {
@@ -250,8 +250,12 @@ export const Matches: Match[] = [
     },
     {
         id: '20240122',
-        team1: { name: 'Scallywags', logo: LogoRed, players: [] },
-        team2: { name: 'Corsairs', logo: LogoGreen, players: [] },
+        team1: { name: 'Scallywags', logo: LogoRed, players: [
+            BernardoFigueiredo, JoaoPaulino, PedroLopes, LucasGarcia, GustavoCarreira, JoaoFerreira,
+        ] },
+        team2: { name: 'Corsairs', logo: LogoGreen, players: [
+            NunoReis, AlexandreLopes, RenatoOliveira, DiogoDomingues, JorgeFerreira, WildCard,
+        ] },
         date: new Date(Date.UTC(2024, 0, 22)),
         time: '18:30',
         location: 'LeiriFoot',
