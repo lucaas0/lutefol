@@ -3,7 +3,7 @@ import PageWrapper from "@/components/PageWrapper";
 import Tab from "@/components/Tab";
 import CustomTabs from "@/components/Tabs";
 import { Match, Months, Weekday } from "@/misc";
-import { getMatchById } from "@/utils";
+import { getMatchById, getMatchResult } from "@/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
@@ -25,6 +25,8 @@ export default function MatchesLayout({
 
         setMatch(m);
     }, [params.matchId]);
+
+    const result = match ? getMatchResult(match.goals): null;
 
     return (
         <PageWrapper>
@@ -49,16 +51,16 @@ export default function MatchesLayout({
                                     <Image src={match.team1.logo} alt="" width={52} height={52} />
                                 </div>
                                 {
-                                    match.result && (
+                                    result && (
                                         <React.Fragment>
-                                            <h2 className="font-bold text-2xl md:text-5xl">{match.result.team1}</h2>
+                                            <h2 className="font-bold text-2xl md:text-5xl">{result['Scallywags']}</h2>
                                             <h2 className="font-bold text-xl">-</h2>
-                                            <h2 className="font-bold text-2xl md:text-5xl">{match.result.team2}</h2>
+                                            <h2 className="font-bold text-2xl md:text-5xl">{result['Corsairs']}</h2>
                                         </React.Fragment>
                                     )
                                 }
                                 {
-                                    !match.result && (
+                                    !result && (
                                         <h2 className="font-bold text-xl">VS</h2>
                                     )
                                 }

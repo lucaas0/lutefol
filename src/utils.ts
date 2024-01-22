@@ -137,4 +137,18 @@ const getTopPlayers = (matches: Match[]): { topScorers: PlayerMatchStats[], topA
 
 export const { topScorers, topAssists } = getTopPlayers(Matches);
 
+type TeamScores = {
+    [team: string]: number;
+};
 
+export const getMatchResult = (players: Goal[]) => {
+        const teamScores: TeamScores = {};
+
+        players.forEach((player) => {
+            const { Team } = player;
+            teamScores[Team] = (teamScores[Team] || 0) + 1;
+        });
+
+        return teamScores;
+
+}

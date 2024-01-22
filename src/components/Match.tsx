@@ -4,6 +4,7 @@ import { Match, Months, Weekday } from "@/misc";
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { getMatchResult } from '@/utils';
 
 type OwnProps = {
     match: Match;
@@ -11,6 +12,8 @@ type OwnProps = {
 
 const Match = (props: OwnProps) => {
     const { match } = props;
+
+    const result = getMatchResult(match.goals);
 
     return (
                 <section className="flex flex-col gap-6 md:gap-0 md:flex-row justify-between bg-true-gray-900 p-6 items-center uppercase" key={`match-${match.date}`}>
@@ -24,16 +27,16 @@ const Match = (props: OwnProps) => {
                             <Image src={match.team1.logo} alt="" width={52} height={52} />
                         </div>
                         {
-                            match.result && (
-                                <React.Fragment>
-                                    <h2 className="font-bold text-xl">{match.result.team1}</h2>
-                                    <h2 className="font-bold text-xl">-</h2>
-                                    <h2 className="font-bold text-xl">{match.result.team2}</h2>
-                                </React.Fragment>
-                            )
+                    match.goals.length > 0 && (
+                        <React.Fragment>
+                            <h2 className="font-bold text-xl">{result['Scallywags']}</h2>
+                            <h2 className="font-bold text-xl">-</h2>
+                            <h2 className="font-bold text-xl">{result['Corsairs']}</h2>
+                        </React.Fragment>
+                    )
                         }
                         {
-                            !match.result && (
+                            match.goals.length === 0 && (
                                 <h2 className="font-bold text-xl">VS</h2>
                             )
                         }

@@ -2,7 +2,7 @@ import { Matches } from "@/MatchesDB";
 import Match from "@/components/Match";
 
 const MatchesResults = () => {
-    const matchesResults = Matches.filter((match) => match.result !== null).sort((a: { date: Date }, b: { date: Date }): number => b.date.getTime() - a.date.getTime());
+    const matchesResults = Matches.filter((match) => match.goals.length > 0).sort((a: { date: Date }, b: { date: Date }): number => b.date.getTime() - a.date.getTime());
 
     return (
         <div className="flex flex-col gap-10 my-10 w-full px-8 md:px-32">

@@ -53,10 +53,10 @@ export type Match = {
     team2: Team;
     date: Date;
     time: string;
-    result: {
-        team1: number;
-        team2: number;
-    } | null;
+    // result: {
+    //     team1: number;
+    //     team2: number;
+    // } | null;
     goals: Goal[];
 }
 

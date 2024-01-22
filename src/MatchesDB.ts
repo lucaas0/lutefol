@@ -20,10 +20,6 @@ export const Matches: Match[] = [
         date: new Date(Date.UTC(2024, 0, 4)),
         time: '18:30',
         location: 'LeiriFoot',
-        result: {
-            team1: 12,
-            team2: 21,
-        },
         goals: [
             { Scorer: DiogoDomingues, Assist: AndreSalvado, Team: 'Scallywags' },
             { Scorer: NunoReis, Assist: null, Team: 'Corsairs' },
@@ -74,10 +70,6 @@ export const Matches: Match[] = [
         date: new Date(Date.UTC(2024, 0, 8)),
         time: '18:30',
         location: 'LeiriFoot',
-        result: {
-            team1: 17,
-            team2: 19,
-        },
         goals: [
             { Scorer: NunoReis, Assist: RubenRodrigues, Team: 'Corsairs' },
             { Scorer: RubenRodrigues, Assist: null, Team: 'Corsairs' },
@@ -124,10 +116,6 @@ export const Matches: Match[] = [
         date: new Date(Date.UTC(2024, 0, 11)),
         time: '18:30',
         location: 'LeiriFoot',
-        result: {
-            team1: 15,
-            team2: 8,
-        },
         goals: [
             { Scorer: GustavoCarreira, Assist: null, Team: 'Corsairs' },
             { Scorer: DiogoDomingues, Assist: LucasGarcia, Team: 'Scallywags' },
@@ -169,10 +157,6 @@ export const Matches: Match[] = [
         date: new Date(Date.UTC(2024, 0, 15)),
         time: '18:30',
         location: 'LeiriFoot',
-        result: {
-            team1: 16,
-            team2: 13,
-        },
         goals: [
             { Scorer: LucasGarcia, Assist: BernardoFigueiredo, Team: 'Scallywags' },
             { Scorer: TomasSantos, Assist: AndreSalvado, Team: 'Corsairs' },
@@ -220,10 +204,6 @@ export const Matches: Match[] = [
         date: new Date(Date.UTC(2024, 0, 18)),
         time: '18:30',
         location: 'LeiriFoot',
-        result: {
-            team1: 14,
-            team2: 7
-        },
         goals: [
             { Team: 'Corsairs', Scorer: NunoReis, Assist: DiogoDomingues },
             { Team: 'Scallywags', Scorer: RubenRodrigues, Assist: null },
@@ -259,8 +239,43 @@ export const Matches: Match[] = [
         date: new Date(Date.UTC(2024, 0, 22)),
         time: '18:30',
         location: 'LeiriFoot',
-        result: null,
-        goals: []
+        goals: [
+            { Scorer: LucasGarcia, Assist: JoaoPaulino, Team: 'Scallywags' },
+            { Scorer: LucasGarcia, Assist: JoaoPaulino, Team: 'Scallywags' },
+            { Scorer: LucasGarcia, Assist: BernardoFigueiredo, Team: 'Scallywags' },
+            { Scorer: AlexandreLopes, Assist: WildCard, Team: 'Corsairs' },
+            { Scorer: AlexandreLopes, Assist: JorgeFerreira, Team: 'Corsairs' },
+            { Scorer: AlexandreLopes, Assist: JorgeFerreira, Team: 'Corsairs' },
+            { Scorer: BernardoFigueiredo, Assist: LucasGarcia, Team: 'Scallywags' },
+            { Scorer: NunoReis, Assist: null, Team: 'Corsairs' },
+            { Scorer: JoaoFerreira, Assist: LucasGarcia, Team: 'Scallywags' },
+            { Scorer: JoaoFerreira, Assist: JoaoPaulino, Team: 'Scallywags' },
+            { Scorer: JoaoFerreira, Assist: JoaoPaulino, Team: 'Scallywags' },
+            { Scorer: DiogoDomingues, Assist: NunoReis, Team: 'Corsairs' },
+            { Scorer: WildCard, Assist: AlexandreLopes, Team: 'Corsairs' },
+            { Scorer: JoaoPaulino, Assist: null, Team: 'Scallywags' },
+            { Scorer: NunoReis, Assist: WildCard, Team: 'Corsairs' },
+            { Scorer: LucasGarcia, Assist: JoaoPaulino, Team: 'Scallywags' },
+            { Scorer: AlexandreLopes, Assist: null, Team: 'Corsairs' },
+            { Scorer: AlexandreLopes, Assist: NunoReis, Team: 'Corsairs' },
+            { Scorer: WildCard, Assist: NunoReis, Team: 'Corsairs' },
+            { Scorer: NunoReis, Assist: JorgeFerreira, Team: 'Corsairs' },
+            { Scorer: LucasGarcia, Assist: JoaoFerreira, Team: 'Scallywags' },
+            { Scorer: DiogoDomingues, Assist: RenatoOliveira, Team: 'Corsairs' },
+            { Scorer: JoaoPaulino, Assist: LucasGarcia, Team: 'Scallywags' },
+            { Scorer: JorgeFerreira, Assist: null, Team: 'Corsairs' },
+            { Scorer: LucasGarcia, Assist: JoaoFerreira, Team: 'Scallywags' },
+            { Scorer: BernardoFigueiredo, Assist: null, Team: 'Scallywags' },
+            { Scorer: JoaoFerreira, Assist: LucasGarcia, Team: 'Scallywags' },
+            { Scorer: JoaoPaulino, Assist: JoaoFerreira, Team: 'Scallywags' },
+            { Scorer: WildCard, Assist: AlexandreLopes, Team: 'Corsairs' },
+            { Scorer: JoaoPaulino, Assist: null, Team: 'Scallywags' },
+            { Scorer: AlexandreLopes, Assist: WildCard, Team: 'Corsairs' },
+            { Scorer: JoaoPaulino, Assist: JoaoFerreira, Team: 'Scallywags' },
+            { Scorer: JorgeFerreira, Assist: null, Team: 'Corsairs' },
+            { Scorer: JoaoPaulino, Assist: null, Team: 'Scallywags' },
+            { Scorer: DiogoDomingues, Assist: JorgeFerreira, Team: 'Corsairs' },
+        ]
     },
     {
         id: '20240125',
@@ -269,7 +284,6 @@ export const Matches: Match[] = [
         date: new Date(Date.UTC(2024, 0, 25)),
         time: '18:30',
         location: 'LeiriFoot',
-        result: null,
         goals: []
     },
     {
@@ -279,7 +293,6 @@ export const Matches: Match[] = [
         date: new Date(Date.UTC(2024, 0, 29)),
         time: '18:30',
         location: 'LeiriFoot',
-        result: null,
         goals: []
     }
 ];
