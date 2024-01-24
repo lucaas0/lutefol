@@ -527,3 +527,28 @@ export const PedroLopes: Player = {
     goals: 0,
     assists: 0
 }
+
+export const PedroGoncalves: Player = {
+    firstname: 'Pedro',
+    lastname: 'Gonçalves',
+    photoUrl: PlayerPhoto,
+    number: 4,
+    stats: {
+        AGRE: 64,
+        ATA: 79,
+        DEF: 75,
+        DRI: 89,
+        FIN: 80,
+        OVR: 74,
+        PAS: 79,
+        PHY: 60,
+        RES: 69,
+        SPE: 66,
+        TEC: 90,
+        WR: 64,
+    },
+    nationality: [Nationalities.PT],
+    label: 'ROCAS',
+    goals: 0,
+    assists: 0
+};
