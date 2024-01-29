@@ -330,7 +330,7 @@ export const Matches: Match[] = [
             JoaoFerreira, BernardoFigueiredo, LucasGarcia, JoaoPaulino, RenatoOliveira, AndreSalvado
         ] },
         team2: { name: 'Corsairs', logo: LogoGreen, players: [
-            NunoReis, DiogoDomingues, JorgeFerreira, WildCard, GustavoCarreira, AlexandreLopes
+            NunoReis, DiogoDomingues, JorgeFerreira, WildCard, GustavoCarreira, AlexandreLopes, JosePedrosa
         ] },
         date: new Date(Date.UTC(2024, 0, 29)),
         time: '18:30',
