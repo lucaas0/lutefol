@@ -327,7 +327,7 @@ export const Matches: Match[] = [
     {
         id: '20240129',
         team1: { name: 'Scallywags', logo: LogoRed, players: [
-            BernardoFigueiredo, JoaoFerreira, LucasGarcia, JoaoPaulino, RenatoOliveira, AndreSalvado
+            JoaoFerreira, BernardoFigueiredo, LucasGarcia, JoaoPaulino, RenatoOliveira, AndreSalvado
         ] },
         team2: { name: 'Corsairs', logo: LogoGreen, players: [
             NunoReis, DiogoDomingues, JorgeFerreira, WildCard, GustavoCarreira, AlexandreLopes
