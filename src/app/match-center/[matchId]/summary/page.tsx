@@ -57,7 +57,7 @@ const MatchSummary = () => {
                         <span className='grey-949494'>{`(${goal.Assist.label})`}</span>
                     )}
                 </div>
-                <Image src="/football.svg" width={24} height={24} alt='' />
+                <Image src={isOwnGoal ? '/soccer-ball-red.svg' : '/football.svg'} width={24} height={24} alt='' />
             </div>
         )
     }
