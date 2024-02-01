@@ -118,6 +118,13 @@ body {
     border-left: 1px solid #262626;
 }
 
+.bordered-left-sm {
+    border-left: 2px solid #7E7E7E;
+}
+
+.color-EB6CE0 {
+    color: #EB6CE0;
+}
 @media only screen and (max-width: 700px) {
     .goal-line {
         width: 350px;

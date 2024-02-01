@@ -1,8 +1,5 @@
 import HeadlineCard from "./HeadlineCard";
-import HeadlineImg1 from '../../public/headline-1.jpeg';
-import HeadlineImg2 from '../../public/headline-2.jpeg';
-import HeadlineImg3 from '../../public/headline-3.jpeg';
-import HeadlineImg4 from '../../public/headline-4.jpeg';
+import HeadlineImg1 from '../../public/card-image.png';
 
 const HeadlinesSection = () => {
     return (
@@ -11,10 +8,7 @@ const HeadlinesSection = () => {
                 Latest Headlines
             </h1>
             <section className="grid grid-cols-2 justify-items-center md:flex md:flex-row md:flex-wrap justify-between gap-5 w-full">
-                <HeadlineCard imageUrl={HeadlineImg1} />
-                <HeadlineCard imageUrl={HeadlineImg2} />
-                <HeadlineCard imageUrl={HeadlineImg3} />
-                <HeadlineCard imageUrl={HeadlineImg4} />
+                <HeadlineCard title="Anticipation Peaks as Teams Gear Up for Clash of Titans" imageUrl={HeadlineImg1} date={new Date(Date.UTC(2024, 1, 1))} />
             </section>
         </div>
     )

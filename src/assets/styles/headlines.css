@@ -8,7 +8,7 @@
 .headline-container {
   position: relative;
   width: 260px; /* Adjust as needed */
-  height: 351px; /* Adjust as needed */
+  /*  height: 351px; Adjust as needed */
   overflow: hidden;
   display: flex;
   justify-content: center;

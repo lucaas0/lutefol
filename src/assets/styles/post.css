@@ -1,0 +1,31 @@
+.post-wrapper {
+  height: 100vh;
+  overflow: auto;
+  line-height: normal;
+}
+
+.post-section {
+  position: relative;
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  font-size: 3em;
+  background-image: url('../../../public/banner-1.jpeg');
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.bg-black {
+  color: #B8B8B8;
+  background: #000;
+}
+
+.bg-green {
+  background: #4CAF50;
+}
+
+.post-section p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+

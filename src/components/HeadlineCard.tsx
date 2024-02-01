@@ -1,13 +1,18 @@
 import Image, { StaticImageData } from "next/image";
 import '../assets/styles/headlines.css';
+import { Months, Weekday } from "@/misc";
+import Link from "next/link";
 
 interface OwnProps {
     imageUrl: StaticImageData;
-
+    title: string;
+    date: Date;
 }
 const HeadlineCard = (props: OwnProps) => {
-    const { imageUrl } = props;
+    const { imageUrl, title, date } = props;
+
     return (
+        <Link href={`/news/1/post`}>
         <div className='headline-wrapper'>
             <div className="headline-container">
                 <div className="headline-background-image">
@@ -15,11 +20,18 @@ const HeadlineCard = (props: OwnProps) => {
                 </div>
             </div>
             <div className="headline-name">
-                <span className="headline-lastname">
-                    Pirates FC Soars to Victory in a Spectacular Show of Skill!
+                <div className="flex items-center gap-4">
+                    <span className="font-bold color-EB6CE0 text-lg">NEWS</span>
+                    <span className="bordered-left-sm pl-4">
+                        {`${Weekday[date.getDay()]} ${date.getDate()} ${Months[date.getMonth()]} ${date.getFullYear()}`}
+                    </span>
+                </div>
+                <span className="headline-lastname font-bold">
+                    { title }
                 </span>
             </div>
         </div>
+        </Link>
     )
 }
 

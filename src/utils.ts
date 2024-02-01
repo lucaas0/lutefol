@@ -7,7 +7,7 @@ import BadgeGreen from '../public/badge-green.svg';
 import { Goal, Match, Nationalities, Player, PlayerMatchStats, PlayerSeasonStats } from './misc';
 import { AlexandreLopes, AlexandreSantos, AndreSalvado, BernardoFigueiredo, DiogoDomingues, FranciscoMachado, GustavoCarreira,
 IvoOliveira, JoaoFerreira, JoaoMota, JoaoPaulino, JorgeFerreira, JosePedrosa, LucasGarcia, NunoReis,
-RenatoOliveira, RodrigoAlves, RubenRodrigues, TomasSantos, PedroLopes } from './playersDB';
+RenatoOliveira, RodrigoAlves, RubenRodrigues, TomasSantos, PedroLopes, PedroGoncalves } from './playersDB';
 import { Matches } from './MatchesDB';
 
 
@@ -31,6 +31,8 @@ export const PlayersArr: Player[] = [
     TomasSantos,
     AlexandreLopes,
     PedroLopes,
+    RodrigoAlves,
+    PedroGoncalves,
 ];
 
 export const getNationalityFlag = (nationality: Nationalities) => {
