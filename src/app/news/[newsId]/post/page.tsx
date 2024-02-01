@@ -10,7 +10,7 @@ const Post = () => {
         <div className="post-wrapper">
             <div className="post-section">
                 <div className="absolute top-10 md:top-20 left-16 flex gap-3">
-                    <Link href="/" className="flex gap-2">
+                    <Link href="/news" className="flex gap-2">
                         <Image src="/caret-left-ic.svg" width={24} height={24} alt={`<`} />
                         <span className="uppercase text-xl">back to all news</span>
                     </Link>
