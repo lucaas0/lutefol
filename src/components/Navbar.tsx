@@ -48,7 +48,7 @@ const Navbar = () => {
                     <hr className="divider hidden md:block" />
                     <div className="hidden w-full md:block md:w-auto" id="navbar-default">
                         <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row rtl:space-x-reverse md:mt-0">
-                            <li className={`link-effect${route === '/news' ? ' link-effect__selected' : ''}`}>
+                            <li className={`link-effect${route.includes('/news') ? ' link-effect__selected' : ''}`}>
                                 <a href="/news" className="block py-2 px-3 text-white dark:text-white" aria-current="page">News</a>
                             </li>
                             <li className={`link-effect${route === '/matches' || route === '/matches/results' || route.includes('/match-center') ? ' link-effect__selected' : ''}`}>
@@ -77,7 +77,7 @@ const Navbar = () => {
                 isMenuOpen && (
                     <div className='md:hidden absolute w-full bg-black' id="navbar-mobile">
                         <ul className='flex flex-col'>
-                            <li className={`link-effect${route === '/news' ? ' link-effect__selected' : ''}`}>
+                            <li className={`link-effect${route.includes('/news') ? ' link-effect__selected' : ''}`}>
                                 <a href="/news" className="block py-2 px-3 text-white dark:text-white" aria-current="page">News</a>
                             </li>
                             <li className={`link-effect${route === '/matches' || route === '/matches/results' || route === '/match-center' ? ' link-effect__selected' : ''}`}>
