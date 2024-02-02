@@ -21,3 +21,7 @@
   background-size: cover;
   transition: transform 0.5s ease; /* Smooth transition effect */
 }
+
+.headline-background-image > img {
+  border-radius: 4px;
+}

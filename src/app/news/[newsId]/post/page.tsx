@@ -30,11 +30,11 @@ const Post = () => {
                         <span className="uppercase text-sm md:text-xl">back to all news</span>
                     </Link>
                 </div>
-                <div className='absolute bottom-0 flex flex-col p-4 md:p-16 gap-6'>
+                <div className='absolute bottom-0 flex flex-col p-4 md:p-16 gap2 md:gap-6'>
                     <span className='text-xl'>
                         {post && `${post.date.getDate()}/${post.date.getMonth() + 1}/${post.date.getFullYear()}`}
                     </span>
-                    <span className='font-bold max-w-xxs md:max-w-sm text-lg md:text-4xl'>
+                    <span className='font-bold max-w-xxs md:max-w-sm text-sm md:text-4xl'>
                         { post && post.title }
                     </span>
                 </div>
