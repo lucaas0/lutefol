@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Roboto } from 'next/font/google';
 import './globals.css';
 import localFont from 'next/font/local';
 import Navbar from '@/components/Navbar';
@@ -17,7 +17,13 @@ const danish = localFont({
             style: 'normal',
         },
     ],
-})
+});
+
+const RobotoRegular = Roboto({
+    subsets: ["latin"],
+    weight: "400",
+    variable: "--font-roboto-regular",
+});
 
 export const metadata: Metadata = {
     title: 'lutefol',
@@ -31,7 +37,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang='en'>
-            <body className={danish.className}>
+            <body className={`${RobotoRegular.variable} ${danish.className}`}>
                 <Navbar />
                 {children}
             </body>

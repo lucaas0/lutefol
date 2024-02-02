@@ -23,25 +23,25 @@ const Post = () => {
 
     return (
         <div className="post-wrapper">
-            <div className="post-section" style={{ backgroundImage: post ? `url(${post?.postImgBg.src})` : Image1.src,  }}>
-                <div className="absolute top-10 md:top-20 left-16 flex gap-3">
-                    <Link href="/news" className="flex gap-2">
+            <div className="post-section min-h-full" style={{ backgroundImage: post ? `url(${post?.postImgBg.src})` : Image1.src,  }}>
+                <div className="absolute top-4 md:top-20 left-4 md:left-16 flex gap-3">
+                    <Link href="/news" className="flex items-center md:gap-2">
                         <Image src="/caret-left-ic.svg" width={24} height={24} alt={`<`} />
-                        <span className="uppercase text-xl">back to all news</span>
+                        <span className="uppercase text-sm md:text-xl">back to all news</span>
                     </Link>
                 </div>
-                <div className='absolute bottom-0 flex flex-col p-16 gap-6'>
+                <div className='absolute bottom-0 flex flex-col p-4 md:p-16 gap-6'>
                     <span className='text-xl'>
                         {post && `${post.date.getDate()}/${post.date.getMonth() + 1}/${post.date.getFullYear()}`}
                     </span>
-                    <span className='font-bold max-w-sm'>
+                    <span className='font-bold max-w-xxs md:max-w-sm text-lg md:text-4xl'>
                         { post && post.title }
                     </span>
                 </div>
             </div>
 
-            <div className="post-section flex-col items-center justify-center bg-black">
-                <div className='w-1/2 text-xl'>
+            <div className="post-section post-section-text flex-col items-center justify-center bg-black min-h-fit">
+                <div className='w-10/12 md:w-1/2'>
                     {post && renderContent(post.id) }
                 </div>
             </div>
