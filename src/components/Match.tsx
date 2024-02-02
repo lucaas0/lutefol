@@ -13,7 +13,7 @@ type OwnProps = {
 const Match = (props: OwnProps) => {
     const { match } = props;
 
-    const result = getMatchResult(match.incidents.filter((incident) => incident.type === INCIDENTS.GOAL) as Goal[]);
+    const result = getMatchResult(match.incidents.filter((incident) => incident.type === INCIDENTS.GOAL || incident.type === INCIDENTS.OWN_GOAL) as Goal[]);
 
     return (
                 <section className="flex flex-col gap-6 md:gap-0 md:flex-row justify-between bg-true-gray-900 p-6 items-center uppercase" key={`match-${match.date}`}>

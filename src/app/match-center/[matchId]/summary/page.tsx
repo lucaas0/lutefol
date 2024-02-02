@@ -13,9 +13,9 @@ const MatchSummary = () => {
         return getMatchIncidentsById(params.matchId);
     }
 
-    const GoalComponent = ({ goal, teamName }: { goal: Goal; teamName: TeamName }) => {
-        const isSecondTeam = teamName === 'Corsairs';
-        const isOwnGoal = goal.Team !== teamName && goal.Scorer;
+    const GoalComponent = ({ goal }: { goal: Goal; }) => {
+        const isSecondTeam = goal.Team === 'Corsairs';
+        const isOwnGoal = goal.type === INCIDENTS.OWN_GOAL;
         return (
             <div className={`flex gap-3 ${isSecondTeam ? 'justify-end' : ''} py-2 w-full`}>
                 <div className='flex gap-2'>
@@ -36,11 +36,11 @@ const MatchSummary = () => {
         </div>
     );
 
-    const renderIncidents = (team1Name: TeamName, team2Name: TeamName) => {
+    const renderIncidents = () => {
         return getMatchIncidents().map((incident, index) => (
             <div className='goal-line flex' key={index}>
-                {incident.type === INCIDENTS.GOAL && (
-                    <GoalComponent goal={incident as Goal} teamName={incident.Team === team1Name ? team1Name : team2Name} />
+                {(incident.type === INCIDENTS.GOAL || INCIDENTS.OWN_GOAL) && (
+                    <GoalComponent goal={incident as Goal} />
                 )}
                 {incident.type === INCIDENTS.SUBSTITUTION && <SubstitutionComponent substitution={incident as Substitution} />}
                 {/* Add other incident types as needed */}
@@ -50,7 +50,7 @@ const MatchSummary = () => {
 
     return (
         <div className='m-6'>
-            {renderIncidents('Scallywags', 'Corsairs')}
+            {renderIncidents()}
         </div>
     )
 };

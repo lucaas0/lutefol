@@ -364,7 +364,7 @@ export const Matches: Match[] = [
             {type: INCIDENTS.GOAL, Scorer: JosePedrosa, Assist: null, Team: 'Scallywags' },
             {type: INCIDENTS.GOAL, Scorer: JosePedrosa, Assist: null, Team: 'Scallywags' },
             {type: INCIDENTS.GOAL, Scorer: DiogoDomingues, Assist: NunoReis, Team: 'Corsairs' },
-            {type: INCIDENTS.GOAL, Scorer: JoaoFerreira, Assist: AlexandreLopes, Team: 'Corsairs' },
+            {type: INCIDENTS.OWN_GOAL, Scorer: JoaoFerreira, Assist: AlexandreLopes, Team: 'Corsairs' },
             {type: INCIDENTS.GOAL, Scorer: JoaoFerreira, Assist: JosePedrosa, Team: 'Scallywags' },
             {type: INCIDENTS.GOAL, Scorer: BernardoFigueiredo, Assist: JoaoFerreira, Team: 'Scallywags' },
             {type: INCIDENTS.GOAL, Scorer: AlexandreLopes, Assist: NunoReis, Team: 'Corsairs' },

@@ -42,11 +42,12 @@ export type Team = {
 
 export enum INCIDENTS {
     GOAL = 'GOAL',
-    SUBSTITUTION = 'SUBSTITUTION'
+    SUBSTITUTION = 'SUBSTITUTION',
+    OWN_GOAL = 'OWN_GOAL'
 }
 
 export type Goal = {
-    type: INCIDENTS.GOAL;
+    type: INCIDENTS.GOAL | INCIDENTS.OWN_GOAL;
     Scorer: Player;
     Assist: Player | null;
     Team: TeamName;

@@ -26,7 +26,7 @@ export default function MatchesLayout({
         setMatch(m);
     }, [params.matchId]);
 
-    const result = match ? getMatchResult(match.incidents.filter((incident) => incident.type === INCIDENTS.GOAL) as Goal[]): null;
+    const result = match ? getMatchResult(match.incidents.filter((incident) => incident.type === INCIDENTS.GOAL || incident.type === INCIDENTS.OWN_GOAL) as Goal[]): null;
 
     return (
         <PageWrapper>
