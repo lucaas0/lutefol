@@ -37,15 +37,19 @@ const MatchSummary = () => {
     );
 
     const renderIncidents = () => {
-        return getMatchIncidents().map((incident, index) => (
-            <div className='goal-line flex' key={index}>
-                {(incident.type === INCIDENTS.GOAL || INCIDENTS.OWN_GOAL) && (
-                    <GoalComponent goal={incident as Goal} />
-                )}
-                {incident.type === INCIDENTS.SUBSTITUTION && <SubstitutionComponent substitution={incident as Substitution} />}
-                {/* Add other incident types as needed */}
-            </div>
-        ));
+        const incidents = getMatchIncidents();
+        return getMatchIncidents().map((incident, index) => {
+                return (
+                <div className='goal-line flex' key={index}>
+                        {(incident.type === INCIDENTS.GOAL || incident.type === INCIDENTS.OWN_GOAL) && (
+                        <GoalComponent goal={incident as Goal} />
+                    )}
+                    {incident.type === INCIDENTS.SUBSTITUTION && <SubstitutionComponent substitution={incident as Substitution} />}
+                    {/* Add other incident types as needed */}
+                </div>
+            )
+            
+        });
     };
 
     return (
