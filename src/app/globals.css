@@ -131,6 +131,10 @@ body {
     color: #D8B247;
 }
 
+.color-8BC34A {
+    color: #8BC34A;
+}
+
 @media only screen and (max-width: 700px) {
     .goal-line {
         width: 350px;

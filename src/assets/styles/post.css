@@ -10,7 +10,6 @@
   width: 100%;
   display: flex;
   font-size: 3em;
-  background-image: url('../../../public/banner-1.jpeg');
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
 }
