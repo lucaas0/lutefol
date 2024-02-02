@@ -40,11 +40,24 @@ export type Team = {
     players: Player[];
 }
 
+export enum INCIDENTS {
+    GOAL = 'GOAL',
+    SUBSTITUTION = 'SUBSTITUTION'
+}
+
 export type Goal = {
+    type: INCIDENTS.GOAL;
     Scorer: Player;
     Assist: Player | null;
     Team: TeamName;
 }
+
+export type Substitution = {
+    type: INCIDENTS.SUBSTITUTION;
+    playerIn: Player;
+    playerOut: Player;
+};
+export type MatchIncident = Goal | Substitution;
 
 export type Match = {
     id: string;
@@ -53,11 +66,7 @@ export type Match = {
     team2: Team;
     date: Date;
     time: string;
-    // result: {
-    //     team1: number;
-    //     team2: number;
-    // } | null;
-    goals: Goal[];
+    incidents: MatchIncident[];
 }
 
 export type PlayerMatchStats = {

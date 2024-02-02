@@ -2,7 +2,7 @@
 import PageWrapper from "@/components/PageWrapper";
 import Tab from "@/components/Tab";
 import CustomTabs from "@/components/Tabs";
-import { Match, Months, Weekday } from "@/misc";
+import { Goal, INCIDENTS, Match, Months, Weekday } from "@/misc";
 import { getMatchById, getMatchResult } from "@/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,7 +26,7 @@ export default function MatchesLayout({
         setMatch(m);
     }, [params.matchId]);
 
-    const result = match ? getMatchResult(match.goals): null;
+    const result = match ? getMatchResult(match.incidents.filter((incident) => incident.type === INCIDENTS.GOAL) as Goal[]): null;
 
     return (
         <PageWrapper>
@@ -42,7 +42,7 @@ export default function MatchesLayout({
                     match && (
                         <React.Fragment>
                             <div className="center-absolute top-28 md:top-20 flex flex-col text-center">
-                                <h3 className="color-green font-bold">{`${Weekday[match.date.getDay()]} ${match.date.getDate()} ${Months[match.date.getMonth()]} ${match.date.getFullYear()}`}</h3>
+                                <h3 className="color-brand-400 font-bold">{`${Weekday[match.date.getDay()]} ${match.date.getDate()} ${Months[match.date.getMonth()]} ${match.date.getFullYear()}`}</h3>
                                 <h4>{`${match.time} - ${match.location}`}</h4>
                             </div>
                             <div className="center-absolute bottom-8 md:bottom-24 flex items-center gap-6">

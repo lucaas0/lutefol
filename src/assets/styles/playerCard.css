@@ -65,7 +65,7 @@
 }
 
 .player-wrapper:hover .player-lastname {
-  color: #02E651; /* Change color on container hover */
+  color: #D8B247; /* Change color on container hover */
 }
 
 @media only screen and (max-width: 700px) {

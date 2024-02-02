@@ -1,5 +1,5 @@
 import { Matches } from "./MatchesDB";
-import { PlayerSeasonStats } from "./misc";
+import { Goal, INCIDENTS, PlayerSeasonStats } from "./misc";
 
 // Function to get player statistics by first name and last name
 export const getPlayerStats = (label: string): PlayerSeasonStats => {
@@ -14,7 +14,7 @@ export const getPlayerStats = (label: string): PlayerSeasonStats => {
                 // Check if the player's name matches
                 if (player.label === label) {
                     // Loop through the goals in the match
-                    for (const goal of match.goals) {
+                    for (const goal of match.incidents.filter((incident) => incident.type === INCIDENTS.GOAL) as Goal[]) {
                         // Check if the player is the scorer or assister in the goal
                         if (goal.Scorer === player) {
                             // Increment goals for the player

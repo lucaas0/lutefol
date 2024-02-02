@@ -6,7 +6,7 @@ interface MatchesByMonthMap {
 }
 
 const MatchesResults = () => {
-    const matchesResults = Matches.filter((match) => match.goals.length > 0).sort((a: { date: Date }, b: { date: Date }): number => b.date.getTime() - a.date.getTime());
+    const matchesResults = Matches.filter((match) => match.incidents.length > 0).sort((a: { date: Date }, b: { date: Date }): number => b.date.getTime() - a.date.getTime());
     
     // Group matches by month
     const matchesByMonth: MatchesByMonthMap = matchesResults.reduce((acc, match) => {
@@ -32,16 +32,6 @@ const MatchesResults = () => {
                     ))}
                 </div>
             ))
-        // <div className="flex flex-col gap-10 my-10 w-full px-8 md:px-32">
-        //     <h2 className="text-4xl font-bold uppercase">
-        //         February
-        //     </h2>
-        //     {
-        //         matchesResults.map((m) => {
-        //             return <Match match={m} key={`match-result-${m.date}`} />
-        //         })
-        //     }
-        // </div>
     )
 }
 

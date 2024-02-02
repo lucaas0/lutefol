@@ -4,7 +4,7 @@ import BadgeBronze from '../public/badge-bronze.svg';
 import BadgeBlue from '../public/badge-blue.svg';
 import BadgeYellow from '../public/badge-yellow.svg';
 import BadgeGreen from '../public/badge-green.svg';
-import { Goal, Match, Nationalities, Player, PlayerMatchStats, PlayerSeasonStats } from './misc';
+import { Goal, INCIDENTS, Match, Nationalities, Player, PlayerMatchStats, PlayerSeasonStats } from './misc';
 import { AlexandreLopes, AlexandreSantos, AndreSalvado, BernardoFigueiredo, DiogoDomingues, FranciscoMachado, GustavoCarreira,
 IvoOliveira, JoaoFerreira, JoaoMota, JoaoPaulino, JorgeFerreira, JosePedrosa, LucasGarcia, NunoReis,
 RenatoOliveira, RodrigoAlves, RubenRodrigues, TomasSantos, PedroLopes, PedroGoncalves } from './playersDB';
@@ -66,7 +66,7 @@ export const getMatchById = (matchId: string) => {
 }
 
 
-export const getMatchGoalsById = (matchId: string) => {
+export const getMatchIncidentsById = (matchId: string) => {
     const match = Matches.find((m) => m.id === matchId);
 
     if (!match) {
@@ -74,7 +74,7 @@ export const getMatchGoalsById = (matchId: string) => {
         return [];
     }
 
-    return match.goals;
+    return match.incidents;
 }
 
 // Function to sort players by OVR in ascending order
@@ -112,19 +112,23 @@ const getTopPlayers = (matches: Match[]): { topScorers: PlayerMatchStats[], topA
 
   // Loop through matches and accumulate goals and assists
   matches.forEach((match) => {
-    match.goals.forEach((goal) => {
-      // Update scorer's stats
-      const scorerKey = `${goal.Scorer.firstname}-${goal.Scorer.lastname}`;
-      const scorerStats = playerStatsMap.get(scorerKey) || { player: goal.Scorer, goals: 0, assists: 0 };
-      scorerStats.goals += 1;
-      playerStatsMap.set(scorerKey, scorerStats);
+    const { incidents } = match;
 
-      // Update assist's stats if available
-      if (goal.Assist) {
-        const assistKey = `${goal.Assist.firstname}-${goal.Assist.lastname}`;
-        const assistStats = playerStatsMap.get(assistKey) || { player: goal.Assist, goals: 0, assists: 0 };
-        assistStats.assists += 1;
-        playerStatsMap.set(assistKey, assistStats);
+    incidents.forEach((incident) => {
+      if (incident.type === INCIDENTS.GOAL) {
+          // Update scorer's stats
+          const scorerKey = `${incident.Scorer.firstname}-${incident.Scorer.lastname}`;
+          const scorerStats = playerStatsMap.get(scorerKey) || { player: incident.Scorer, goals: 0, assists: 0 };
+          scorerStats.goals += 1;
+          playerStatsMap.set(scorerKey, scorerStats);
+
+          // Update assist's stats if available
+          if (incident.Assist) {
+              const assistKey = `${incident.Assist.firstname}-${incident.Assist.lastname}`;
+              const assistStats = playerStatsMap.get(assistKey) || { player: incident.Assist, goals: 0, assists: 0 };
+              assistStats.assists += 1;
+              playerStatsMap.set(assistKey, assistStats);
+          }
       }
     });
   });

@@ -82,6 +82,7 @@ body {
 }
 
 .lineup-wrapper {
+    width: 250px;
     border: 1px solid #262626;
 }
 
@@ -125,6 +126,11 @@ body {
 .color-EB6CE0 {
     color: #EB6CE0;
 }
+
+.color-brand-400 {
+    color: #D8B247;
+}
+
 @media only screen and (max-width: 700px) {
     .goal-line {
         width: 350px;
@@ -132,5 +138,9 @@ body {
 
     .stats-card {
         width: 280px;
+    }
+
+    .lineup-wrapper {
+        width: 200px;
     }
 }

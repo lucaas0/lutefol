@@ -21,13 +21,3 @@
   background-size: cover;
   transition: transform 0.5s ease; /* Smooth transition effect */
 }
-
-@media only screen and (max-width: 700px) {
-  .headline-wrapper {
-    max-width: 165px;
-  }
-  .headline-container {
-      width: 165px; /* Adjust as needed */
-      height: 251px; /* Adjust as needed */
-  }
-}
