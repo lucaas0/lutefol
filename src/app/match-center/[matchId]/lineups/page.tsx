@@ -1,5 +1,5 @@
 'use client';
-import { getMatchById, getMatchGoalsById } from '@/utils';
+import { getMatchById } from '@/utils';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import '../../../../assets/styles/matchCenter.css';
