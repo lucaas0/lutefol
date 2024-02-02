@@ -17,7 +17,7 @@ const StatsCard = (props: OwnProps) => {
                 {
                     cardStats.map((cardStat) => {
                         return (
-                            <div className="flex gap-4" key={`card-stat-${cardStat.player.firstname}-${cardStat.player.lastname}`}>
+                            <div className="flex gap-4 items-center" key={`card-stat-${cardStat.player.firstname}-${cardStat.player.lastname}`}>
                                 <span className="font-bold text-lg w-6 color-brand-400">{cardTitle === 'GOALS' ? cardStat.goals : cardStat.assists}</span>
                                 <span className="uppercase">{cardStat.player.label}</span>
                             </div>
