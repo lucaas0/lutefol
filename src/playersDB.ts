@@ -1,7 +1,12 @@
 import { Nationalities, Player, PlayerSeasonStats } from "./misc";
 import PlayerPhoto from '../public/player.png';
-import { Matches } from "./MatchesDB";
-import { getPlayerStats } from "./Stats";
+import NunoReisImg from '../public/players/nuno-reis.png';
+import BernardoFigueiredoImg from '../public/players/bernardo-figueiredo.png';
+import DiogoDominguesImg from '../public/players/diogo-domingues.png';
+import LucasGarciaImg from '../public/players/lucas-garcia.png';
+import RenatoOliveiraImg from '../public/players/renato-oliveira.png';
+import TomasSantosImg from '../public/players/tomas-santos.png';
+import RubenRodriguesImg from '../public/players/ruben-rodrigues.png';
 
 export const AndreSalvado: Player = {
     firstname: 'André',
@@ -56,7 +61,7 @@ export const AlexandreSantos: Player = {
 export const BernardoFigueiredo: Player = {
     firstname: 'Bernardo',
     lastname: 'Figueiredo',
-    photoUrl: PlayerPhoto,
+    photoUrl: BernardoFigueiredoImg,
     number: 65,
     stats: {
         ATA: 56,
@@ -81,7 +86,7 @@ export const BernardoFigueiredo: Player = {
 export const DiogoDomingues: Player = {
     firstname: 'Diogo',
     lastname: 'Domingues',
-    photoUrl: PlayerPhoto,
+    photoUrl: DiogoDominguesImg,
     number: 1,
     stats: {
         ATA: 60,
@@ -307,7 +312,7 @@ export const JosePedrosa: Player = {
 export const LucasGarcia: Player = {
     firstname: 'Lucas',
     lastname: 'Garcia',
-    photoUrl: PlayerPhoto,
+    photoUrl: LucasGarciaImg,
     number: 9,
     stats: {
         ATA: 86,
@@ -332,7 +337,7 @@ export const LucasGarcia: Player = {
 export const NunoReis: Player = {
     firstname: 'Nuno',
     lastname: 'Reis',
-    photoUrl: PlayerPhoto,
+    photoUrl: NunoReisImg,
     number: 17,
     stats: {
         AGRE: 98,
@@ -357,7 +362,7 @@ export const NunoReis: Player = {
 export const RenatoOliveira: Player = {
     firstname: 'Renato',
     lastname: 'Oliveira',
-    photoUrl: PlayerPhoto,
+    photoUrl: RenatoOliveiraImg,
     number: 68,
     stats: {
         ATA: 50,
@@ -382,7 +387,7 @@ export const RenatoOliveira: Player = {
 export const RubenRodrigues: Player = {
     firstname: 'Rúben',
     lastname: 'Rodrigues',
-    photoUrl: PlayerPhoto,
+    photoUrl: RubenRodriguesImg,
     number: 20,
     stats: {
         AGRE: 66,
@@ -407,7 +412,7 @@ export const RubenRodrigues: Player = {
 export const TomasSantos: Player = {
     firstname: 'Tomás',
     lastname: 'Santos',
-    photoUrl: PlayerPhoto,
+    photoUrl: TomasSantosImg,
     number: 27,
     stats: {
         ATA: 56,

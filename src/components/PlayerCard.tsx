@@ -18,7 +18,7 @@ const PlayerCard = (props: PlayerProps) => {
                 <div className="player-overlay">
                     <Image src={player.photoUrl} width={500} height={500} alt='' />
                 </div>
-                <div className="player-number text-6xl font-bold">{player.number}</div>
+                <div className="player-number text-6xl font-bold color-brand-400">{player.number}</div>
             </div>
             <div className="player-name">
                 <span className="player-firstname">{player.firstname}</span><br />

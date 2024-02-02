@@ -143,7 +143,7 @@ const PlayersStatsTable = () => {
                             return (
                                 <tr key={`${player.firstname}-${player.lastname}-stat`}>
                                     <td>
-                                        <div className="flex items-center gap-3">
+                                        <div className="flex items-center gap-3 pl-2">
                                             <Image src={player.photoUrl} alt="" width={42} height={42} />
                                             <div className="flex flex-col">
                                                 <span className="stats-player-name">
