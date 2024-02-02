@@ -30,7 +30,7 @@ const Navbar = () => {
                 <div className='flex gap-4 justify-center items-center'>
                     <Link href='/'>
                         <Image
-                            src='/logo-blue.svg'
+                            src='/pirates-logo.svg'
                             alt=''
                             width={48}
                             height={48}
