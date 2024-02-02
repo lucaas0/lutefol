@@ -1,5 +1,6 @@
 import HeadlineCard from "./HeadlineCard";
 import HeadlineImg1 from '../../public/card-image.png';
+import { NewsDB } from "@/NewsDB";
 
 const HeadlinesSection = () => {
     return (
@@ -7,8 +8,21 @@ const HeadlinesSection = () => {
             <h1 className="uppercase text-4xl font-bold">
                 Latest Headlines
             </h1>
-            <section className="grid grid-cols-2 justify-items-center md:flex md:flex-row md:flex-wrap justify-between gap-5 w-full">
-                <HeadlineCard title="Anticipation Peaks as Teams Gear Up for Clash of Titans" imageUrl={HeadlineImg1} date={new Date(Date.UTC(2024, 1, 1))} />
+            <section className="flex flex-col items-center md:items-start md:flex-row gap-10 w-full">
+                {
+                    NewsDB
+                        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) // Sort by date in descending order
+                        .map((news) => (
+                            <HeadlineCard
+                                id={news.id}
+                                title={news.title}
+                                imageUrl={news.thumbnailImg}
+                                date={news.date}
+                                key={`news-card-${news.id}`}
+                                category={news.category}
+                            />
+                        ))
+                }
             </section>
         </div>
     )
