@@ -27,7 +27,7 @@ export const renderContent = (postId: string) => {
                         distribution of talent across both teams, the scale tips neither to one side nor the other.The stage is set for a nail - biting encounter where every goal,
                         every assist, and every defensive maneuver could be the turning point.</p>
 
-                    <p> As fans eagerly count down the days to the kickoff, one thing is certain - this match is poised to deliver a spectacle that transcends the ordinary.Whether
+                    <p> As fans eagerly count down the days to the kickoff, one thing is certain - this match is poised to deliver a spectacle that transcends the ordinary. Whether
                         {`you're`} a neutral observer or a die - hard fan of one of the competing teams, mark your calendars, buckle up, and get ready for a footballing
                         extravaganza that promises to keep you on the edge of your seat until the final whistle blows.</p>
                 </React.Fragment>
