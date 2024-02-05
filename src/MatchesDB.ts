@@ -437,7 +437,7 @@ export const Matches: Match[] = [
         },
         team2: {
             name: 'Corsairs', logo: LogoGreen, players: [
-                BernardoFigueiredo, LucasGarcia, RenatoOliveira, JorgeFerreira, AlexandreLopes
+                BernardoFigueiredo, LucasGarcia, RenatoOliveira, JorgeFerreira, TomasSantos
             ]
         },
         date: new Date(Date.UTC(2024, 1, 5)),
