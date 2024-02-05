@@ -431,10 +431,14 @@ export const Matches: Match[] = [
     {
         id: '20240205',
         team1: {
-            name: 'Scallywags', logo: LogoRed, players: []
+            name: 'Scallywags', logo: LogoRed, players: [
+                JoaoFerreira, DiogoDomingues, RubenRodrigues, GustavoCarreira, JoaoPaulino,
+            ]
         },
         team2: {
-            name: 'Corsairs', logo: LogoGreen, players: []
+            name: 'Corsairs', logo: LogoGreen, players: [
+                BernardoFigueiredo, LucasGarcia, RenatoOliveira, JorgeFerreira, AlexandreLopes
+            ]
         },
         date: new Date(Date.UTC(2024, 1, 5)),
         time: '18:30',
