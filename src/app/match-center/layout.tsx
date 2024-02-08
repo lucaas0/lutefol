@@ -54,7 +54,7 @@ export default function MatchesLayout({
                         <h2 className="font-bold text-xl">{result['Corsairs']}</h2>
                     </React.Fragment>
                 ) : (
-                    <h2 className="font-bold text-xl">VS</h2>
+                    <h2 className="font-bold text-xl">-</h2>
                 )
             )
         }
