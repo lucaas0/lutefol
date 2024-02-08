@@ -1,22 +1,17 @@
 
 import LogoRed from '../public/logo-red.svg';
 import LogoGreen from '../public/logo-green.svg';
+import LogoBlue from '../public/pirates-logo.svg';
 import { INCIDENTS, Match } from "@/misc";
-import { AlexandreLopes, AlexandreSantos, AndreSalvado, BernardoFigueiredo, DiogoDomingues, GustavoCarreira, JoaoFerreira, JoaoMota, JoaoPaulino, JorgeFerreira, JosePedrosa, LucasGarcia, NunoReis, PedroGoncalves, PedroLopes, RenatoOliveira, RodrigoAlves, RubenRodrigues, TomasSantos, WildCard } from "@/playersDB";
+import { AlexandreLopes, AlexandreMendes, AlexandreSantos, AndreSalvado, BernardoFigueiredo, DiogoDomingues, FranciscoMachado, GustavoCarreira, JoaoFerreira, JoaoMota, JoaoPaulino, JorgeFerreira, JosePedrosa, LucasGarcia, LuisSantos, NunoReis, PedroGoncalves, PedroLopes, RenatoOliveira, RodrigoAlves, RubenRodrigues, TomasSantos, WildCard } from "@/playersDB";
 
 export const Matches: Match[] = [
     {
         id: '20240104',
-        team1: {
-            name: 'Scallywags', logo: LogoRed, players: [
-                AndreSalvado, JoaoFerreira, BernardoFigueiredo, DiogoDomingues, RodrigoAlves, AlexandreSantos,
-            ]
-        },
-        team2: {
-            name: 'Corsairs', logo: LogoGreen, players: [
-                RubenRodrigues, NunoReis, RenatoOliveira, LucasGarcia, JosePedrosa, GustavoCarreira,
-            ]
-        },
+        teams: [
+            { name: 'Scallywags', logo: LogoRed, players: [AndreSalvado, JoaoFerreira, BernardoFigueiredo, DiogoDomingues, RodrigoAlves, AlexandreSantos]},
+            { name: 'Corsairs', logo: LogoGreen, players: [ RubenRodrigues, NunoReis, RenatoOliveira, LucasGarcia, JosePedrosa, GustavoCarreira]}
+        ],
         date: new Date(Date.UTC(2024, 0, 4)),
         time: '18:30',
         location: 'LeiriFoot',
@@ -58,16 +53,18 @@ export const Matches: Match[] = [
     },
     {
         id: '20240108',
-        team1: {
-            name: 'Scallywags', logo: LogoRed, players: [
-                AndreSalvado, JoaoFerreira, JoaoPaulino, BernardoFigueiredo, DiogoDomingues, GustavoCarreira,
-            ]
-        },
-        team2: {
-            name: 'Corsairs', logo: LogoGreen, players: [
-                RubenRodrigues, NunoReis, RenatoOliveira, LucasGarcia, AlexandreLopes, RodrigoAlves,
-            ]
-        },
+        teams: [
+            {
+                name: 'Scallywags', logo: LogoRed, players: [
+                    AndreSalvado, JoaoFerreira, JoaoPaulino, BernardoFigueiredo, DiogoDomingues, GustavoCarreira,
+                ]
+            },
+            {
+                name: 'Corsairs', logo: LogoGreen, players: [
+                    RubenRodrigues, NunoReis, RenatoOliveira, LucasGarcia, AlexandreLopes, RodrigoAlves,
+                ]
+            }
+        ],
         date: new Date(Date.UTC(2024, 0, 8)),
         time: '18:30',
         location: 'LeiriFoot',
@@ -112,8 +109,10 @@ export const Matches: Match[] = [
     },
     {
         id: '20240111',
-        team1: { name: 'Scallywags', logo: LogoRed, players: [TomasSantos, JoaoFerreira, RodrigoAlves, DiogoDomingues, LucasGarcia] },
-        team2: { name: 'Corsairs', logo: LogoGreen, players: [RubenRodrigues, AlexandreSantos, JorgeFerreira, GustavoCarreira, NunoReis, JoaoMota] },
+        teams: [
+            { name: 'Scallywags', logo: LogoRed, players: [TomasSantos, JoaoFerreira, RodrigoAlves, DiogoDomingues, LucasGarcia] },
+            { name: 'Corsairs', logo: LogoGreen, players: [RubenRodrigues, AlexandreSantos, JorgeFerreira, GustavoCarreira, NunoReis, JoaoMota] }
+        ],
         date: new Date(Date.UTC(2024, 0, 11)),
         time: '18:30',
         location: 'LeiriFoot',
@@ -145,16 +144,18 @@ export const Matches: Match[] = [
     },
     {
         id: '20240115',
-        team1: {
-            name: 'Scallywags', logo: LogoRed, players: [
-                NunoReis, LucasGarcia, AlexandreLopes, BernardoFigueiredo, RubenRodrigues,
-            ]
-        },
-        team2: {
-            name: 'Corsairs', logo: LogoGreen, players: [
-                JosePedrosa, JoaoFerreira, AndreSalvado, JoaoPaulino, TomasSantos, RenatoOliveira
-            ]
-        },
+        teams: [
+            {
+                name: 'Scallywags', logo: LogoRed, players: [
+                    NunoReis, LucasGarcia, AlexandreLopes, BernardoFigueiredo, RubenRodrigues,
+                ]
+            },
+            {
+                name: 'Corsairs', logo: LogoGreen, players: [
+                    JosePedrosa, JoaoFerreira, AndreSalvado, JoaoPaulino, TomasSantos, RenatoOliveira
+                ]
+            },
+        ],
         date: new Date(Date.UTC(2024, 0, 15)),
         time: '18:30',
         location: 'LeiriFoot',
@@ -192,16 +193,18 @@ export const Matches: Match[] = [
     },
     {
         id: '20240118',
-        team1: {
-            name: 'Scallywags', logo: LogoRed, players: [
-                AlexandreSantos, RubenRodrigues, JosePedrosa, LucasGarcia, BernardoFigueiredo
-            ]
-        },
-        team2: {
-            name: 'Corsairs', logo: LogoGreen, players: [
-                JoaoFerreira, NunoReis, DiogoDomingues, PedroLopes, RodrigoAlves, RenatoOliveira
-            ]
-        },
+        teams: [
+            {
+                name: 'Scallywags', logo: LogoRed, players: [
+                    AlexandreSantos, RubenRodrigues, JosePedrosa, LucasGarcia, BernardoFigueiredo
+                ]
+            },
+            {
+                name: 'Corsairs', logo: LogoGreen, players: [
+                    JoaoFerreira, NunoReis, DiogoDomingues, PedroLopes, RodrigoAlves, RenatoOliveira
+                ]
+            },
+        ],
         date: new Date(Date.UTC(2024, 0, 18)),
         time: '18:30',
         location: 'LeiriFoot',
@@ -231,12 +234,18 @@ export const Matches: Match[] = [
     },
     {
         id: '20240122',
-        team1: { name: 'Scallywags', logo: LogoRed, players: [
-            BernardoFigueiredo, JoaoPaulino, PedroLopes, LucasGarcia, GustavoCarreira, JoaoFerreira,
-        ] },
-        team2: { name: 'Corsairs', logo: LogoGreen, players: [
-            NunoReis, AlexandreLopes, RenatoOliveira, DiogoDomingues, JorgeFerreira, WildCard,
-        ] },
+        teams: [
+            {
+                name: 'Scallywags', logo: LogoRed, players: [
+                    BernardoFigueiredo, JoaoPaulino, PedroLopes, LucasGarcia, GustavoCarreira, JoaoFerreira,
+                ]
+            },
+            {
+                name: 'Corsairs', logo: LogoGreen, players: [
+                    NunoReis, AlexandreLopes, RenatoOliveira, DiogoDomingues, JorgeFerreira, WildCard,
+                ]
+            },
+        ],
         date: new Date(Date.UTC(2024, 0, 22)),
         time: '18:30',
         location: 'LeiriFoot',
@@ -278,12 +287,18 @@ export const Matches: Match[] = [
     },
     {
         id: '20240125',
-        team1: { name: 'Scallywags', logo: LogoRed, players: [
-            JoaoFerreira, DiogoDomingues, PedroGoncalves, RenatoOliveira, WildCard, JorgeFerreira,
-        ] },
-        team2: { name: 'Corsairs', logo: LogoGreen, players: [
-            LucasGarcia, RubenRodrigues, AndreSalvado, RodrigoAlves, TomasSantos, GustavoCarreira
-        ] },
+        teams: [
+            {
+                name: 'Scallywags', logo: LogoRed, players: [
+                    JoaoFerreira, DiogoDomingues, PedroGoncalves, RenatoOliveira, WildCard, JorgeFerreira,
+                ]
+            },
+            {
+                name: 'Corsairs', logo: LogoGreen, players: [
+                    LucasGarcia, RubenRodrigues, AndreSalvado, RodrigoAlves, TomasSantos, GustavoCarreira
+                ]
+            }
+        ],
         date: new Date(Date.UTC(2024, 0, 25)),
         time: '18:30',
         location: 'LeiriFoot',
@@ -327,12 +342,18 @@ export const Matches: Match[] = [
     },
     {
         id: '20240129',
-        team1: { name: 'Scallywags', logo: LogoRed, players: [
-            JoaoFerreira, BernardoFigueiredo, LucasGarcia, JoaoPaulino, RenatoOliveira, AndreSalvado
-        ] },
-        team2: { name: 'Corsairs', logo: LogoGreen, players: [
-            NunoReis, DiogoDomingues, JorgeFerreira, WildCard, GustavoCarreira, AlexandreLopes, JosePedrosa
-        ] },
+        teams: [
+            {
+                name: 'Scallywags', logo: LogoRed, players: [
+                    JoaoFerreira, BernardoFigueiredo, LucasGarcia, JoaoPaulino, RenatoOliveira, AndreSalvado
+                ]
+            },
+            {
+                name: 'Corsairs', logo: LogoGreen, players: [
+                    NunoReis, DiogoDomingues, JorgeFerreira, WildCard, GustavoCarreira, AlexandreLopes, JosePedrosa
+                ]
+            },
+        ],
         date: new Date(Date.UTC(2024, 0, 29)),
         time: '18:30',
         location: 'LeiriFoot',
@@ -372,16 +393,18 @@ export const Matches: Match[] = [
     },
     {
         id: '20240201',
-        team1: {
-            name: 'Scallywags', logo: LogoRed, players: [
-                AndreSalvado, PedroGoncalves, RodrigoAlves, DiogoDomingues, NunoReis
-            ]
-        },
-        team2: {
-            name: 'Corsairs', logo: LogoGreen, players: [
-                GustavoCarreira, JosePedrosa, JoaoFerreira, RubenRodrigues, LucasGarcia
-            ]
-        },
+        teams: [
+            {
+                name: 'Scallywags', logo: LogoRed, players: [
+                    AndreSalvado, PedroGoncalves, RodrigoAlves, DiogoDomingues, NunoReis
+                ]
+            },
+            {
+                name: 'Corsairs', logo: LogoGreen, players: [
+                    GustavoCarreira, JosePedrosa, JoaoFerreira, RubenRodrigues, LucasGarcia
+                ]
+            },
+        ],
         date: new Date(Date.UTC(2024, 1, 1)),
         time: '18:30',
         location: 'LeiriFoot',
@@ -430,16 +453,18 @@ export const Matches: Match[] = [
     },
     {
         id: '20240205',
-        team1: {
-            name: 'Scallywags', logo: LogoRed, players: [
-                JoaoFerreira, DiogoDomingues, RubenRodrigues, GustavoCarreira, JoaoPaulino,
-            ]
-        },
-        team2: {
-            name: 'Corsairs', logo: LogoGreen, players: [
-                BernardoFigueiredo, LucasGarcia, RenatoOliveira, JorgeFerreira, TomasSantos
-            ]
-        },
+        teams: [
+            {
+                name: 'Scallywags', logo: LogoRed, players: [
+                    JoaoFerreira, DiogoDomingues, RubenRodrigues, GustavoCarreira, JoaoPaulino,
+                ]
+            },
+            {
+                name: 'Corsairs', logo: LogoGreen, players: [
+                    BernardoFigueiredo, LucasGarcia, RenatoOliveira, JorgeFerreira, TomasSantos
+                ]
+            },
+        ],
         date: new Date(Date.UTC(2024, 1, 5)),
         time: '18:30',
         location: 'LeiriFoot',
@@ -472,12 +497,23 @@ export const Matches: Match[] = [
     },
     {
         id: '20240208',
-        team1: {
-            name: 'Scallywags', logo: LogoRed, players: []
-        },
-        team2: {
-            name: 'Corsairs', logo: LogoGreen, players: []
-        },
+        teams: [
+            {
+                name: 'Scallywags', logo: LogoRed, players: [
+                    LucasGarcia, AndreSalvado, GustavoCarreira, FranciscoMachado, DiogoDomingues
+                ]
+            },
+            {
+                name: 'Corsairs', logo: LogoGreen, players: [
+                    JoaoFerreira, RubenRodrigues, TomasSantos, PedroLopes, AlexandreMendes,
+                ]
+            },
+            {
+                name: 'Buccaneers', logo: LogoBlue, players: [
+                    PedroGoncalves, AlexandreSantos, RodrigoAlves, WildCard, LuisSantos,
+                ]
+            },
+        ],
         date: new Date(Date.UTC(2024, 1, 8)),
         time: '18:30',
         location: 'LeiriFoot',
@@ -485,12 +521,14 @@ export const Matches: Match[] = [
     },
     {
         id: '20240212',
-        team1: {
-            name: 'Scallywags', logo: LogoRed, players: []
-        },
-        team2: {
-            name: 'Corsairs', logo: LogoGreen, players: []
-        },
+        teams: [
+            {
+                name: 'Scallywags', logo: LogoRed, players: []
+            },
+            {
+                name: 'Corsairs', logo: LogoGreen, players: []
+            },
+        ],
         date: new Date(Date.UTC(2024, 1, 12)),
         time: '18:30',
         location: 'LeiriFoot',
@@ -498,12 +536,14 @@ export const Matches: Match[] = [
     },
     {
         id: '20240215',
-        team1: {
-            name: 'Scallywags', logo: LogoRed, players: []
-        },
-        team2: {
-            name: 'Corsairs', logo: LogoGreen, players: []
-        },
+        teams: [
+            {
+                name: 'Scallywags', logo: LogoRed, players: []
+            },
+            {
+                name: 'Corsairs', logo: LogoGreen, players: []
+            },
+        ],
         date: new Date(Date.UTC(2024, 1, 15)),
         time: '18:30',
         location: 'LeiriFoot',
@@ -511,12 +551,14 @@ export const Matches: Match[] = [
     },
     {
         id: '20240219',
-        team1: {
-            name: 'Scallywags', logo: LogoRed, players: []
-        },
-        team2: {
-            name: 'Corsairs', logo: LogoGreen, players: []
-        },
+        teams: [
+            {
+                name: 'Scallywags', logo: LogoRed, players: []
+            },
+            {
+                name: 'Corsairs', logo: LogoGreen, players: []
+            },
+        ],
         date: new Date(Date.UTC(2024, 1, 19)),
         time: '18:30',
         location: 'LeiriFoot',
@@ -524,12 +566,14 @@ export const Matches: Match[] = [
     },
     {
         id: '20240222',
-        team1: {
-            name: 'Scallywags', logo: LogoRed, players: []
-        },
-        team2: {
-            name: 'Corsairs', logo: LogoGreen, players: []
-        },
+        teams: [
+            {
+                name: 'Scallywags', logo: LogoRed, players: []
+            },
+            {
+                name: 'Corsairs', logo: LogoGreen, players: []
+            },
+        ],
         date: new Date(Date.UTC(2024, 1, 22)),
         time: '18:30',
         location: 'LeiriFoot',
@@ -537,12 +581,14 @@ export const Matches: Match[] = [
     },
     {
         id: '20240226',
-        team1: {
-            name: 'Scallywags', logo: LogoRed, players: []
-        },
-        team2: {
-            name: 'Corsairs', logo: LogoGreen, players: []
-        },
+        teams: [
+            {
+                name: 'Scallywags', logo: LogoRed, players: []
+            },
+            {
+                name: 'Corsairs', logo: LogoGreen, players: []
+            },
+        ],
         date: new Date(Date.UTC(2024, 1, 26)),
         time: '18:30',
         location: 'LeiriFoot',
@@ -550,12 +596,14 @@ export const Matches: Match[] = [
     },
     {
         id: '20240229',
-        team1: {
-            name: 'Scallywags', logo: LogoRed, players: []
-        },
-        team2: {
-            name: 'Corsairs', logo: LogoGreen, players: []
-        },
+        teams: [
+            {
+                name: 'Scallywags', logo: LogoRed, players: []
+            },
+            {
+                name: 'Corsairs', logo: LogoGreen, players: []
+            },
+        ],
         date: new Date(Date.UTC(2024, 1, 29)),
         time: '18:30',
         location: 'LeiriFoot',

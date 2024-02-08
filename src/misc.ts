@@ -7,7 +7,7 @@ export enum Nationalities {
     PT = 'PT'
 }
 
-export type TeamName = 'Scallywags' | 'Corsairs';
+export type TeamName = 'Scallywags' | 'Corsairs' | 'Buccaneers';
 
 export const Weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
@@ -63,8 +63,7 @@ export type MatchIncident = Goal | Substitution;
 export type Match = {
     id: string;
     location: string;
-    team1: Team;
-    team2: Team;
+    teams: Team[];
     date: Date;
     time: string;
     incidents: MatchIncident[];

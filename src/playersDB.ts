@@ -463,7 +463,7 @@ export const WildCard: Player = {
     firstname: 'Wildcard',
     lastname: '1',
     photoUrl: PlayerPhoto,
-    number: 16,
+    number: 99,
     stats: {
         ATA: 56,
         DEF: 51,
@@ -487,7 +487,7 @@ export const AlexandreLopes: Player = {
     firstname: 'Alexandre',
     lastname: 'Lopes',
     photoUrl: PlayerPhoto,
-    number: 16,
+    number: 94,
     stats: {
         ATA: 56,
         DEF: 51,
@@ -557,3 +557,53 @@ export const PedroGoncalves: Player = {
     goals: 0,
     assists: 0
 };
+
+export const AlexandreMendes: Player = {
+    firstname: 'Alexandre',
+    lastname: 'Mendes',
+    photoUrl: PlayerPhoto,
+    number: 90,
+    stats: {
+        ATA: 56,
+        DEF: 51,
+        TEC: 56,
+        WR: 59,
+        AGRE: 55,
+        RES: 56,
+        FIN: 50,
+        SPE: 51,
+        DRI: 50,
+        PHY: 60,
+        PAS: 55,
+        OVR: 55,
+    },
+    nationality: [Nationalities.PT],
+    label: 'MENDES',
+    goals: 0,
+    assists: 0
+}
+
+export const LuisSantos: Player = {
+    firstname: 'Luis',
+    lastname: 'Santos',
+    photoUrl: PlayerPhoto,
+    number: 95,
+    stats: {
+        ATA: 56,
+        DEF: 51,
+        TEC: 56,
+        WR: 59,
+        AGRE: 55,
+        RES: 56,
+        FIN: 50,
+        SPE: 51,
+        DRI: 50,
+        PHY: 60,
+        PAS: 55,
+        OVR: 55,
+    },
+    nationality: [Nationalities.PT],
+    label: 'L. SANTOS',
+    goals: 0,
+    assists: 0
+}

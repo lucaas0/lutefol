@@ -9,7 +9,7 @@ export const getPlayerStats = (label: string): PlayerSeasonStats => {
     // Loop through the matches
     for (const match of Matches) {
         // Loop through team1 and team2 players
-        for (const team of [match.team1, match.team2]) {
+        for (const team of match.teams) {
             for (const player of team.players) {
                 // Check if the player's name matches
                 if (player.label === label) {
