@@ -28,6 +28,38 @@ export default function MatchesLayout({
 
     const result = match ? getMatchResult(match.incidents.filter((incident) => incident.type === INCIDENTS.GOAL || incident.type === INCIDENTS.OWN_GOAL) as Goal[]): null;
 
+    const renderTeam = () => {
+        return (
+            match?.teams.map((team, index) => {
+                return (
+                    <React.Fragment key={`team-${team.name}`}>
+                        <div className="flex flex-col-reverse md:flex-row items-center gap-4 md:gap-8">
+                            <h2 className="font-bold uppercase text-sm md:text-xl text-center md:text-left">{team.name}</h2>
+                            <Image src={team.logo} alt="" width={52} height={52} />
+                        </div>
+                        {index < match.teams.length - 1 && renderResultOrVS()}
+                    </React.Fragment>
+                )
+            })
+        )
+    }
+
+    const renderResultOrVS = () => {
+        if (match) {
+            return (
+                match.incidents.length > 0 && result ? (
+                    <React.Fragment>
+                        <h2 className="font-bold text-xl">{result['Scallywags']}</h2>
+                        <h2 className="font-bold text-xl">-</h2>
+                        <h2 className="font-bold text-xl">{result['Corsairs']}</h2>
+                    </React.Fragment>
+                ) : (
+                    <h2 className="font-bold text-xl">VS</h2>
+                )
+            )
+        }
+    }
+
     return (
         <PageWrapper>
             <section className="w-full relative match-center-header">
@@ -45,29 +77,8 @@ export default function MatchesLayout({
                                 <h3 className="color-brand-400 font-bold">{`${Weekday[match.date.getDay()]} ${match.date.getDate()} ${Months[match.date.getMonth()]} ${match.date.getFullYear()}`}</h3>
                                 <h4>{`${match.time} - ${match.location}`}</h4>
                             </div>
-                            <div className="center-absolute bottom-8 md:bottom-24 flex items-center gap-6">
-                                <div className="flex flex-col-reverse md:flex-row items-center gap-4 md:gap-8">
-                                    <h2 className="font-bold uppercase text-xl md:text-2xl text-center md:text-left">{match.teams[0].name}</h2>
-                                    <Image src={match.teams[0].logo} alt="" width={52} height={52} />
-                                </div>
-                                {
-                                    result && (
-                                        <React.Fragment>
-                                            <h2 className="font-bold text-2xl md:text-5xl">{result['Scallywags']}</h2>
-                                            <h2 className="font-bold text-xl">-</h2>
-                                            <h2 className="font-bold text-2xl md:text-5xl">{result['Corsairs']}</h2>
-                                        </React.Fragment>
-                                    )
-                                }
-                                {
-                                    !result && (
-                                        <h2 className="font-bold text-xl">VS</h2>
-                                    )
-                                }
-                                <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-                                    <Image src={match.teams[1].logo} alt="" width={52} height={52} />
-                                    <h2 className="font-bold uppercase text-xl md:text-2xl text-center md:text-left">{match.teams[1].name}</h2>
-                                </div>
+                            <div className="center-absolute bottom-8 md:top-2/3 flex items-center gap-6">
+                                {renderTeam()}
                             </div>
                         </React.Fragment>
                     )
