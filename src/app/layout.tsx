@@ -3,6 +3,7 @@ import { Roboto } from 'next/font/google';
 import './globals.css';
 import localFont from 'next/font/local';
 import Navbar from '@/components/Navbar';
+import { Analytics } from '@vercel/analytics/react';
 
 const danish = localFont({
     src: [
@@ -46,6 +47,7 @@ export default function RootLayout({
             <body className={`${RobotoRegular.variable} ${RobotoBold.variable} ${danish.className}`}>
                 <Navbar />
                 {children}
+                <Analytics />
             </body>
         </html>
     );
