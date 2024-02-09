@@ -4,7 +4,7 @@ import BadgeBronze from '../public/badge-bronze.svg';
 import BadgeBlue from '../public/badge-blue.svg';
 import BadgeYellow from '../public/badge-yellow.svg';
 import BadgeGreen from '../public/badge-green.svg';
-import { Goal, INCIDENTS, Match, Nationalities, Player, PlayerMatchStats, PlayerSeasonStats } from './misc';
+import { Goal, INCIDENTS, Match, MatchIncident, MiniGame, Nationalities, Player, PlayerMatchStats, PlayerSeasonStats, TeamName } from './misc';
 import { AlexandreLopes, AlexandreSantos, AndreSalvado, BernardoFigueiredo, DiogoDomingues, FranciscoMachado, GustavoCarreira,
 IvoOliveira, JoaoFerreira, JoaoMota, JoaoPaulino, JorgeFerreira, JosePedrosa, LucasGarcia, NunoReis,
 RenatoOliveira, RodrigoAlves, RubenRodrigues, TomasSantos, PedroLopes, PedroGoncalves } from './playersDB';
@@ -112,9 +112,13 @@ const getTopPlayers = (matches: Match[]): { topScorers: PlayerMatchStats[], topA
 
   // Loop through matches and accumulate goals and assists
   matches.forEach((match) => {
-    const { incidents } = match;
+    const { incidents, miniMatches } = match;
 
-    incidents.forEach((incident) => {
+      const matchMiniIncidents = miniMatches ? miniMatches.flatMap((miniGame) => miniGame.incidents) : [];
+
+    const allIncidents = miniMatches ? [...incidents, ...matchMiniIncidents] : [...incidents];
+
+    allIncidents.forEach((incident) => {
       if (incident.type === INCIDENTS.GOAL) {
           // Update scorer's stats
           const scorerKey = `${incident.Scorer.firstname}-${incident.Scorer.lastname}`;
@@ -156,5 +160,38 @@ export const getMatchResult = (players: Goal[]) => {
         });
 
         return teamScores;
+}
 
+interface AggregatedResult {
+    team1: string;
+    team2: string;
+    goalsTeam1: number;
+    goalsTeam2: number;
+}
+
+export const aggregateResults = (data: MiniGame[], team1: string, team2: string): AggregatedResult => {
+    const aggregatedResult: AggregatedResult = {
+        team1,
+        team2,
+        goalsTeam1: 0,
+        goalsTeam2: 0,
+    };
+
+    data.forEach((game) => {
+        const [teamA, teamB] = game.teams;
+
+        if ((teamA === team1 && teamB === team2) || (teamA === team2 && teamB === team1)) {
+            game.incidents.forEach((incident) => {
+                if (incident.type === INCIDENTS.GOAL || incident.type === INCIDENTS.OWN_GOAL) {
+                    if (incident.Team === team1) {
+                        aggregatedResult.goalsTeam1++;
+                    } else if (incident.Team === team2) {
+                        aggregatedResult.goalsTeam2++;
+                    }
+                }
+            });
+        }
+    });
+
+    return aggregatedResult;
 }

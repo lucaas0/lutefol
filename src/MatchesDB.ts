@@ -517,7 +517,118 @@ export const Matches: Match[] = [
         date: new Date(Date.UTC(2024, 1, 8)),
         time: '18:30',
         location: 'LeiriFoot',
-        incidents: []
+        incidents: [],
+        miniMatches: [
+            {
+                teams: [ 'Scallywags', 'Corsairs' ],
+                incidents: [
+                    { type: INCIDENTS.GOAL, Scorer: RubenRodrigues, Assist: null, Team: 'Corsairs' }
+                ]
+            },
+            {
+                teams: [ 'Corsairs', 'Buccaneers' ],
+                incidents: []
+            },
+            {
+                teams: ['Buccaneers', 'Scallywags'],
+                incidents: []
+            },
+            {
+                teams: ['Scallywags', 'Corsairs'],
+                incidents: [
+                    { type: INCIDENTS.GOAL, Scorer: LucasGarcia, Assist: null, Team: 'Scallywags' },
+                    { type: INCIDENTS.GOAL, Scorer: AlexandreMendes, Assist: JoaoFerreira, Team: 'Corsairs' },
+                ]
+            },
+            {
+                teams: ['Corsairs', 'Buccaneers'],
+                incidents: [
+                    { type: INCIDENTS.GOAL, Scorer: JoaoFerreira, Assist: null, Team: 'Corsairs' },
+                    { type: INCIDENTS.GOAL, Scorer: PedroGoncalves, Assist: null, Team: 'Buccaneers' },
+                    { type: INCIDENTS.GOAL, Scorer: PedroLopes, Assist: JoaoFerreira, Team: 'Corsairs' },
+                ]
+            },
+            {
+                teams: ['Corsairs', 'Scallywags'],
+                incidents: [
+                    { type: INCIDENTS.GOAL, Scorer: DiogoDomingues, Assist: AndreSalvado, Team: 'Scallywags' },
+                ]
+            },
+            {
+                teams: ['Scallywags', 'Buccaneers'],
+                incidents: [
+                    { type: INCIDENTS.GOAL, Scorer: RodrigoAlves, Assist: PedroGoncalves, Team: 'Buccaneers' },
+                ]
+            },
+            {
+                teams: ['Buccaneers', 'Corsairs'],
+                incidents: [
+                    { type: INCIDENTS.GOAL, Scorer: TomasSantos, Assist: JoaoFerreira, Team: 'Corsairs' },
+                    { type: INCIDENTS.GOAL, Scorer: RubenRodrigues, Assist: JoaoFerreira, Team: 'Corsairs' },
+                ]
+            },
+            {
+                teams: ['Corsairs', 'Scallywags'],
+                incidents: [
+                    { type: INCIDENTS.GOAL, Scorer: TomasSantos, Assist: JoaoFerreira, Team: 'Corsairs' },
+                ]
+            },
+            {
+                teams: ['Corsairs', 'Buccaneers'],
+                incidents: []
+            },
+            {
+                teams: ['Buccaneers', 'Scallywags'],
+                incidents: [
+                    { type: INCIDENTS.GOAL, Scorer: WildCard, Assist: null, Team: 'Buccaneers' },
+                    { type: INCIDENTS.GOAL, Scorer: LucasGarcia, Assist: null, Team: 'Scallywags' },
+                    { type: INCIDENTS.GOAL, Scorer: DiogoDomingues, Assist: AndreSalvado, Team: 'Scallywags' },
+                ]
+            },
+            {
+                teams: ['Scallywags', 'Corsairs'],
+                incidents: [
+                    { type: INCIDENTS.GOAL, Scorer: GustavoCarreira, Assist: LucasGarcia, Team: 'Scallywags' },
+                    { type: INCIDENTS.GOAL, Scorer: AndreSalvado, Assist: LucasGarcia, Team: 'Scallywags' },
+                ]
+            },
+            {
+                teams: ['Scallywags', 'Buccaneers'],
+                incidents: [
+                    { type: INCIDENTS.GOAL, Scorer: RodrigoAlves, Assist: PedroGoncalves, Team: 'Buccaneers' },
+                    { type: INCIDENTS.GOAL, Scorer: RodrigoAlves, Assist: WildCard, Team: 'Buccaneers' },
+                ]
+            },
+            {
+                teams: ['Buccaneers', 'Corsairs'],
+                incidents: [
+                    { type: INCIDENTS.GOAL, Scorer: LuisSantos, Assist: null, Team: 'Buccaneers' },
+                    { type: INCIDENTS.GOAL, Scorer: RubenRodrigues, Assist: null, Team: 'Corsairs' },
+                ]
+            },
+            {
+                teams: ['Corsairs', 'Scallywags'],
+                incidents: [
+                    { type: INCIDENTS.GOAL, Scorer: RubenRodrigues, Assist: JoaoFerreira, Team: 'Corsairs' },
+                    { type: INCIDENTS.GOAL, Scorer: GustavoCarreira, Assist: FranciscoMachado, Team: 'Scallywags' },
+                    { type: INCIDENTS.GOAL, Scorer: AndreSalvado, Assist: LucasGarcia, Team: 'Scallywags' },
+                ]
+            },
+            {
+                teams: ['Scallywags', 'Buccaneers'],
+                incidents: [
+                    { type: INCIDENTS.GOAL, Scorer: LucasGarcia, Assist: AndreSalvado, Team: 'Scallywags' },
+                    { type: INCIDENTS.GOAL, Scorer: AlexandreSantos, Assist: null, Team: 'Buccaneers' },
+                ]
+            },
+            {
+                teams: ['Buccaneers', 'Corsairs'],
+                incidents: [
+                    { type: INCIDENTS.GOAL, Scorer: RubenRodrigues, Assist: null, Team: 'Corsairs' },
+                    { type: INCIDENTS.GOAL, Scorer: AlexandreMendes, Assist: null, Team: 'Corsairs' },
+                ]
+            },
+        ]
     },
     {
         id: '20240212',

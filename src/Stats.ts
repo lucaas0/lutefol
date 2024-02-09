@@ -33,3 +33,38 @@ export const getPlayerStats = (label: string): PlayerSeasonStats => {
     // Return the statistics for the player
     return playerStats;
 };
+
+// Function to get player statistics by first name and last name
+export const getPlayerStatsMiniMatches = (label: string): PlayerSeasonStats => {
+    // Initialize player statistics to zero
+    let playerStats: PlayerSeasonStats = { goals: 0, assists: 0 };
+
+    // Loop through the matches
+    for (const match of Matches) {
+        // Check if miniMatches are defined
+        if (match.miniMatches) {
+            // Loop through the mini-games in the match
+            for (const miniGame of match.miniMatches) {
+                // Loop through the incidents in the mini-game
+                for (const incident of miniGame.incidents) {
+                    // Check if the incident is a goal
+                    if (incident.type === INCIDENTS.GOAL) {
+                        const goal = incident as Goal;
+
+                        // Check if the player is the scorer or assister in the goal
+                        if (goal.Scorer.label === label) {
+                            // Increment goals for the player
+                            playerStats.goals++;
+                        }
+                        if (goal.Assist?.label === label) {
+                            // Increment assists for the player
+                            playerStats.assists++;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Return the statistics for the player
+    return playerStats;
+};

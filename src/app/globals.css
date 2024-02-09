@@ -139,6 +139,29 @@ body {
     max-width: 180px;
 }
 
+.font-roboto {
+    font-family: var(--font-roboto-regular);
+}
+
+.font-roboto-bold {
+    font-family: var(--font-roboto-bold);
+}
+
+.mini-match-container {
+    border: 1px solid #232323;
+    padding: 20px 24px;
+}
+
+.mini-match-container .goal-line:last-of-type {
+    border: none;
+}
+
+.scorer-wrapper {
+    background-color: #262626;
+    border-radius: 50px;
+    padding: 4px 16px;
+}
+
 @media only screen and (max-width: 700px) {
     .goal-line {
         width: 350px;

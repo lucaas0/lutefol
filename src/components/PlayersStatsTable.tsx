@@ -3,7 +3,7 @@ import { getNationalityFlag, getPlayerBadge, PlayersArr, sortByAssistsAsc, sortB
 import Image from "next/image";
 import '../assets/styles/statsTable.css';
 import { useEffect, useState } from "react";
-import { getPlayerStats } from "@/Stats";
+import { getPlayerStats, getPlayerStatsMiniMatches } from "@/Stats";
 
 enum Order {
     OVR_ASC = 'OVR_ASC',
@@ -30,8 +30,8 @@ const PlayersStatsTable = () => {
     useEffect(() => {
         const copy = [...PlayersArr];
         copy.forEach((p) => {
-            p.goals = getPlayerStats(p.label).goals;
-            p.assists = getPlayerStats(p.label).assists;
+            p.goals = getPlayerStats(p.label).goals + getPlayerStatsMiniMatches(p.label).goals;
+            p.assists = getPlayerStats(p.label).assists + getPlayerStatsMiniMatches(p.label).assists; 
         });
         setOrderedPlayersArr(copy);
     }, []);

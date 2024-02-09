@@ -25,6 +25,12 @@ const RobotoRegular = Roboto({
     variable: "--font-roboto-regular",
 });
 
+const RobotoBold = Roboto({
+    subsets: ["latin"],
+    weight: "700",
+    variable: "--font-roboto-bold",
+});
+
 export const metadata: Metadata = {
     title: 'lutefol',
     description: 'Unicorn Sports app',
@@ -37,7 +43,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang='en'>
-            <body className={`${RobotoRegular.variable} ${danish.className}`}>
+            <body className={`${RobotoRegular.variable} ${RobotoBold.variable} ${danish.className}`}>
                 <Navbar />
                 {children}
             </body>

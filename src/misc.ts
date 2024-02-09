@@ -67,6 +67,7 @@ export type Match = {
     date: Date;
     time: string;
     incidents: MatchIncident[];
+    miniMatches?: MiniGame[];
 }
 
 export type PlayerMatchStats = {
@@ -78,4 +79,9 @@ export type PlayerMatchStats = {
 export type PlayerSeasonStats = {
     goals: number;
     assists: number;
+};
+
+export type MiniGame = {
+    teams: TeamName[];
+    incidents: MatchIncident[];
 };

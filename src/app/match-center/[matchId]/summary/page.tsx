@@ -1,13 +1,27 @@
 'use client';
-import { getMatchById, getMatchIncidentsById } from '@/utils';
+import { aggregateResults, getMatchById, getMatchIncidentsById } from '@/utils';
 import { useParams } from 'next/navigation';
-import { useEffect, useMemo, useState } from 'react';
 import '../../../../assets/styles/matchCenter.css';
+import { Goal, INCIDENTS, Match, Substitution } from '@/misc';
+import GoalIncident from '@/components/GoalIncident';
+import SubstitutionIncident from '@/components/SubstitutionIncident';
+import React, { useEffect, useState } from 'react';
+import MiniMatch from '@/components/MiniMatch';
 import Image from 'next/image';
-import { Goal, INCIDENTS, Match, MatchIncident, Player, Substitution, TeamName } from '@/misc';
+import Logo1 from '../../../../../public/logo-red.svg';
+import Logo2 from '../../../../../public/logo-green.svg';
+import Logo3 from '../../../../../public/pirates-logo.svg';
 
 const MatchSummary = () => {
     const params: { matchId: string } = useParams();
+
+    const [match, setMatch] = useState<Match | undefined>(undefined);
+
+    useEffect(() => {
+        const m = getMatchById(params.matchId);
+
+        setMatch(m);
+    }, [params.matchId]);
 
     const getMatchIncidents = () => {
         return getMatchIncidentsById(params.matchId);
@@ -15,46 +29,95 @@ const MatchSummary = () => {
 
     const GoalComponent = ({ goal }: { goal: Goal; }) => {
         const isSecondTeam = goal.Team === 'Corsairs';
-        const isOwnGoal = goal.type === INCIDENTS.OWN_GOAL;
         return (
-            <div className={`flex gap-3 ${isSecondTeam ? 'justify-end' : ''} py-2 w-full`}>
-                <div className='flex gap-2'>
-                    <span>{goal.Scorer.label}</span>
-                    {goal.Assist && (
-                        <span className='grey-949494'>{`(${goal.Assist.label})`}</span>
-                    )}
-                </div>
-                <Image src={isOwnGoal ? '/soccer-ball-red.svg' : '/football.svg'} width={24} height={24} alt='' />
-            </div>
+            <GoalIncident goal={goal} isSecondTeam={isSecondTeam} />
         );
     };
 
-    const SubstitutionComponent = ({ substitution }: { substitution: Substitution }) => (
-        <div className='flex gap-3 py-2 w-full justify-center'>
-            <Image src={'/substitution-ic.svg'} width={18} height={18} alt='' />
-            <span>{substitution.playerIn.label}</span> <span className='grey-949494'>{`(${substitution.playerOut.label})`}</span>
-        </div>
-    );
-
     const renderIncidents = () => {
-        const incidents = getMatchIncidents();
         return getMatchIncidents().map((incident, index) => {
                 return (
                 <div className='goal-line flex' key={index}>
                         {(incident.type === INCIDENTS.GOAL || incident.type === INCIDENTS.OWN_GOAL) && (
                         <GoalComponent goal={incident as Goal} />
                     )}
-                    {incident.type === INCIDENTS.SUBSTITUTION && <SubstitutionComponent substitution={incident as Substitution} />}
+                    {incident.type === INCIDENTS.SUBSTITUTION && <SubstitutionIncident substitution={incident as Substitution} />}
                     {/* Add other incident types as needed */}
                 </div>
-            )
-            
+            );
         });
     };
 
+    const renderMiniMatches = () => {
+        if (match && match.miniMatches) {
+            const miniMatches = match.miniMatches;
+
+            const game1Result = aggregateResults(miniMatches, 'Scallywags', 'Corsairs');
+            const game2Result = aggregateResults(miniMatches, 'Scallywags', 'Buccaneers');
+            const game3Result = aggregateResults(miniMatches, 'Buccaneers', 'Corsairs');
+
+            return (
+                <div className='flex flex-col gap-8'>
+                    {
+                        miniMatches.map((miniMatch, idx) => {
+                            return <MiniMatch match={miniMatch} key={`mini-match-${idx}`} gameNumber={idx + 1} />
+                        })
+                    }
+                    <div className="flex items-center gap-6 bg-true-gray-900 p-6" key="game-1-sca-cor">
+                        <div className="flex flex-col-reverse md:flex-row items-center gap-4 md:gap-8">
+                            <h2 className="font-bold uppercase text-sm md:text-xl text-center md:text-left">Scallywags</h2>
+                            <Image src={Logo1} alt="" width={52} height={52} />
+                        </div>
+                        <React.Fragment>
+                            <h2 className="font-bold text-xl">{game1Result.goalsTeam1}</h2>
+                            <h2 className="font-bold text-xl">-</h2>
+                            <h2 className="font-bold text-xl">{game1Result.goalsTeam2}</h2>
+                        </React.Fragment>
+                        <div className="flex flex-col-reverse md:flex-row items-center gap-4 md:gap-8">
+                            <h2 className="font-bold uppercase text-sm md:text-xl text-center md:text-left">Corsairs</h2>
+                            <Image src={Logo2} alt="" width={52} height={52} />
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-6 bg-true-gray-900 p-6" key="game-2-sca-bur">
+                        <div className="flex flex-col-reverse md:flex-row items-center gap-4 md:gap-8">
+                            <h2 className="font-bold uppercase text-sm md:text-xl text-center md:text-left">Scallywags</h2>
+                            <Image src={Logo1} alt="" width={52} height={52} />
+                        </div>
+                        <React.Fragment>
+                            <h2 className="font-bold text-xl">{game2Result.goalsTeam1}</h2>
+                            <h2 className="font-bold text-xl">-</h2>
+                            <h2 className="font-bold text-xl">{game2Result.goalsTeam2}</h2>
+                        </React.Fragment>
+                        <div className="flex flex-col-reverse md:flex-row items-center gap-4 md:gap-8">
+                            <h2 className="font-bold uppercase text-sm md:text-xl text-center md:text-left">Buccaneers</h2>
+                            <Image src={Logo3} alt="" width={52} height={52} />
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-6 bg-true-gray-900 p-6" key="game-3-cor-bur">
+                        <div className="flex flex-col-reverse md:flex-row items-center gap-4 md:gap-8">
+                            <h2 className="font-bold uppercase text-sm md:text-xl text-center md:text-left">Buccaneers</h2>
+                            <Image src={Logo3} alt="" width={52} height={52} />
+                        </div>
+                        <React.Fragment>
+                            <h2 className="font-bold text-xl">{game3Result.goalsTeam1}</h2>
+                            <h2 className="font-bold text-xl">-</h2>
+                            <h2 className="font-bold text-xl">{game3Result.goalsTeam2}</h2>
+                        </React.Fragment>
+                        <div className="flex flex-col-reverse md:flex-row items-center gap-4 md:gap-8">
+                            <h2 className="font-bold uppercase text-sm md:text-xl text-center md:text-left">Corsairs</h2>
+                            <Image src={Logo2} alt="" width={52} height={52} />
+                        </div>
+                        
+                    </div>
+                </div>
+            );
+        }
+    }
+
     return (
         <div className='m-6'>
-            {renderIncidents()}
+            { match && !match.miniMatches && renderIncidents()}
+            {match && match.miniMatches && match.miniMatches.length > 0 && renderMiniMatches()}
         </div>
     )
 };
