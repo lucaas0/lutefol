@@ -152,6 +152,10 @@ body {
     padding: 20px 24px;
 }
 
+.mini-match-container .goal-line {
+    width: 100%;
+}
+
 .mini-match-container .goal-line:last-of-type {
     border: none;
 }
