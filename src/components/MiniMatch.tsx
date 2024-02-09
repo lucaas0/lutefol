@@ -70,7 +70,7 @@ const MiniMatch = ({ match, gameNumber }: MiniMatchProps) => {
     return (
         <main className="flex flex-col gap-2 mini-match-container">
             <section className="color-brand-400 font-roboto-bold">
-                Jogo {gameNumber}
+                Game {gameNumber}
             </section>
             <section>
                 <div className="flex items-center justify-between">
