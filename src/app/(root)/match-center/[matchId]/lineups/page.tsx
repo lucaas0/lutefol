@@ -2,7 +2,7 @@
 import { getMatchById } from '@/utils';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import '../../../../assets/styles/matchCenter.css';
+import '../../../../../assets/styles/matchCenter.css';
 import Image from 'next/image';
 import { Match } from '@/misc';
 

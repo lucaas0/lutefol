@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import '../../assets/styles/matchCenter.css';
+import '../../../assets/styles/matchCenter.css';
 
 export default function MatchesLayout({
     children,

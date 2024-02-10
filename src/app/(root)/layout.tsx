@@ -1,19 +1,25 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
-import './globals.css';
+import '../globals.css';
 import localFont from 'next/font/local';
 import Navbar from '@/components/Navbar';
 import { Analytics } from '@vercel/analytics/react';
 
+export const metadata: Metadata = {
+    title: 'Lutefol - Next generation football statistics tracking platform',
+    description: 'Next generation football statistics tracking platform',
+    keywords: 'lutefol, football stats'
+}
+
 const danish = localFont({
     src: [
         {
-            path: '../assets/fonts/DinishCondensed-Regular.woff2',
+            path: '../../assets/fonts/DinishCondensed-Regular.woff2',
             weight: '400',
             style: 'normal',
         },
         {
-            path: '../assets/fonts/DinishCondensed-Bold.woff2',
+            path: '../../assets/fonts/DinishCondensed-Bold.woff2',
             weight: '700',
             style: 'normal',
         },
@@ -31,11 +37,6 @@ const RobotoBold = Roboto({
     weight: "700",
     variable: "--font-roboto-bold",
 });
-
-export const metadata: Metadata = {
-    title: 'lutefol',
-    description: 'Unicorn Sports app',
-};
 
 export default function RootLayout({
     children,

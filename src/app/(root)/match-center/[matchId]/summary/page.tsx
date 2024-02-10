@@ -1,16 +1,16 @@
 'use client';
 import { aggregateResults, getMatchById, getMatchIncidentsById } from '@/utils';
 import { useParams } from 'next/navigation';
-import '../../../../assets/styles/matchCenter.css';
+import '../../../../../assets/styles/matchCenter.css';
 import { Goal, INCIDENTS, Match, Substitution } from '@/misc';
 import GoalIncident from '@/components/GoalIncident';
 import SubstitutionIncident from '@/components/SubstitutionIncident';
 import React, { useEffect, useState } from 'react';
 import MiniMatch from '@/components/MiniMatch';
 import Image from 'next/image';
-import Logo1 from '../../../../../public/logo-red.svg';
-import Logo2 from '../../../../../public/logo-green.svg';
-import Logo3 from '../../../../../public/pirates-logo.svg';
+import Logo1 from '../../../../../../public/logo-red.svg';
+import Logo2 from '../../../../../../public/logo-green.svg';
+import Logo3 from '../../../../../../public/pirates-logo.svg';
 
 const MatchSummary = () => {
     const params: { matchId: string } = useParams();

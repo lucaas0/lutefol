@@ -1,12 +1,12 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import '../../../../assets/styles/post.css';
+import '../../../../../assets/styles/post.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { News, NewsDB } from '@/NewsDB';
 import { renderContent } from '@/NewsPostContent';
-import Image1 from '../../../../../public/banner-1.jpeg';
+import Image1 from '../../../../../../public/banner-1.jpeg';
 
 const Post = () => {
     const params: { newsId: string } = useParams();
