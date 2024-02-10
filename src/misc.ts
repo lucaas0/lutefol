@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+import { ChangeEvent, HTMLInputTypeAttribute, InputHTMLAttributes, LabelHTMLAttributes } from "react";
 
 type Stats = ['OVR', 'ATA', 'DEF', 'TEC', 'WR', 'AGRE', 'RES', 'FIN', 'SPE', 'DRI', 'PHY', 'PAS'];
 
@@ -85,3 +86,15 @@ export type MiniGame = {
     teams: TeamName[];
     incidents: MatchIncident[];
 };
+
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+    placeholder: string;
+    value: string;
+    type: HTMLInputTypeAttribute;
+    hasError: boolean;
+    onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+}
+
+export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
+    text: string;
+}
