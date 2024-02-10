@@ -72,6 +72,9 @@ const Navbar = () => {
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
                     </svg>
                 </button> 
+                {/* <Link href="/signin">
+                    <Image src="user-ic.svg" width={24} height={24} alt='' />
+                </Link> */}
             </div>
             {
                 isMenuOpen && (

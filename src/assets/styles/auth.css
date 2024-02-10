@@ -1,0 +1,51 @@
+main {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+main section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 50%;
+}
+
+.signup {
+    background-image: url('../../../public/signup-bg.png');
+    background-position: center;
+    background-size: cover;
+}
+
+.signin {
+    background-image: url('../../../public/signin-bg.png');
+    background-position: center;
+    background-size: cover;
+}
+
+.color-8B849B {
+    color: #8B849B;
+}
+
+*:focus {
+    outline: none;
+}
+
+.color-B8B8B8 {
+    color: #B8B8B8;
+}
+
+.btn-register {
+    width: 100%;
+    background-color: #D8B247;
+    color: #121212;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 12px 0;
+}
+
+.color-brand-400 {
+    color: #D8B247;
+}

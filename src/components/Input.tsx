@@ -18,6 +18,8 @@ const Input = (props: InputProps) => {
             value={value}
             {...rest}
             onChange={(e) => onInputChange(e)}
+            autoComplete="off"
+            
         />
     )
 

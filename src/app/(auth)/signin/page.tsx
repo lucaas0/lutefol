@@ -5,18 +5,16 @@ import Link from "next/link";
 import { ChangeEvent, useState } from "react";
 import '../../../assets/styles/auth.css';
 
-interface IUserSignup {
-    firstname: string;
-    lastname: string;
+interface ILogin {
     email: string;
     password: string;
 }
 
-const Signup = () => {
-    const [user, setUser] = useState<IUserSignup>({ firstname: '', lastname: '', email: '', password: '' });
+const Signin = () => {
+    const [user, setUser] = useState<ILogin>({ email: '', password: '' });
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.currentTarget;
+        const { name, value } = e.currentTarget;;
         setUser((prevState) => ({
             ...prevState,
             [name]: value,
@@ -25,7 +23,7 @@ const Signup = () => {
 
     return (
         <main>
-            <section className="hidden md:flex signup" >
+            <section className="hidden md:flex signin" >
                 <div className="flex flex-col gap-48 p-10">
                     <div className="flex gap-2">
                         <Image src="/caret-left-ic.svg" width={24} height={24} alt="<" />
@@ -43,34 +41,12 @@ const Signup = () => {
                 <Image src="/logo-filled.svg" width={96} height={96} alt="" className="md:hidden block" />
                 <div className="flex flex-col w-4/6 gap-6">
                     <div className="flex flex-col items-center gap-4">
-                        <h1 className="uppercase font-bold text-2xl">Sign up</h1>
+                        <h1 className="uppercase font-bold text-2xl">sign in</h1>
                         <h2 className="text-sm text-center color-8B849B md:w-2/3">
                             Seize Your Spot with Pirates FC and Dive into a Sea of Skill, Camaraderie, and Unforgettable Goals
                         </h2>
                     </div>
                     <div className="flex flex-col gap-4 md:gap-8 w-full">
-                        <InputWithLabel
-                            inputProps={{
-                                hasError: false,
-                                type: 'text',
-                                placeholder: 'Insert your first name',
-                                onInputChange: handleInputChange,
-                                value: user?.firstname || '',
-                                name: 'firstname'
-                            }}
-                            labelProps={{ text: 'First name *' }}
-                        />
-                        <InputWithLabel
-                            inputProps={{
-                                hasError: false,
-                                type: 'text',
-                                placeholder: 'Insert your last name',
-                                onInputChange: handleInputChange,
-                                value: user?.lastname || '',
-                                name: 'lastname'
-                            }}
-                            labelProps={{ text: 'Last name *' }}
-                        />
                         <InputWithLabel
                             inputProps={{
                                 hasError: false,
@@ -94,14 +70,16 @@ const Signup = () => {
                             labelProps={{ text: 'Password' }}
                         />
 
+                        <Link href="" className="font-bold color-B8B8B8">Forgot Password?</Link>
+
                         <Link href="" className="btn-register">
-                            register
+                            sign in
                         </Link>
 
                         <div className="flex gap-1">
-                            <span className="color-B8B8B8">Already have an account?</span>
-                            <Link href="/signin">
-                                <span className="color-brand-400">Sign in</span>
+                            <span className="color-B8B8B8">Not registed?</span>
+                            <Link href="/signup">
+                                <span className="color-brand-400">Join the crew</span>
                             </Link>
                         </div>
                     </div>
@@ -112,4 +90,4 @@ const Signup = () => {
     )
 }
 
-export default Signup;
+export default Signin;
