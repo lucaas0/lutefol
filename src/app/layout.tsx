@@ -35,6 +35,7 @@ const RobotoBold = Roboto({
 export const metadata: Metadata = {
     title: 'lutefol',
     description: 'Unicorn Sports app',
+    keywords: 'lutefol, stats, matches, piratas fc'
 };
 
 export default function RootLayout({
