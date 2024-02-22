@@ -746,12 +746,12 @@ export const Matches: Match[] = [
         teams: [
             {
                 name: 'Scallywags', logo: LogoRed, players: [
-                    JoaoFerreira, AlexandreSantos, LuisSantos, RubenRodrigues, FranciscoMachado
+                    JoaoFerreira, AlexandreSantos, LuisSantos, RubenRodrigues, FranciscoMachado, DiogoDomingues
                 ]
             },
             {
                 name: 'Corsairs', logo: LogoGreen, players: [
-                    LucasGarcia, AndreSalvado, WildCard, PedroGoncalves, DiogoDomingues
+                    LucasGarcia, AndreSalvado, WildCard, PedroGoncalves, GustavoCarreira, TomasSantos
                 ]
             },
         ],
