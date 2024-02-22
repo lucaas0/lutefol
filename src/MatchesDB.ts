@@ -742,28 +742,17 @@ export const Matches: Match[] = [
         ]
     },
     {
-        id: '20240219',
-        teams: [
-            {
-                name: 'Scallywags', logo: LogoRed, players: []
-            },
-            {
-                name: 'Corsairs', logo: LogoGreen, players: []
-            },
-        ],
-        date: new Date(Date.UTC(2024, 1, 19)),
-        time: '18:30',
-        location: 'LeiriFoot',
-        incidents: []
-    },
-    {
         id: '20240222',
         teams: [
             {
-                name: 'Scallywags', logo: LogoRed, players: []
+                name: 'Scallywags', logo: LogoRed, players: [
+                    JoaoFerreira, AlexandreSantos, LuisSantos, RubenRodrigues, FranciscoMachado
+                ]
             },
             {
-                name: 'Corsairs', logo: LogoGreen, players: []
+                name: 'Corsairs', logo: LogoGreen, players: [
+                    LucasGarcia, AndreSalvado, WildCard, PedroGoncalves, DiogoDomingues
+                ]
             },
         ],
         date: new Date(Date.UTC(2024, 1, 22)),
