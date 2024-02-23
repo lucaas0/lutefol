@@ -8,10 +8,11 @@ import { getMatchResult } from '@/utils';
 
 type OwnProps = {
     match: Match;
+    isUpcoming?: boolean;
 }
 
 const Match = (props: OwnProps) => {
-    const { match } = props;
+    const { match, isUpcoming } = props;
 
     const result = getMatchResult(match.incidents.filter((incident) => incident.type === INCIDENTS.GOAL || incident.type === INCIDENTS.OWN_GOAL) as Goal[]);
 
@@ -63,14 +64,13 @@ const Match = (props: OwnProps) => {
                             renderTeam()
                         }
                     </div>
-                    <Link href={`/match-center/${match.id}/summary`}>
-                <button
-                    type="button"
-                    className="border
-                            border-gray-800 border-solid py-2 px-4 text-base font-bold"
-                >
-                    MATCH CENTER
-                </button>
+                    <Link href={isUpcoming ? `/match-center/${match.id}/lineups` : `/match-center/${match.id}/summary`}>
+                        <button
+                            type="button"
+                            className="border border-gray-800 border-solid py-2 px-4 text-base font-bold"
+                        >
+                            MATCH CENTER
+                        </button>
                     </Link>
                 </section>
     )
