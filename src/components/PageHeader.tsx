@@ -11,8 +11,6 @@ const PageHeader = (props: OwnProps) => {
 
     const { data: session } = useSession(); 
 
-    console.log(session);
-
     return (
         <section className="w-full relative md:mb-10">
                 <Image src="/page-header-bg.png" alt="" width={8000} height={500} className="w-full" />
