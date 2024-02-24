@@ -17,7 +17,7 @@ const PageHeader = (props: OwnProps) => {
                 <div className="flex justify-between w-full">
                     <h1 className="page-header-title">{title}</h1>
                     {
-                        session && (
+                        session && title === 'Matches' && (
                             <button className="page-header-btn">
                                 Create match
                             </button>
