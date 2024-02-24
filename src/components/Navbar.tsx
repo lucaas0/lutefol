@@ -37,14 +37,14 @@ const Navbar = () => {
                             className="cursor-pointer"
                         />
                     </Link>
-                    <Link href='https://void.pt' target='_blank'>
+                    {/* <Link href='https://void.pt' target='_blank'>
                         <Image
                             src='/void-logo.svg'
                             alt=''
                             width={60}
                             height={60}
                         />
-                    </Link>
+                    </Link> */}
                     <hr className="divider hidden md:block" />
                     <div className="hidden w-full md:block md:w-auto" id="navbar-default">
                         <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row rtl:space-x-reverse md:mt-0">

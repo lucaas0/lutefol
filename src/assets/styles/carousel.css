@@ -34,7 +34,6 @@
 }
 
 .menu label {
-  /* cursor: pointer; */
   display: inline-block;
   width: 76px;
   height: 2px;
@@ -44,10 +43,6 @@
 .label-selected {
     height: 6px !important;
 }
-
-/* .menu label:hover {
-    background: red;
-} */
 
 .slide {
   width: 100%;

@@ -15,7 +15,7 @@ const UpcomingMatches = () => {
                 {
                     upComingMatches.map((match) => {
                         return (
-                            <Match match={match} key={`upcoming-match-${match.date}`} />
+                            <Match isUpcoming match={match} key={`upcoming-match-${match.date}`} />
                         )
                     })
                 }
