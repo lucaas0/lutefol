@@ -5,6 +5,7 @@ import localFont from 'next/font/local';
 import Navbar from '@/components/Navbar';
 import { Analytics } from '@vercel/analytics/react';
 import AuthSessionProvider from '@/components/AuthSessionProvider';
+import SessionGuard from '@/components/SessionGuard';
 
 export const metadata: Metadata = {
     title: 'Lutefol - Next generation football statistics tracking platform',
@@ -48,9 +49,11 @@ export default function RootLayout({
         <html lang='en'>
             <body className={`${RobotoRegular.variable} ${RobotoBold.variable} ${danish.className}`}>
             <AuthSessionProvider>
-                <Navbar />
-                {children}
-                <Analytics />
+                <SessionGuard>
+                    <Navbar />
+                    {children}
+                    <Analytics />
+                </SessionGuard>
             </AuthSessionProvider>
             </body>
         </html>

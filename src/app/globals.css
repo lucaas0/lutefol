@@ -45,6 +45,18 @@ body {
     overflow: hidden;
 }
 
+*:focus {
+    outline: none;
+}
+
+.bg-2D2D2D {
+    background-color: #2D2D2D;
+}
+
+.border-393939 {
+    border: 1px solid #393939;
+}
+
 .fade-hr {
     width: 100vw;
     border: 0;

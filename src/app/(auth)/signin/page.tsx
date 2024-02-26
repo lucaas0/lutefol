@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChangeEvent, useState } from "react";
 import '../../../assets/styles/auth.css';
+import { signIn } from "next-auth/react";
 
 interface ILogin {
     email: string;
@@ -47,7 +48,7 @@ const Signin = () => {
                         </h2>
                     </div>
                     <div className="flex flex-col gap-4 md:gap-8 w-full">
-                        <InputWithLabel
+                        {/* <InputWithLabel
                             inputProps={{
                                 hasError: false,
                                 type: 'email',
@@ -71,17 +72,20 @@ const Signin = () => {
                         />
 
                         <Link href="" className="font-bold color-B8B8B8">Forgot Password?</Link>
+                        <button className="btn-register" onClick={() => signIn('keycloak', { callbackUrl: '/matches', redirect: true })}>
+                            Sign in with Email
+                        </button> */}
 
-                        <Link href="" className="btn-register">
-                            sign in
-                        </Link>
+                        <button className="btn-register" onClick={() => signIn('keycloak', { callbackUrl: '/matches', redirect: true })}>
+                            Sign in with Keycloack
+                        </button>
 
-                        <div className="flex gap-1">
+                        {/* <div className="flex gap-1">
                             <span className="color-B8B8B8">Not registed?</span>
                             <Link href="/signup">
                                 <span className="color-brand-400">Join the crew</span>
                             </Link>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </section>
