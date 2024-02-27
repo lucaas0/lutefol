@@ -5,7 +5,7 @@ import { ReactNode, useEffect } from "react";
 export default function SessionGuard({ children }: { children: ReactNode }) {
   const { data } = useSession();
   useEffect(() => {
-    if (data?.expires === "RefreshAccessTokenError") {
+    if (data?.error === "RefreshAccessTokenError") {
       signIn("keycloak");
     }
   }, [data]);

@@ -1,7 +1,32 @@
+'use client';
+
 import { Matches } from "@/MatchesDB";
 import Match from "@/components/Match";
+import { matchesListURL, matchesURL } from "@/services/api";
+import axios from "axios";
+import { signIn, useSession, getSession } from "next-auth/react";
+import { useEffect } from "react";
 
 const UpcomingMatches = () => {
+    
+    useEffect(() => {
+        getMatches();
+    }, []);
+
+    const getMatches = async () => {
+        const session = await getSession();
+
+        try {
+            const { data } = await axios.get(matchesListURL(), {
+                headers: {
+                    'Authorization': `Bearer ${session?.accessToken}`,
+                    'club': '10000'
+                }
+            });
+        } catch (error) {
+        }
+    }
+
     const currentDateTime = new Date();
     const startOfToday = new Date(currentDateTime.getFullYear(), currentDateTime.getMonth(), currentDateTime.getDate(), 0, 0, 0, 0);
 

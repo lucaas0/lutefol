@@ -17,9 +17,6 @@ const PageHeader = (props: OwnProps) => {
 
     const { data: session } = useSession(); 
 
-    console.log(useSession());
-    console.log(session);
-
     return (
         <React.Fragment>
             <section className="w-full relative md:mb-10">
