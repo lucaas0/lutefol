@@ -856,10 +856,10 @@ export const Matches: Match[] = [
         id: '20240229',
         teams: [
             {
-                name: 'Scallywags', logo: LogoRed, players: []
+                name: 'Scallywags', logo: LogoGreen, players: [LucasGarcia, AndreSalvado, AlexandreMendes, AlexandreLopes, JoaoFerreira, AlexandreSantos]
             },
             {
-                name: 'Corsairs', logo: LogoGreen, players: []
+                name: 'Corsairs', logo: LogoRed, players: [JosePedrosa, PedroGoncalves, DiogoDomingues, RubenRodrigues, WildCard, GustavoCarreira]
             },
         ],
         date: new Date(Date.UTC(2024, 1, 29)),
