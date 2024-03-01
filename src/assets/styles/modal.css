@@ -5,7 +5,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 9998;
+    z-index: 2;
 }
 .modal {
     position: fixed;
@@ -18,8 +18,7 @@
     box-sizing: border-box;
     padding: 48px;
     z-index: 9999;
-    width: fit-content;
-    width: 60%;
+    width: 50%;
     max-width: 80%;
     height: fit-content;
     max-height: 80%;
@@ -90,3 +89,15 @@ input:autofill {
     flex-direction: column;
     gap: 12px;
 }
+
+@media only screen and (max-width: 1200px) {
+    .modal {
+        width: 90%;
+        max-width: 90%;
+        padding: 24px;
+    }
+
+    .modal-container-column {
+        gap: 20px;
+    }
+  }

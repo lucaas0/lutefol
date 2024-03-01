@@ -1,28 +1,40 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { Modal } from "./Modal";
 import { matchesURL } from "@/services/api";
-import { getSession, useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import axios from 'axios';
+import CustomDatePicker from "./CustomDatePicker";
+import { createFormattedDateTime } from "@/utils";
+import CustomTimePicker from "./CustomTimePicker";
+import { Match, ToastTypes } from "@/misc";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import showToast from "./Toast";
+import Loader from "./Loader";
+
 
 type CreateMatchModalProps = {
     handleCloseModal(): void;
+    onMatchedCreated(match: Match): void;
 }
 
 type ModalForm = {
-    date: string;
-    time: string;
+    date: Date | null;
+    time: Date | null;
     location: string;
 }
 
 const CreateMatchModal = ({handleCloseModal}: CreateMatchModalProps) => {
     const [data, setData] = useState<ModalForm>({
-        date: '',
-        location: '',
-        time: '',
+        date: null,
+        location: 'Leirifoot',
+        time: null,
     });
 
+    const [isLoading, setIsLoading] = useState(false);
+
     const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.currentTarget;;
+        const { name, value } = e.currentTarget;
         setData((prevState) => ({
             ...prevState,
             [name]: value,
@@ -32,15 +44,17 @@ const CreateMatchModal = ({handleCloseModal}: CreateMatchModalProps) => {
     const onCreateMatch = async () => {
         const session = await getSession();
 
-        if (session) {
+        if (session && data.date && data.time) {
+            const scheduledStart = createFormattedDateTime({ date: data.date, time: `${data.time?.getHours()}:${data.time?.getMinutes()}` });
+            setIsLoading(true);
             try {
-                const { data } = await axios.post(matchesURL(), {
+                const { data: matchCreated } = await axios.post(matchesURL(), {
                     "homeTeamName": "SCALLYWAGS",
                     "awayTeamName": "CORSAIRS",
-                    "scheduledStart": "2024-02-29T12:15:50-04:00",
+                    "scheduledStart": scheduledStart,
                     "scheduledLength": "PT60M",
                     "venueId": 10000,
-                    "venueName": null,
+                    "venueName": data.location,
                     "modality": "FUTSAL"
                   },
                   {
@@ -50,22 +64,27 @@ const CreateMatchModal = ({handleCloseModal}: CreateMatchModalProps) => {
                     },
                 });
 
+                showToast(ToastTypes.SUCCESS, 'Match Created!');
             } catch (error) {
+                showToast(ToastTypes.ERROR, 'An error occur, please try again.');
+            } finally {
+                setIsLoading(false);
             }
         }
     }
 
     return (
-        <Modal.Root containerClass='modal-container-column'>
+        isLoading ? <Loader /> : (
+            <Modal.Root containerClass='modal-container-column'>
             <Modal.Header title="Create Event" handleClose={handleCloseModal} />
             <Modal.Content>
                 <Modal.InputWrapper>
                     <Modal.Label title='Date' />
-                    <Modal.Input type='text' name="date" hasError={false} placeholder="" value={data.date} onInputChange={e => onInputChange(e)} />
+                    <CustomDatePicker onDateSelected={(date) => setData((prevState) => ({ ...prevState, date}))} />
                     </Modal.InputWrapper>
                 <Modal.InputWrapper>
                     <Modal.Label title='Time' />
-                    <Modal.Input type='text' name="time" hasError={false} placeholder="" value={data.time} onInputChange={e => onInputChange(e)} />
+                    <CustomTimePicker onTimeSelected={(time) => setData((prevState) => ({ ...prevState, time}))} />
                 </Modal.InputWrapper>
                 <Modal.InputWrapper>
                         <Modal.Label title='Location' />
@@ -76,7 +95,9 @@ const CreateMatchModal = ({handleCloseModal}: CreateMatchModalProps) => {
                     <button className="flex-1 px-8 py-4 bg-white text-black rounded-full" onClick={onCreateMatch}>Publish</button>
                  </div>
             </Modal.Content>
+            <ToastContainer />
         </Modal.Root>
+        )
     )
 }
 

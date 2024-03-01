@@ -195,3 +195,21 @@ export const aggregateResults = (data: MiniGame[], team1: string, team2: string)
 
     return aggregatedResult;
 }
+
+export const createFormattedDateTime = (data: { date: Date | null, time: string}): string => {
+    if (!data.date) return '';
+
+    console.log(data.date);
+
+    // Convert date string to Date object
+    const dateObject: Date = data.date;
+  
+   // Extract time from the "time" field and convert to Date object
+    const timeArray: string[] = data.time.split(':');
+    dateObject.setUTCHours(parseInt(timeArray[0], 10), parseInt(timeArray[1], 10), 0, 0);
+  
+    // Format the date as a string with timezone offset
+    const formattedDateTime: string = dateObject.toISOString();
+  
+  return formattedDateTime;
+}

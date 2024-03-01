@@ -98,3 +98,9 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
     text: string;
 }
+
+export enum ToastTypes {
+    SUCCESS = 'SUCCESS',
+    WARNING = 'WARNING',
+    ERROR = 'ERROR'
+};
