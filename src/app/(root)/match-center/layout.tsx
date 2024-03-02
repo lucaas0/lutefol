@@ -26,15 +26,12 @@ export default function MatchesLayout({
     const [match, setMatch] = useState<MatchDetails | undefined>(undefined);
 
     useEffect(() => {
-        console.log('starting fetch')
-        
         const getMatchDetails = async (id: number) => {
             try {
                 const { data } = await axios.get<MatchDetails>(matchURL(id));
                 setMatch(data);
                 return data;
             } catch (error) {
-                console.log(error);
                 const oldMatch = getMatchById(params.matchId);
 
                 if (oldMatch) {
