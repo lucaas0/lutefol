@@ -95,8 +95,8 @@ const CreateMatchModal = ({handleCloseModal, handleMatchCreated}: CreateMatchMod
                         <Modal.Input type='text' name="location" hasError={false} placeholder="" value={data.location} onInputChange={e => onInputChange(e)} />
                     </Modal.InputWrapper>
                     <div className="w-full flex flex-row gap-6 font-roboto">
-                        <button className="flex-1 px-8 py-4 text-white bg-2D2D2D rounded-full border-393939">Cancel</button>
-                        <button className="flex-1 px-8 py-4 bg-white text-black rounded-full" onClick={() => onCreateMatch()}>Publish</button>
+                        <button className="flex-1 px-4 py-2 md:px-8 md:py-4 text-white bg-2D2D2D rounded-full border-393939" onClick={() => handleCloseModal()}>Cancel</button>
+                        <button className="flex-1 px-4 py-2 md:px-8 md:py-4 bg-white text-black rounded-full" onClick={() => onCreateMatch()}>Publish</button>
                     </div>
                 </Modal.Content>
             </Modal.Root>
