@@ -233,9 +233,9 @@ body {
 
 @media only screen and (max-width: 700px) {
     .page-header-btn {
-        padding: 6px 12px;
-        top: -15px;
-        font-size: 12px;
+        padding: 8px 16px;
+        top: -20px;
+        font-size: 14px;
     }
 
     .goal-line {
