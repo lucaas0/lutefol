@@ -3,12 +3,17 @@ import PageWrapper from "@/components/PageWrapper";
 import Tab from "@/components/Tab";
 import CustomTabs from "@/components/Tabs";
 import { Goal, INCIDENTS, Match, Months, Weekday } from "@/misc";
-import { getMatchById, getMatchResult } from "@/utils";
+import { createFormattedDateTime, getMatchById, getMatchResult } from "@/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import '../../../assets/styles/matchCenter.css';
+import axios from "axios";
+import { matchURL } from "@/services/api";
+import { MatchDetails, MatchStatus, Modality } from "../../../../types/types";
+import LogoHomeTeam from '../../../../public/logo-green.svg';
+import LogoAwayTeam from '../../../../public/logo-red.svg';
 
 export default function MatchesLayout({
     children,
@@ -18,47 +23,95 @@ export default function MatchesLayout({
     const route = usePathname();
     const params: { matchId: string } = useParams();
 
-    const [match, setMatch] = useState<Match | undefined>(undefined);
+    const [match, setMatch] = useState<MatchDetails | undefined>(undefined);
 
     useEffect(() => {
-        const m = getMatchById(params.matchId);
+        console.log('starting fetch')
+        
+        const getMatchDetails = async (id: number) => {
+            try {
+                const { data } = await axios.get<MatchDetails>(matchURL(id));
+                setMatch(data);
+                return data;
+            } catch (error) {
+                console.log(error);
+                const oldMatch = getMatchById(params.matchId);
 
-        setMatch(m);
+                if (oldMatch) {
+                    const result = oldMatch ? getMatchResult(oldMatch.incidents.filter((incident) => incident.type === INCIDENTS.GOAL || incident.type === INCIDENTS.OWN_GOAL) as Goal[]): null;
+                    
+                    const newMatchTyped: MatchDetails = {
+                        awayTeamPlayers: [],
+                        homeTeamPlayers: [],
+                        matchEvents: [],
+                        realEnd: '',
+                        realLength: '',
+                        realStart: '',
+                        matchDTO: {
+                            awayTeamName: oldMatch.teams[1].name,
+                            awayTeamScore: result ? result['Corsairs'] : 0,
+                            homeTeamName: oldMatch.teams[0].name,
+                            homeTeamScore: result ? result['Scallywags'] : 0,
+                            createdDate: '',
+                            id: Number(oldMatch.id),
+                            lastModifiedDate: '',
+                            matchStatus: oldMatch.incidents.length > 0 ? MatchStatus.COMPLETED : MatchStatus.SCHEDULED,
+                            modality: Modality.FUTSAL,
+                            scheduledLength: '',
+                            scheduledStart: createFormattedDateTime({ date: oldMatch.date, time: oldMatch.time }),
+                            venueId: 1,
+                            venueName: oldMatch.location
+                        }
+                    }
+                    setMatch(newMatchTyped);
+                }
+                return undefined;
+            }
+        }
+        if (params.matchId) {
+            getMatchDetails(Number(params.matchId));
+
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [params.matchId]);
 
-    const result = match ? getMatchResult(match.incidents.filter((incident) => incident.type === INCIDENTS.GOAL || incident.type === INCIDENTS.OWN_GOAL) as Goal[]): null;
-
-    const renderTeam = () => {
+    const renderTeam = (teamName: string, homeTeam: boolean) => {
         return (
-            match?.teams.map((team, index) => {
-                return (
-                    <React.Fragment key={`team-${team.name}`}>
-                        <div className="flex flex-col-reverse md:flex-row items-center gap-4 md:gap-8">
-                            <h2 className="font-bold uppercase text-sm md:text-xl text-center md:text-left">{team.name}</h2>
-                            <Image src={team.logo} alt="" width={52} height={52} />
-                        </div>
-                        {index < match.teams.length - 1 && renderResultOrVS()}
-                    </React.Fragment>
-                )
-            })
+            <React.Fragment key={`team-${teamName}`}>
+                <div className="flex flex-col-reverse md:flex-row items-center gap-4 md:gap-8">
+                    {
+                        homeTeam ? (
+                            <>
+                                <h2 className="font-bold uppercase text-sm md:text-xl text-center md:text-left">{teamName}</h2>
+                                <Image src={homeTeam ? LogoHomeTeam : LogoAwayTeam} alt="" width={52} height={52} />
+                            </>
+                        ) : (
+                            <>
+                                <Image src={homeTeam ? LogoHomeTeam : LogoAwayTeam} alt="" width={52} height={52} />
+                                <h2 className="font-bold uppercase text-sm md:text-xl text-center md:text-left">{teamName}</h2>
+                            </>
+                        )
+                    }
+                </div>
+            </React.Fragment>
         )
     }
 
     const renderResultOrVS = () => {
-        if (match) {
-            return (
-                match.incidents.length > 0 && result ? (
+        return (
+                match?.matchDTO.matchStatus === MatchStatus.COMPLETED ? (
                     <React.Fragment>
-                        <h2 className="font-bold text-xl">{result['Scallywags']}</h2>
+                        <h2 className="font-bold text-xl">{match.matchDTO.homeTeamScore}</h2>
                         <h2 className="font-bold text-xl">-</h2>
-                        <h2 className="font-bold text-xl">{result['Corsairs']}</h2>
+                        <h2 className="font-bold text-xl">{match.matchDTO.awayTeamScore}</h2>
                     </React.Fragment>
                 ) : (
-                    <h2 className="font-bold text-xl">-</h2>
-                )
+                <h2 className="font-bold text-xl">VS</h2>
             )
-        }
+        )
     }
+
+    const matchStartDate = match ? new Date(match.matchDTO.scheduledStart) : new Date();
 
     return (
         <PageWrapper>
@@ -74,11 +127,19 @@ export default function MatchesLayout({
                     match && (
                         <React.Fragment>
                             <div className="center-absolute top-28 md:top-20 flex flex-col text-center">
-                                <h3 className="color-brand-400 font-bold">{`${Weekday[match.date.getDay()]} ${match.date.getDate()} ${Months[match.date.getMonth()]} ${match.date.getFullYear()}`}</h3>
-                                <h4>{`${match.time} - ${match.location}`}</h4>
+                            <h3 className="color-brand-400 font-bold">{`${Weekday[matchStartDate.getDay()]} ${matchStartDate.getDate()} ${Months[matchStartDate.getMonth()]} ${matchStartDate.getFullYear()}`}</h3>
+                                <h4>{`${matchStartDate.getHours()}:${matchStartDate.getMinutes()} - ${match.matchDTO.venueName}`}</h4>
                             </div>
                             <div className="center-absolute bottom-8 md:top-2/3 flex items-center gap-6">
-                                {renderTeam()}
+                            {
+                                renderTeam(match.matchDTO.homeTeamName, true)
+                            }
+                            {
+                                renderResultOrVS()
+                            }
+                            {
+                                renderTeam(match.matchDTO.awayTeamName, false)
+                            }
                             </div>
                         </React.Fragment>
                     )
