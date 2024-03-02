@@ -4,14 +4,15 @@ import BadgeBronze from '../public/badge-bronze.svg';
 import BadgeBlue from '../public/badge-blue.svg';
 import BadgeYellow from '../public/badge-yellow.svg';
 import BadgeGreen from '../public/badge-green.svg';
-import { Goal, INCIDENTS, Match, MatchIncident, MiniGame, Nationalities, Player, PlayerMatchStats, PlayerSeasonStats, TeamName } from './misc';
+import { Goal, INCIDENTS, Match, MatchIncident, MiniGame, Nationalities, PlayerMatchStats, PlayerSeasonStats, TeamName } from './misc';
 import { AlexandreLopes, AlexandreSantos, AndreSalvado, BernardoFigueiredo, DiogoDomingues, FranciscoMachado, GustavoCarreira,
 IvoOliveira, JoaoFerreira, JoaoMota, JoaoPaulino, JorgeFerreira, JosePedrosa, LucasGarcia, NunoReis,
 RenatoOliveira, RodrigoAlves, RubenRodrigues, TomasSantos, PedroLopes, PedroGoncalves } from './playersDB';
 import { Matches } from './MatchesDB';
+import { ExtendedTeamPlayer, MatchT, MatchesByMonthMap } from '../types/types';
 
 
-export const PlayersArr: Player[] = [
+export const PlayersArr: ExtendedTeamPlayer[] = [
     AndreSalvado,
     AlexandreSantos,
     BernardoFigueiredo,
@@ -78,32 +79,32 @@ export const getMatchIncidentsById = (matchId: string) => {
 }
 
 // Function to sort players by OVR in ascending order
-export const sortByOVRAsc = (players: Player[]) => {
+export const sortByOVRAsc = (players: ExtendedTeamPlayer[]) => {
   return players.slice().sort((a, b) => a.stats.OVR - b.stats.OVR);
 };
 
 // Function to sort players by OVR in descending order
-export const sortByOVRDesc = (players: Player[]) => {
+export const sortByOVRDesc = (players: ExtendedTeamPlayer[]) => {
   return players.slice().sort((a, b) => b.stats.OVR - a.stats.OVR);
 };
 
 // Function to sort players by GOALS in ascending order
-export const sortByGoalsAsc = (players: Player[]) => {
+export const sortByGoalsAsc = (players: ExtendedTeamPlayer[]) => {
     return players.slice().sort((a, b) => a.goals - b.goals);
 };
 
 // Function to sort players by GOALS in descending order
-export const sortByGoalsDesc = (players: Player[]) => {
+export const sortByGoalsDesc = (players: ExtendedTeamPlayer[]) => {
     return players.slice().sort((a, b) => b.goals - a.goals);
 };
 
 // Function to sort players by ASSISTS in ascending order
-export const sortByAssistsAsc = (players: Player[]) => {
+export const sortByAssistsAsc = (players: ExtendedTeamPlayer[]) => {
     return players.slice().sort((a, b) => a.assists - b.assists);
 };
 
 // Function to sort players by ASSISTS in descending order
-export const sortByAssistsDesc = (players: Player[]) => {
+export const sortByAssistsDesc = (players: ExtendedTeamPlayer[]) => {
     return players.slice().sort((a, b) => b.assists - a.assists);
 };
 
@@ -121,14 +122,14 @@ const getTopPlayers = (matches: Match[]): { topScorers: PlayerMatchStats[], topA
     allIncidents.forEach((incident) => {
       if (incident.type === INCIDENTS.GOAL) {
           // Update scorer's stats
-          const scorerKey = `${incident.Scorer.firstname}-${incident.Scorer.lastname}`;
+          const scorerKey = `${incident.Scorer.firstName}-${incident.Scorer.lastName}`;
           const scorerStats = playerStatsMap.get(scorerKey) || { player: incident.Scorer, goals: 0, assists: 0 };
           scorerStats.goals += 1;
           playerStatsMap.set(scorerKey, scorerStats);
 
           // Update assist's stats if available
           if (incident.Assist) {
-              const assistKey = `${incident.Assist.firstname}-${incident.Assist.lastname}`;
+              const assistKey = `${incident.Assist.firstName}-${incident.Assist.lastName}`;
               const assistStats = playerStatsMap.get(assistKey) || { player: incident.Assist, goals: 0, assists: 0 };
               assistStats.assists += 1;
               playerStatsMap.set(assistKey, assistStats);
@@ -199,8 +200,6 @@ export const aggregateResults = (data: MiniGame[], team1: string, team2: string)
 export const createFormattedDateTime = (data: { date: Date | null, time: string}): string => {
     if (!data.date) return '';
 
-    console.log(data.date);
-
     // Convert date string to Date object
     const dateObject: Date = data.date;
   
@@ -212,4 +211,53 @@ export const createFormattedDateTime = (data: { date: Date | null, time: string}
     const formattedDateTime: string = dateObject.toISOString();
   
   return formattedDateTime;
+}
+
+export enum OrderingType {
+    ASCENDING = 'ascending',
+    DESCENDING = 'descending',
+}
+
+export const groupMatchesByMonth = (
+    matches: MatchT[],
+    orderingType: OrderingType = OrderingType.ASCENDING
+  ): MatchesByMonthMap => {
+    const matchesByMonth: MatchesByMonthMap = {};
+  
+    const compareScheduledStart = (a: MatchT, b: MatchT): number => {
+      const dateA = new Date(a.scheduledStart).getTime();
+      const dateB = new Date(b.scheduledStart).getTime();
+      return orderingType === OrderingType.ASCENDING ? dateA - dateB : dateB - dateA;
+    };
+  
+    matches.forEach((match) => {
+      const scheduledStart = new Date(match.scheduledStart);
+      const monthKey = `${scheduledStart.getFullYear()}-${(scheduledStart.getMonth() + 1).toString().padStart(2, '0')}`;
+  
+      if (!matchesByMonth[monthKey]) {
+        matchesByMonth[monthKey] = [];
+      }
+  
+      matchesByMonth[monthKey].push(match);
+    });
+  
+    // Sort matches within each month based on the ordering type
+    Object.values(matchesByMonth).forEach((matchesInMonth) => {
+      matchesInMonth.sort(compareScheduledStart);
+    });
+  
+    return matchesByMonth;
+  };
+
+export const constructSearchParams = (params: Record<string, string | number | boolean>): URLSearchParams => {
+    const searchParams = new URLSearchParams();
+
+    for (const key in params) {
+        if (params.hasOwnProperty(key)) {
+            const value = params[key];
+            searchParams.append(key, value.toString());
+        }
+    }
+
+    return searchParams;
 }

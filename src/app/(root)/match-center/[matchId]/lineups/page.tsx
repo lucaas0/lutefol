@@ -32,12 +32,12 @@ const MatchLineup = () => {
                             {
                                 team.players.map((player) => {
                                     return (
-                                        <div className='flex gap-2' key={`lineup-player-${player.firstname}-${player.lastname}`}>
+                                        <div className='flex gap-2' key={`lineup-player-${player.firstName}-${player.lastName}`}>
                                             <span className='font-bold color-brand-400 w-4'>
-                                                {player.number}
+                                                {player.clubNumber}
                                             </span>
                                             <span>
-                                                {`${player.label}`}
+                                                {`${player.nickName}`}
                                             </span>
                                         </div>
                                     )

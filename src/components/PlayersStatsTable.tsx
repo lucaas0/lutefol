@@ -30,8 +30,8 @@ const PlayersStatsTable = () => {
     useEffect(() => {
         const copy = [...PlayersArr];
         copy.forEach((p) => {
-            p.goals = getPlayerStats(p.label).goals + getPlayerStatsMiniMatches(p.label).goals;
-            p.assists = getPlayerStats(p.label).assists + getPlayerStatsMiniMatches(p.label).assists; 
+            p.goals = getPlayerStats(p.nickName).goals + getPlayerStatsMiniMatches(p.nickName).goals;
+            p.assists = getPlayerStats(p.nickName).assists + getPlayerStatsMiniMatches(p.nickName).assists; 
         });
         setOrderedPlayersArr(copy);
     }, []);
@@ -141,18 +141,18 @@ const PlayersStatsTable = () => {
                     {
                         orderedPlayersArr.map((player) => {
                             return (
-                                <tr key={`${player.firstname}-${player.lastname}-stat`}>
+                                <tr key={`${player.firstName}-${player.lastName}-stat`}>
                                     <td>
                                         <div className="flex items-center gap-3 pl-2">
                                             <Image src={player.photoUrl} alt="" width={42} height={42} />
                                             <div className="flex flex-col">
                                                 <span className="stats-player-name">
-                                                    {`${player.firstname} ${player.lastname}`}
+                                                    {`${player.firstName} ${player.lastName}`}
                                                 </span>
                                                 <div className="flex gap-2">
                                                     {player.nationality.map((nat) => {
                                                         return (
-                                                            <Image src={getNationalityFlag(nat)} alt="" width={20} height={20} key={`${player.firstname}-${player.lastname}-nat-${nat}`} />
+                                                            <Image src={getNationalityFlag(nat)} alt="" width={20} height={20} key={`${player.firstName}-${player.lastName}-nat-${nat}`} />
                                                         )
                                                     })}
                                                 </div>

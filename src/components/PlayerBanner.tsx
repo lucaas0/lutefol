@@ -1,9 +1,9 @@
 import Image, { StaticImageData } from 'next/image';
 import '../assets/styles/playerBanner.css';
-import { Player } from '@/misc';
+import { ExtendedTeamPlayer } from '../../types/types';
 
 interface PlayerBannerProps {
-    player: Player;
+    player: ExtendedTeamPlayer;
 }
 
 const PlayerBanner = (props: PlayerBannerProps) => {
@@ -15,8 +15,8 @@ const PlayerBanner = (props: PlayerBannerProps) => {
             <div className='content'>
                 <Image src={player.photoUrl} alt='' />
                 <div className='player-banner__details__name'>
-                    <span>{player.firstname}</span>
-                    <span>{player.lastname}</span>
+                    <span>{player.firstName}</span>
+                    <span>{player.lastName}</span>
                 </div>
             </div>
         </div>

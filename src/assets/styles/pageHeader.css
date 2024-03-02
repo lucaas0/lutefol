@@ -12,7 +12,7 @@
     padding: 10px 10px 0 10px;
 }
 
-.page-header-btn {
+/* .page-header-btn {
   position: absolute;
   right: 8%;
   color: #000;
@@ -23,16 +23,10 @@
   border-radius: 999px;
   bottom: -20px;
   font-family: var(--font-roboto-regular);
-}
+} */
 
 @media only screen and (max-width: 1200px) {
   .page-header-title {
-    bottom: -15px;
-  }
-
-  .page-header-btn {
-    font-size: 12px;
-    padding: 8px 16px;
     bottom: -15px;
   }
 }

@@ -1,4 +1,4 @@
-import { Nationalities, Player, PlayerSeasonStats } from "./misc";
+import { Nationalities, PlayerSeasonStats } from "./misc";
 import PlayerPhoto from '../public/player.png';
 import NunoReisImg from '../public/players/nuno-reis.png';
 import BernardoFigueiredoImg from '../public/players/bernardo-figueiredo.png';
@@ -7,12 +7,14 @@ import LucasGarciaImg from '../public/players/lucas-garcia.png';
 import RenatoOliveiraImg from '../public/players/renato-oliveira.png';
 import TomasSantosImg from '../public/players/tomas-santos.png';
 import RubenRodriguesImg from '../public/players/ruben-rodrigues.png';
+import { ExtendedTeamPlayer, TeamPlayer } from "../types/types";
+import { StaticImageData } from "next/image";
 
-export const AndreSalvado: Player = {
-    firstname: 'André',
-    lastname: 'Salvado',
+export const AndreSalvado: ExtendedTeamPlayer = {
+    firstName: 'André',
+    lastName: 'Salvado',
     photoUrl: PlayerPhoto,
-    number: 8,
+    clubNumber: 8,
     stats: {
         ATA: 79,
         DEF: 75,
@@ -28,16 +30,21 @@ export const AndreSalvado: Player = {
         OVR: 74,
     },
     nationality: [Nationalities.PT],
-    label: 'A. SALVADO',
+    nickName: 'A. SALVADO',
     goals: 0,
-    assists: 0
+    assists: 0,
+    createdDate: '',
+    id: 1,
+    lastModifiedDate: '',
+    userId: 1,
+    wildcard: false,
 };
 
-export const AlexandreSantos: Player = {
-    firstname: 'Alexandre',
-    lastname: 'Santos',
+export const AlexandreSantos: ExtendedTeamPlayer = {
+    firstName: 'Alexandre',
+    lastName: 'Santos',
     photoUrl: PlayerPhoto,
-    number: 31,
+    clubNumber: 31,
     stats: {
         ATA: 82,
         DEF: 63,
@@ -53,16 +60,21 @@ export const AlexandreSantos: Player = {
         OVR: 72,
     },
     nationality: [Nationalities.PT],
-    label: 'LEVEZINHO',
+    nickName: 'LEVEZINHO',
     goals: 0,
-    assists: 0
+    assists: 0,
+    createdDate: '',
+    id: 2,
+    lastModifiedDate: '',
+    userId: 2,
+    wildcard: false,
 };
 
-export const BernardoFigueiredo: Player = {
-    firstname: 'Bernardo',
-    lastname: 'Figueiredo',
+export const BernardoFigueiredo: ExtendedTeamPlayer = {
+    firstName: 'Bernardo',
+    lastName: 'Figueiredo',
     photoUrl: BernardoFigueiredoImg,
-    number: 65,
+    clubNumber: 65,
     stats: {
         ATA: 60,
         DEF: 74,
@@ -78,16 +90,22 @@ export const BernardoFigueiredo: Player = {
         OVR: 72,
     },
     nationality: [Nationalities.PT],
-    label: 'BERNARDO',
+    nickName: 'BERNARDO',
     goals: 0,
-    assists: 0
+    assists: 0,
+    createdDate: '',
+    id: 3,
+    lastModifiedDate: '',
+    userId: 3,
+    wildcard: false,
+    
 };
 
-export const DiogoDomingues: Player = {
-    firstname: 'Diogo',
-    lastname: 'Domingues',
+export const DiogoDomingues: ExtendedTeamPlayer = {
+    firstName: 'Diogo',
+    lastName: 'Domingues',
     photoUrl: DiogoDominguesImg,
-    number: 1,
+    clubNumber: 1,
     stats: {
         ATA: 61,
         DEF: 65,
@@ -103,16 +121,21 @@ export const DiogoDomingues: Player = {
         OVR: 67,
     },
     nationality: [Nationalities.PT],
-    label: 'PIRATA',
+    nickName: 'PIRATA',
     goals: 0,
-    assists: 0
+    assists: 0,
+    createdDate: '',
+    id: 4,
+    lastModifiedDate: '',
+    userId: 4,
+    wildcard: false,
 };
 
-export const FranciscoMachado: Player = {
-    firstname: 'Francisco',
-    lastname: 'Machado',
+export const FranciscoMachado: ExtendedTeamPlayer = {
+    firstName: 'Francisco',
+    lastName: 'Machado',
     photoUrl: PlayerPhoto,
-    number: 5,
+    clubNumber: 5,
     stats: {
         AGRE: 51,
         ATA: 41,
@@ -128,16 +151,21 @@ export const FranciscoMachado: Player = {
         WR: 41,
     },
     nationality: [Nationalities.PT],
-    label: 'MACHADO',
+    nickName: 'MACHADO',
     goals: 0,
-    assists: 0
+    assists: 0,
+    createdDate: '',
+    id: 5,
+    lastModifiedDate: '',
+    userId: 5,
+    wildcard: false,
 };
 
-export const GustavoCarreira: Player = {
-    firstname: 'Gustavo',
-    lastname: 'Carreira',
+export const GustavoCarreira: ExtendedTeamPlayer = {
+    firstName: 'Gustavo',
+    lastName: 'Carreira',
     photoUrl: PlayerPhoto,
-    number: 6,
+    clubNumber: 6,
     stats: {
         ATA: 52,
         DEF: 50,
@@ -153,16 +181,21 @@ export const GustavoCarreira: Player = {
         OVR: 55,
     },
     nationality: [Nationalities.PT],
-    label: 'CARREIRA',
+    nickName: 'CARREIRA',
     goals: 0,
-    assists: 0
+    assists: 0,
+    createdDate: '',
+    id: 6,
+    lastModifiedDate: '',
+    userId: 6,
+    wildcard: false,
 };
 
-export const IvoOliveira: Player = {
-    firstname: 'Ivo',
-    lastname: 'Oliveira',
+export const IvoOliveira: ExtendedTeamPlayer = {
+    firstName: 'Ivo',
+    lastName: 'Oliveira',
     photoUrl: PlayerPhoto,
-    number: 11,
+    clubNumber: 11,
     stats: {
         ATA: 89,
         DEF: 67,
@@ -178,16 +211,21 @@ export const IvoOliveira: Player = {
         OVR: 79,
     },
     nationality: [Nationalities.PT],
-    label: 'OLIVEIRA',
+    nickName: 'OLIVEIRA',
     goals: 0,
-    assists: 0
+    assists: 0,
+    createdDate: '',
+    id: 7,
+    lastModifiedDate: '',
+    userId: 7,
+    wildcard: false,
 };
 
-export const JoaoFerreira: Player = {
-    firstname: 'João',
-    lastname: 'Ferreira',
+export const JoaoFerreira: ExtendedTeamPlayer = {
+    firstName: 'João',
+    lastName: 'Ferreira',
     photoUrl: PlayerPhoto,
-    number: 10,
+    clubNumber: 10,
     stats: {
         ATA: 89,
         DEF: 76,
@@ -203,16 +241,21 @@ export const JoaoFerreira: Player = {
         OVR: 80,
     },
     nationality: [Nationalities.PT],
-    label: 'J. FERREIRA',
+    nickName: 'J. FERREIRA',
     goals: 0,
-    assists: 0
+    assists: 0,
+    createdDate: '',
+    id: 8,
+    lastModifiedDate: '',
+    userId: 8,
+    wildcard: false,
 };
 
-export const JoaoMota: Player = {
-    firstname: 'João',
-    lastname: 'Mota',
+export const JoaoMota: ExtendedTeamPlayer = {
+    firstName: 'João',
+    lastName: 'Mota',
     photoUrl: PlayerPhoto,
-    number: 42,
+    clubNumber: 42,
     stats: {
         ATA: 44,
         DEF: 52,
@@ -228,17 +271,22 @@ export const JoaoMota: Player = {
         OVR: 50,
     },
     nationality: [Nationalities.PT],
-    label: 'MOTALLICA',
+    nickName: 'MOTALLICA',
     goals: 0,
-    assists: 0
+    assists: 0,
+    createdDate: '',
+    id: 9,
+    lastModifiedDate: '',
+    userId: 9,
+    wildcard: false,
 
 };
 
-export const JoaoPaulino: Player = {
-    firstname: 'João',
-    lastname: 'Paulino',
+export const JoaoPaulino: ExtendedTeamPlayer = {
+    firstName: 'João',
+    lastName: 'Paulino',
     photoUrl: PlayerPhoto,
-    number: 7,
+    clubNumber: 7,
     stats: {
         ATA: 80,
         DEF: 80,
@@ -254,16 +302,21 @@ export const JoaoPaulino: Player = {
         OVR: 75,
     },
     nationality: [Nationalities.PT],
-    label: 'PAULINO',
+    nickName: 'PAULINO',
     goals: 0,
     assists: 0,
+    createdDate: '',
+    id: 10,
+    lastModifiedDate: '',
+    userId: 10,
+    wildcard: false,
 };
 
-export const JorgeFerreira: Player = {
-    firstname: 'Jorge',
-    lastname: 'Ferreira',
+export const JorgeFerreira: ExtendedTeamPlayer = {
+    firstName: 'Jorge',
+    lastName: 'Ferreira',
     photoUrl: PlayerPhoto,
-    number: 97,
+    clubNumber: 97,
     stats: {
         ATA: 67,
         DEF: 76,
@@ -279,16 +332,21 @@ export const JorgeFerreira: Player = {
         OVR: 72,
     },
     nationality: [Nationalities.PT],
-    label: 'JORGE M.',
+    nickName: 'JORGE M.',
     goals: 0,
     assists: 0,
+    createdDate: '',
+    id: 11,
+    lastModifiedDate: '',
+    userId: 11,
+    wildcard: false,
 };
 
-export const JosePedrosa: Player = {
-    firstname: 'José',
-    lastname: 'Pedrosa',
+export const JosePedrosa: ExtendedTeamPlayer = {
+    firstName: 'José',
+    lastName: 'Pedrosa',
     photoUrl: PlayerPhoto,
-    number: 80,
+    clubNumber: 80,
     stats: {
         ATA: 90,
         DEF: 70,
@@ -304,16 +362,21 @@ export const JosePedrosa: Player = {
         OVR: 81,
     },
     nationality: [Nationalities.PT],
-    label: 'PEDROSA',
+    nickName: 'PEDROSA',
     goals: 0,
     assists: 0,
+    createdDate: '',
+    id: 12,
+    lastModifiedDate: '',
+    userId: 12,
+    wildcard: false,
 };
 
-export const LucasGarcia: Player = {
-    firstname: 'Lucas',
-    lastname: 'Garcia',
+export const LucasGarcia: ExtendedTeamPlayer = {
+    firstName: 'Lucas',
+    lastName: 'Garcia',
     photoUrl: LucasGarciaImg,
-    number: 9,
+    clubNumber: 9,
     stats: {
         ATA: 87,
         DEF: 60,
@@ -329,16 +392,21 @@ export const LucasGarcia: Player = {
         OVR: 75,
     },
     nationality: [Nationalities.BRA, Nationalities.PT],
-    label: 'LUKAKU',
+    nickName: 'LUKAKU',
     goals: 0,
     assists: 0,
+    createdDate: '',
+    id: 13,
+    lastModifiedDate: '',
+    userId: 13,
+    wildcard: false,
 };
 
-export const NunoReis: Player = {
-    firstname: 'Nuno',
-    lastname: 'Reis',
+export const NunoReis: ExtendedTeamPlayer = {
+    firstName: 'Nuno',
+    lastName: 'Reis',
     photoUrl: NunoReisImg,
-    number: 17,
+    clubNumber: 17,
     stats: {
         ATA: 92,
         DEF: 91,
@@ -354,16 +422,21 @@ export const NunoReis: Player = {
         OVR: 91,
     },
     nationality: [Nationalities.PT],
-    label: 'RUNO NEIS',
+    nickName: 'RUNO NEIS',
     goals: 0,
     assists: 0,
+    createdDate: '',
+    id: 14,
+    lastModifiedDate: '',
+    userId: 14,
+    wildcard: false,
 };
 
-export const RenatoOliveira: Player = {
-    firstname: 'Renato',
-    lastname: 'Oliveira',
+export const RenatoOliveira: ExtendedTeamPlayer = {
+    firstName: 'Renato',
+    lastName: 'Oliveira',
     photoUrl: RenatoOliveiraImg,
-    number: 68,
+    clubNumber: 68,
     stats: {
         ATA: 51,
         DEF: 53,
@@ -379,16 +452,21 @@ export const RenatoOliveira: Player = {
         OVR: 55,
     },
     nationality: [Nationalities.PT],
-    label: 'RENATO',
+    nickName: 'RENATO',
     goals: 0,
-    assists: 0
+    assists: 0,
+    createdDate: '',
+    id: 15,
+    lastModifiedDate: '',
+    userId: 15,
+    wildcard: false,
 };
 
-export const RubenRodrigues: Player = {
-    firstname: 'Rúben',
-    lastname: 'Rodrigues',
+export const RubenRodrigues: ExtendedTeamPlayer = {
+    firstName: 'Rúben',
+    lastName: 'Rodrigues',
     photoUrl: RubenRodriguesImg,
-    number: 20,
+    clubNumber: 20,
     stats: {
         ATA: 83,
         DEF: 70,
@@ -404,16 +482,21 @@ export const RubenRodrigues: Player = {
         OVR: 74,
     },
     nationality: [Nationalities.PT],
-    label: 'AQUAMAN',
+    nickName: 'AQUAMAN',
     goals: 0,
-    assists: 0
+    assists: 0,
+    createdDate: '',
+    id: 16,
+    lastModifiedDate: '',
+    userId: 16,
+    wildcard: false,
 };
 
-export const TomasSantos: Player = {
-    firstname: 'Tomás',
-    lastname: 'Santos',
+export const TomasSantos: ExtendedTeamPlayer = {
+    firstName: 'Tomás',
+    lastName: 'Santos',
     photoUrl: TomasSantosImg,
-    number: 27,
+    clubNumber: 27,
     stats: {
         ATA: 58,
         DEF: 54,
@@ -429,65 +512,21 @@ export const TomasSantos: Player = {
         OVR: 57,
     },
     nationality: [Nationalities.PT],
-    label: 'SANTOS',
-    goals: 0,
-    assists: 0
-};
-
-export const RodrigoAlves: Player = {
-    firstname: 'Rodrigo',
-    lastname: 'Alves',
-    photoUrl: PlayerPhoto,
-    number: 16,
-    stats: {
-        ATA: 56,
-        DEF: 51,
-        TEC: 56,
-        WR: 59,
-        AGRE: 55,
-        RES: 56,
-        FIN: 50,
-        SPE: 51,
-        DRI: 50,
-        PHY: 60,
-        PAS: 55,
-        OVR: 55,
-    },
-    nationality: [Nationalities.PT],
-    label: 'R. ALVES',
-    goals: 0,
-    assists: 0
-}
-
-export const WildCard: Player = {
-    firstname: 'Wildcard',
-    lastname: '1',
-    photoUrl: PlayerPhoto,
-    number: 99,
-    stats: {
-        ATA: 56,
-        DEF: 51,
-        TEC: 56,
-        WR: 59,
-        AGRE: 55,
-        RES: 56,
-        FIN: 50,
-        SPE: 51,
-        DRI: 50,
-        PHY: 60,
-        PAS: 55,
-        OVR: 55,
-    },
-    nationality: [Nationalities.PT],
-    label: 'WILDCARD #1',
+    nickName: 'SANTOS',
     goals: 0,
     assists: 0,
+    createdDate: '',
+    id: 17,
+    lastModifiedDate: '',
+    userId: 17,
+    wildcard: false,
 };
-export const AlexandreLopes: Player = {
-    firstname: 'Alexandre',
-    lastname: 'Lopes',
+
+export const RodrigoAlves: ExtendedTeamPlayer = {
+    firstName: 'Rodrigo',
+    lastName: 'Alves',
     photoUrl: PlayerPhoto,
-    number: 94,
+    clubNumber: 16,
     stats: {
         ATA: 56,
         DEF: 51,
@@ -503,16 +542,21 @@ export const AlexandreLopes: Player = {
         OVR: 55,
     },
     nationality: [Nationalities.PT],
-    label: 'ALEX LOPES',
+    nickName: 'R. ALVES',
     goals: 0,
-    assists: 0
+    assists: 0,
+    createdDate: '',
+    id: 18,
+    lastModifiedDate: '',
+    userId: 18,
+    wildcard: false,
 }
 
-export const PedroLopes: Player = {
-    firstname: 'Pedro',
-    lastname: 'Lopes',
+export const WildCard: ExtendedTeamPlayer = {
+    firstName: 'Wildcard',
+    lastName: '1',
     photoUrl: PlayerPhoto,
-    number: 88,
+    clubNumber: 99,
     stats: {
         ATA: 56,
         DEF: 51,
@@ -528,16 +572,80 @@ export const PedroLopes: Player = {
         OVR: 55,
     },
     nationality: [Nationalities.PT],
-    label: 'LEDRO POPES',
+    nickName: 'WILDCARD #1',
     goals: 0,
-    assists: 0
+    assists: 0,
+    createdDate: '',
+    id: 19,
+    lastModifiedDate: '',
+    userId: 19,
+    wildcard: true,
+};
+export const AlexandreLopes: ExtendedTeamPlayer = {
+    firstName: 'Alexandre',
+    lastName: 'Lopes',
+    photoUrl: PlayerPhoto,
+    clubNumber: 94,
+    stats: {
+        ATA: 56,
+        DEF: 51,
+        TEC: 56,
+        WR: 59,
+        AGRE: 55,
+        RES: 56,
+        FIN: 50,
+        SPE: 51,
+        DRI: 50,
+        PHY: 60,
+        PAS: 55,
+        OVR: 55,
+    },
+    nationality: [Nationalities.PT],
+    nickName: 'ALEX LOPES',
+    goals: 0,
+    assists: 0,
+    createdDate: '',
+    id: 20,
+    lastModifiedDate: '',
+    userId: 20,
+    wildcard: false,
 }
 
-export const PedroGoncalves: Player = {
-    firstname: 'Pedro',
-    lastname: 'Gonçalves',
+export const PedroLopes: ExtendedTeamPlayer = {
+    firstName: 'Pedro',
+    lastName: 'Lopes',
     photoUrl: PlayerPhoto,
-    number: 4,
+    clubNumber: 88,
+    stats: {
+        ATA: 56,
+        DEF: 51,
+        TEC: 56,
+        WR: 59,
+        AGRE: 55,
+        RES: 56,
+        FIN: 50,
+        SPE: 51,
+        DRI: 50,
+        PHY: 60,
+        PAS: 55,
+        OVR: 55,
+    },
+    nationality: [Nationalities.PT],
+    nickName: 'LEDRO POPES',
+    goals: 0,
+    assists: 0,
+    createdDate: '',
+    id: 21,
+    lastModifiedDate: '',
+    userId: 21,
+    wildcard: false,
+}
+
+export const PedroGoncalves: ExtendedTeamPlayer = {
+    firstName: 'Pedro',
+    lastName: 'Gonçalves',
+    photoUrl: PlayerPhoto,
+    clubNumber: 4,
     stats: {
         ATA: 79,
         DEF: 75,
@@ -553,16 +661,21 @@ export const PedroGoncalves: Player = {
         OVR: 75,
     },
     nationality: [Nationalities.PT],
-    label: 'ROCAS',
+    nickName: 'ROCAS',
     goals: 0,
-    assists: 0
+    assists: 0,
+    createdDate: '',
+    id: 22,
+    lastModifiedDate: '',
+    userId: 22,
+    wildcard: false,
 };
 
-export const AlexandreMendes: Player = {
-    firstname: 'Alexandre',
-    lastname: 'Mendes',
+export const AlexandreMendes: ExtendedTeamPlayer = {
+    firstName: 'Alexandre',
+    lastName: 'Mendes',
     photoUrl: PlayerPhoto,
-    number: 90,
+    clubNumber: 90,
     stats: {
         ATA: 56,
         DEF: 51,
@@ -578,16 +691,21 @@ export const AlexandreMendes: Player = {
         OVR: 55,
     },
     nationality: [Nationalities.PT],
-    label: 'MENDES',
+    nickName: 'MENDES',
     goals: 0,
-    assists: 0
+    assists: 0,
+    createdDate: '',
+    id: 23,
+    lastModifiedDate: '',
+    userId: 23,
+    wildcard: false,
 }
 
-export const LuisSantos: Player = {
-    firstname: 'Luis',
-    lastname: 'Santos',
+export const LuisSantos: ExtendedTeamPlayer = {
+    firstName: 'Luis',
+    lastName: 'Santos',
     photoUrl: PlayerPhoto,
-    number: 95,
+    clubNumber: 95,
     stats: {
         ATA: 56,
         DEF: 51,
@@ -603,7 +721,12 @@ export const LuisSantos: Player = {
         OVR: 55,
     },
     nationality: [Nationalities.PT],
-    label: 'L. SANTOS',
+    nickName: 'L. SANTOS',
     goals: 0,
-    assists: 0
+    assists: 0,
+    createdDate: '',
+    id: 24,
+    lastModifiedDate: '',
+    userId: 24,
+    wildcard: false,
 }

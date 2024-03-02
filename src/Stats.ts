@@ -12,7 +12,7 @@ export const getPlayerStats = (label: string): PlayerSeasonStats => {
         for (const team of match.teams) {
             for (const player of team.players) {
                 // Check if the player's name matches
-                if (player.label === label) {
+                if (player.nickName === label) {
                     // Loop through the goals in the match
                     for (const goal of match.incidents.filter((incident) => incident.type === INCIDENTS.GOAL) as Goal[]) {
                         // Check if the player is the scorer or assister in the goal
@@ -52,11 +52,11 @@ export const getPlayerStatsMiniMatches = (label: string): PlayerSeasonStats => {
                         const goal = incident as Goal;
 
                         // Check if the player is the scorer or assister in the goal
-                        if (goal.Scorer.label === label) {
+                        if (goal.Scorer.nickName === label) {
                             // Increment goals for the player
                             playerStats.goals++;
                         }
-                        if (goal.Assist?.label === label) {
+                        if (goal.Assist?.nickName === label) {
                             // Increment assists for the player
                             playerStats.assists++;
                         }

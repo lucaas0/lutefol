@@ -2,21 +2,21 @@ import NextAuth, { AuthOptions, TokenSet } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import KeycloakProvider from "next-auth/providers/keycloak";
 
-function requestRefreshOfAccessToken(token: JWT) {
+const requestRefreshOfAccessToken = (token: JWT) => {
   return fetch(`${process.env.KEYCLOAK_ISSUER}/protocol/openid-connect/token`, {
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({
       client_id: process.env.KEYCLOAK_CLIENT_ID || '',
       client_secret: process.env.KEYCLOAK_SECRET || '',
       grant_type: "refresh_token",
-      refresh_token: token.refreshToken, 
+      refresh_token: token.refreshToken as string, 
     }),
     method: "POST",
     cache: "no-store"
   });
 }
 
-export const authOptions: AuthOptions = {
+const authOptions: AuthOptions = {
   providers: [
     KeycloakProvider({
       clientId: process.env.KEYCLOAK_CLIENT_ID || '',
@@ -34,11 +34,11 @@ export const authOptions: AuthOptions = {
         token.accessToken = account.access_token;
         token.refreshToken = account.refresh_token;
         token.expiresAt = account.expires_at;
-
         return token;
       }
       // we take a buffer of one minute(60 * 1000 ms)
-      if (Date.now() < (token.expiresAt! * 1000 - 60 * 1000)) {
+      //ts-ignore
+      if (Date.now() < ((token.expiresAt as number) * 1000 - 60 * 1000)) {
         return token
       } else {
         try {
@@ -64,13 +64,14 @@ export const authOptions: AuthOptions = {
     },
     async session({ session, token, user }) {
       if (token) {
-        session.accessToken = token.accessToken || null;
-        session.refreshToken = token.refreshToken;
+        session.accessToken = token.accessToken as string;
+        session.refreshToken = token.refreshToken as string;
         session.error = session.error;
       }
       return session;
     }
   }
 }
+
 const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST }

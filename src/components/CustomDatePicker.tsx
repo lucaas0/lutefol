@@ -14,6 +14,7 @@ const CustomDatePicker = (props: Props) => {
 
     useEffect(() => {
         onDateSelected(selectedDate);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedDate]);
 
     return (

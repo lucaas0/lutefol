@@ -1,49 +1,104 @@
 'use client';
 
-import { Matches } from "@/MatchesDB";
 import Match from "@/components/Match";
-import { matchesListURL, matchesURL } from "@/services/api";
+import { listClubMatchesURL } from "@/services/api";
 import axios from "axios";
-import { signIn, useSession, getSession } from "next-auth/react";
-import { useEffect } from "react";
+import { getSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { APIResponse, MatchT, MatchesByMonthMap } from "../../../../types/types";
+import { constructSearchParams, groupMatchesByMonth } from "@/utils";
+import { Session } from "next-auth";
+import CreateMatchModal from "@/components/CreateMatchModal";
 
 const UpcomingMatches = () => {
+    const [upcomingMatchesCursor, setUpcomingMatchesCursor] = useState<string>('');
+    const [sortedMonths, setSortedMonths] = useState<string[]>([]);
+    const [upcomingMatchesByMonth, setUpcomingMatchesByMonth] = useState<MatchesByMonthMap | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [session, setSession] = useState<Session | null>(null);
+    const [showCreateModal, setShowModal] = useState(false);
     
     useEffect(() => {
-        getMatches();
+        const prepareData = async () => {
+            const { results, cursor } = await getMatches();
+            setUpcomingMatchesCursor(cursor);
+            
+            const matchesByMonth = groupMatchesByMonth(results);
+            setUpcomingMatchesByMonth(matchesByMonth);
+
+            const sortedMonths = Object.keys(matchesByMonth).sort((a, b) => {
+                return new Date(a).getTime() - new Date(b).getTime();
+            });
+
+            setSortedMonths(sortedMonths);
+        };
+
+        const prepareSession = async () => {
+            const s = await getSession();
+            setSession(s);
+        }
+
+        prepareData();
+        prepareSession();
     }, []);
 
-    const getMatches = async () => {
-        const session = await getSession();
-
+    const getMatches = async (): Promise<APIResponse<MatchT>> => {
+        setIsLoading(true);
         try {
-            const { data } = await axios.get(matchesListURL(), {
-                headers: {
-                    'Authorization': `Bearer ${session?.accessToken}`,
-                    'club': '10000'
-                }
-            });
+            const params = constructSearchParams({upcoming: true, ascending: true});
+            const { data } = await axios.get<APIResponse<MatchT>>(listClubMatchesURL(10000, params));
+            setIsLoading(false);
+            return data;
         } catch (error) {
+            setIsLoading(false);
+            return {
+                results: [],
+                cursor: ''
+            };
         }
+    };
+
+    const handleMatchCreatedDeleted = async () => {
+        setIsLoading(true);
+        const { results, cursor }  = await getMatches();
+
+        setUpcomingMatchesCursor(cursor);
+            
+        const matchesByMonth = groupMatchesByMonth(results);
+        setUpcomingMatchesByMonth(matchesByMonth);
+
+        const sortedMonths = Object.keys(matchesByMonth).sort((a, b) => {
+            return new Date(a).getTime() - new Date(b).getTime();
+        });
+
+        setSortedMonths(sortedMonths);
+        setIsLoading(false);
     }
 
-    const currentDateTime = new Date();
-    const startOfToday = new Date(currentDateTime.getFullYear(), currentDateTime.getMonth(), currentDateTime.getDate(), 0, 0, 0, 0);
-
-    const upComingMatches = Matches.filter((match) => match.date >= startOfToday && match.incidents.length === 0);
-
     return (
-        <div className="flex flex-col gap-10 my-10 w-full px-8 md:px-32">
-            <h2 className="text-4xl font-bold uppercase">
-                February
-            </h2>
-                {
-                    upComingMatches.map((match) => {
-                        return (
-                            <Match isUpcoming match={match} key={`upcoming-match-${match.date}`} />
-                        )
-                    })
-                }
+        <div className="w-full relative">
+            {
+                showCreateModal && <CreateMatchModal handleMatchCreated={handleMatchCreatedDeleted} handleCloseModal={() => setShowModal(false)} />
+            }
+            {
+                session && (
+                    <button className="page-header-btn" onClick={() => setShowModal(true)}>
+                        Create match
+                    </button>
+                )
+            }
+            {
+                sortedMonths.map((month) => (
+                    <div className="flex flex-col gap-10 my-10 w-full px-8 md:px-32" key={month}>
+                        <h2 className="text-4xl font-bold uppercase">{new Date(month).toLocaleString('default', { month: 'long', year: 'numeric' })}</h2>
+                        {upcomingMatchesByMonth && upcomingMatchesByMonth[month].map((match) => (
+                            <div key={match.id}>
+                                <Match match={match} key={`match-result-${match.date}`} onMatchDeleted={handleMatchCreatedDeleted} isUpcoming />
+                            </div>
+                        ))}
+                    </div>
+                ))
+            }
         </div>
     )
 }

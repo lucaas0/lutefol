@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import { Analytics } from '@vercel/analytics/react';
 import AuthSessionProvider from '@/components/AuthSessionProvider';
 import SessionGuard from '@/components/SessionGuard';
+import { ToastContainer } from 'react-toastify';
 
 export const metadata: Metadata = {
     title: 'Lutefol - Next generation football statistics tracking platform',
@@ -55,6 +56,7 @@ export default function RootLayout({
                     <Analytics />
                 </SessionGuard>
             </AuthSessionProvider>
+            <ToastContainer />
             </body>
         </html>
     );

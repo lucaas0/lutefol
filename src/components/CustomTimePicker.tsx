@@ -14,6 +14,7 @@ const CustomTimePicker = (props: Props) => {
 
     useEffect(() => {
         onTimeSelected(selectedTime);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedTime]);
 
     return (

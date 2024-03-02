@@ -10,7 +10,7 @@ const SubstitutionIncident = (props: SubstitutionIncidentProps) => {
     return (
         <div className='flex gap-3 py-2 w-full justify-center'>
             <Image src={'/substitution-ic.svg'} width={18} height={18} alt='' />
-            <span>{substitution.playerIn.label}</span> <span className='grey-949494'>{`(${substitution.playerOut.label})`}</span>
+            <span>{substitution.playerIn.nickName}</span> <span className='grey-949494'>{`(${substitution.playerOut.nickName})`}</span>
         </div>
     )
 }

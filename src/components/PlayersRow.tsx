@@ -1,11 +1,11 @@
 import PlayerCard from './PlayerCard';
 import '../assets/styles/playerCard.css';
 import { PlayersArr } from '@/utils';
-import { Player } from '@/misc';
+import { ExtendedTeamPlayer } from '../../types/types';
 
 type PlayersRowProps = {
-    selectedPlayer: Player;
-    onPlayerClick(player: Player): void;
+    selectedPlayer: ExtendedTeamPlayer;
+    onPlayerClick(player: ExtendedTeamPlayer): void;
 };
 
 const PlayersRow = (props: PlayersRowProps) => {
@@ -17,7 +17,7 @@ const PlayersRow = (props: PlayersRowProps) => {
                     <PlayerCard
                         player={player}
                         onPlayerClick={() => onPlayerClick(player)}
-                        key={`player-${player.firstname}-${player.lastname}`}
+                        key={`player-${player.firstName}-${player.lastName}`}
                     />
                 );
             })}

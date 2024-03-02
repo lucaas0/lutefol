@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { Modal } from "./Modal";
 import { matchesURL } from "@/services/api";
 import { getSession } from "next-auth/react";
@@ -10,12 +10,11 @@ import { Match, ToastTypes } from "@/misc";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import showToast from "./Toast";
-import Loader from "./Loader";
 
 
 type CreateMatchModalProps = {
     handleCloseModal(): void;
-    onMatchedCreated(match: Match): void;
+    handleMatchCreated(): void;
 }
 
 type ModalForm = {
@@ -24,7 +23,7 @@ type ModalForm = {
     location: string;
 }
 
-const CreateMatchModal = ({handleCloseModal}: CreateMatchModalProps) => {
+const CreateMatchModal = ({handleCloseModal, handleMatchCreated}: CreateMatchModalProps) => {
     const [data, setData] = useState<ModalForm>({
         date: null,
         location: 'Leirifoot',
@@ -48,7 +47,7 @@ const CreateMatchModal = ({handleCloseModal}: CreateMatchModalProps) => {
             const scheduledStart = createFormattedDateTime({ date: data.date, time: `${data.time?.getHours()}:${data.time?.getMinutes()}` });
             setIsLoading(true);
             try {
-                const { data: matchCreated } = await axios.post(matchesURL(), {
+                await axios.post(matchesURL(), {
                     "homeTeamName": "SCALLYWAGS",
                     "awayTeamName": "CORSAIRS",
                     "scheduledStart": scheduledStart,
@@ -63,8 +62,9 @@ const CreateMatchModal = ({handleCloseModal}: CreateMatchModalProps) => {
                         'club': '10000'
                     },
                 });
-
                 showToast(ToastTypes.SUCCESS, 'Match Created!');
+                handleCloseModal();
+                handleMatchCreated();
             } catch (error) {
                 showToast(ToastTypes.ERROR, 'An error occur, please try again.');
             } finally {
@@ -73,31 +73,34 @@ const CreateMatchModal = ({handleCloseModal}: CreateMatchModalProps) => {
         }
     }
 
+    const handleTimeSelected = (time: Date | null) => {
+        setData((prevState) => ({ ...prevState, time}))
+    }
+
     return (
-        isLoading ? <Loader /> : (
+        <React.Fragment>
             <Modal.Root containerClass='modal-container-column'>
-            <Modal.Header title="Create Event" handleClose={handleCloseModal} />
-            <Modal.Content>
-                <Modal.InputWrapper>
-                    <Modal.Label title='Date' />
-                    <CustomDatePicker onDateSelected={(date) => setData((prevState) => ({ ...prevState, date}))} />
+                <Modal.Header title="Create Event" handleClose={() => handleCloseModal()} />
+                <Modal.Content>
+                    <Modal.InputWrapper>
+                        <Modal.Label title='Date' />
+                        <CustomDatePicker onDateSelected={(date) => setData((prevState) => ({ ...prevState, date}))} />
                     </Modal.InputWrapper>
-                <Modal.InputWrapper>
-                    <Modal.Label title='Time' />
-                    <CustomTimePicker onTimeSelected={(time) => setData((prevState) => ({ ...prevState, time}))} />
-                </Modal.InputWrapper>
-                <Modal.InputWrapper>
+                    <Modal.InputWrapper>
+                        <Modal.Label title='Time' />
+                        <CustomTimePicker onTimeSelected={(time) => handleTimeSelected(time)} />
+                    </Modal.InputWrapper>
+                    <Modal.InputWrapper>
                         <Modal.Label title='Location' />
                         <Modal.Input type='text' name="location" hasError={false} placeholder="" value={data.location} onInputChange={e => onInputChange(e)} />
-                 </Modal.InputWrapper>
-                 <div className="w-full flex flex-row gap-6 font-roboto">
-                    <button className="flex-1 px-8 py-4 text-white bg-2D2D2D rounded-full border-393939">Cancel</button>
-                    <button className="flex-1 px-8 py-4 bg-white text-black rounded-full" onClick={onCreateMatch}>Publish</button>
-                 </div>
-            </Modal.Content>
-            <ToastContainer />
-        </Modal.Root>
-        )
+                    </Modal.InputWrapper>
+                    <div className="w-full flex flex-row gap-6 font-roboto">
+                        <button className="flex-1 px-8 py-4 text-white bg-2D2D2D rounded-full border-393939">Cancel</button>
+                        <button className="flex-1 px-8 py-4 bg-white text-black rounded-full" onClick={() => onCreateMatch()}>Publish</button>
+                    </div>
+                </Modal.Content>
+            </Modal.Root>
+        </React.Fragment>
     )
 }
 

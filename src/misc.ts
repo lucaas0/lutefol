@@ -1,7 +1,6 @@
 import { StaticImageData } from "next/image";
 import { ChangeEvent, HTMLInputTypeAttribute, InputHTMLAttributes, LabelHTMLAttributes } from "react";
-
-type Stats = ['OVR', 'ATA', 'DEF', 'TEC', 'WR', 'AGRE', 'RES', 'FIN', 'SPE', 'DRI', 'PHY', 'PAS'];
+import { ExtendedTeamPlayer } from "../types/types";
 
 export enum Nationalities {
     BRA = 'BRA',
@@ -19,26 +18,10 @@ export type Banner = {
     title: string;
 }
 
-export type PlayerStats = {
-    [key in Stats[number]]: number;
-}
-
-export type Player = {
-    firstname: string;
-    lastname: string;
-    label: string;
-    photoUrl: StaticImageData;
-    number: number;
-    stats: PlayerStats;
-    nationality: Nationalities[];
-    goals: number;
-    assists: number;
-};
-
 export type Team = {
     name: TeamName;
     logo: string;
-    players: Player[];
+    players: ExtendedTeamPlayer[];
 }
 
 export enum INCIDENTS {
@@ -49,15 +32,15 @@ export enum INCIDENTS {
 
 export type Goal = {
     type: INCIDENTS.GOAL | INCIDENTS.OWN_GOAL;
-    Scorer: Player;
-    Assist: Player | null;
+    Scorer: ExtendedTeamPlayer;
+    Assist: ExtendedTeamPlayer | null;
     Team: TeamName;
 }
 
 export type Substitution = {
     type: INCIDENTS.SUBSTITUTION;
-    playerIn: Player;
-    playerOut: Player;
+    playerIn: ExtendedTeamPlayer;
+    playerOut: ExtendedTeamPlayer;
 };
 export type MatchIncident = Goal | Substitution;
 
@@ -72,7 +55,7 @@ export type Match = {
 }
 
 export type PlayerMatchStats = {
-  player: Player;
+  player: ExtendedTeamPlayer;
   goals: number;
   assists: number;
 };

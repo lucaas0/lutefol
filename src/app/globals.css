@@ -218,6 +218,19 @@ body {
     transform: translate(-50%, -50%);
 }
 
+.page-header-btn {
+    position: absolute;
+    right: 8%;
+    top: -30px;
+    color: #000;
+    font-size: 16px;
+    line-height: normal;
+    background-color: #FFF;
+    padding: 16px 32px;
+    border-radius: 999px;
+    font-family: var(--font-roboto-regular);
+  }
+
 @media only screen and (max-width: 700px) {
     .goal-line {
         width: 350px;

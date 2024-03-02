@@ -1,37 +1,48 @@
-import { Matches } from "@/MatchesDB";
+'use client';
 import Match from "@/components/Match";
+import { MatchT } from "../../../../../types/types";
+import React, { useEffect, useState } from "react";
+import { OrderingType, groupMatchesByMonth } from "@/utils";
+import { PastMatchesResults } from "@/MatchesDB";
 
 interface MatchesByMonthMap {
-    [month: string]: Match[];
+    [month: string]: MatchT[];
 }
 
 const MatchesResults = () => {
-    const matchesResults = Matches.filter((match) => match.incidents.length > 0 || (match.miniMatches && match.miniMatches.length > 0)).sort((a: { date: Date }, b: { date: Date }): number => b.date.getTime() - a.date.getTime());
+    const [sortedMonths, setSortedMonths] = useState<string[]>([]);
+    const [resultMatchesByMonth, setResultMatchesByMonth] = useState<MatchesByMonthMap | null>(null);
     
-    // Group matches by month
-    const matchesByMonth: MatchesByMonthMap = matchesResults.reduce((acc, match) => {
-        const monthKey = match.date.toISOString().slice(0, 7); // yyyy-mm
-        acc[monthKey] = acc[monthKey] || [];
-        acc[monthKey].push(match);
-        return acc;
-    }, {} as MatchesByMonthMap);
+    useEffect(() => {
+        const prepareData = async () => {
+            const matchesByMonth = groupMatchesByMonth(PastMatchesResults, OrderingType.DESCENDING);
+            setResultMatchesByMonth(matchesByMonth);
 
-    // Sort the months in descending order
-    const sortedMonths = Object.keys(matchesByMonth).sort((a, b) => {
-        return new Date(b).getTime() - new Date(a).getTime();
-    });
+            const sortedMonths = Object.keys(matchesByMonth).sort((a, b) => {
+                return new Date(b).getTime() - new Date(a).getTime();
+            });
+
+            setSortedMonths(sortedMonths);
+        };
+
+        prepareData();
+    }, []);
 
     return (
-            sortedMonths.map((month) => (
-                <div className="flex flex-col gap-10 my-10 w-full px-8 md:px-32" key={month}>
-                    <h2 className="text-4xl font-bold uppercase">{new Date(month).toLocaleString('default', { month: 'long', year: 'numeric' })}</h2>
-                    {matchesByMonth[month].map((match) => (
-                        <div key={match.id}>
-                            <Match match={match} key={`match-result-${match.date}`} />
-                        </div>
-                    ))}
-                </div>
-            ))
+        <React.Fragment>
+            {
+                sortedMonths.map((month) => (
+                    <div className="flex flex-col gap-10 my-10 w-full px-8 md:px-32" key={month}>
+                        <h2 className="text-4xl font-bold uppercase">{new Date(month).toLocaleString('default', { month: 'long', year: 'numeric' })}</h2>
+                        {resultMatchesByMonth && resultMatchesByMonth[month].map((match) => (
+                            <div key={match.id}>
+                                <Match match={match} key={`match-result-${match.date}`} />
+                            </div>
+                        ))}
+                    </div>
+                ))
+            }
+        </React.Fragment>
     )
 }
 

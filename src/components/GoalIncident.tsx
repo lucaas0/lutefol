@@ -13,9 +13,9 @@ const GoalIncident = (props: GoalIncidentProps) => {
     return (
         <div className={`flex gap-3 ${isSecondTeam ? 'justify-end' : ''} py-2 w-full`}>
             <div className='flex gap-2'>
-                <span>{goal.Scorer.label}</span>
+                <span>{goal.Scorer.nickName}</span>
                 {goal.Assist && (
-                    <span className='grey-949494'>{`(${goal.Assist.label})`}</span>
+                    <span className='grey-949494'>{`(${goal.Assist.nickName})`}</span>
                 )}
             </div>
             <Image src={isOwnGoal ? '/soccer-ball-red.svg' : '/football.svg'} width={24} height={24} alt='' />
