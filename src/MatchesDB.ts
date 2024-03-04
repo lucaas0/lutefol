@@ -1142,5 +1142,20 @@ export const Matches: Match[] = [
             { type: INCIDENTS.GOAL, Scorer: JosePedrosa, Assist: DiogoDomingues, Team: 'Corsairs' },
             { type: INCIDENTS.GOAL, Scorer: WildCard, Assist: GustavoCarreira, Team: 'Corsairs' },
         ]
+    },
+    {
+        id: '12',
+        teams: [
+            {
+                name: 'Scallywags', logo: LogoGreen, players: [JoaoFerreira, AndreSalvado, DiogoDomingues, JoaoMota, JorgeFerreira]
+            },
+            {
+                name: 'Corsairs', logo: LogoRed, players: [LucasGarcia, JoaoPaulino, BernardoFigueiredo, TomasSantos, WildCard]
+            },
+        ],
+        date: new Date(Date.UTC(2024, 2, 4)),
+        time: '18:30',
+        location: 'LeiriFoot',
+        incidents: [],
     }
 ];
