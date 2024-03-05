@@ -27,16 +27,17 @@ export default function MatchesLayout({
 
     useEffect(() => {
         const getMatchDetails = async (id: number) => {
-            try {
-                const { data } = await axios.get<MatchDetails>(matchURL(id));
-                setMatch(data);
-                return data;
-            } catch (error) {
+            // try {
+            //     const { data } = await axios.get<MatchDetails>(matchURL(id));
+            //     console.log(data);
+            //     setMatch(data);
+            //     return data;
+            // } catch (error) {
                 const oldMatch = getMatchById(params.matchId);
 
                 if (oldMatch) {
                     const result = oldMatch ? getMatchResult(oldMatch.incidents.filter((incident) => incident.type === INCIDENTS.GOAL || incident.type === INCIDENTS.OWN_GOAL) as Goal[]): null;
-                    
+                    console.log(result);
                     const newMatchTyped: MatchDetails = {
                         awayTeamPlayers: [],
                         homeTeamPlayers: [],
@@ -63,7 +64,7 @@ export default function MatchesLayout({
                     setMatch(newMatchTyped);
                 }
                 return undefined;
-            }
+            // }
         }
         if (params.matchId) {
             getMatchDetails(Number(params.matchId));
