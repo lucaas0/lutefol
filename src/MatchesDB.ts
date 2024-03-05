@@ -245,7 +245,7 @@ export const PastMatchesResults: MatchT[] = [
         matchStatus: MatchStatus.COMPLETED,
         modality: Modality.FUTSAL,
         scheduledLength: '',
-        scheduledStart: '2024-04-04T18:30:00Z',
+        scheduledStart: '2024-03-04T18:30:00Z',
         venueId: 1,
         venueName: 'Leirifoot',
     },
