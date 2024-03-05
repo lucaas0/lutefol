@@ -37,7 +37,7 @@ export default function MatchesLayout({
 
                 if (oldMatch) {
                     const result = oldMatch ? getMatchResult(oldMatch.incidents.filter((incident) => incident.type === INCIDENTS.GOAL || incident.type === INCIDENTS.OWN_GOAL) as Goal[]): null;
-                    console.log(result);
+
                     const newMatchTyped: MatchDetails = {
                         awayTeamPlayers: [],
                         homeTeamPlayers: [],

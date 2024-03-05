@@ -3,11 +3,10 @@
 import Match from "@/components/Match";
 import { listClubMatchesURL } from "@/services/api";
 import axios from "axios";
-import { getSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { APIResponse, MatchT, MatchesByMonthMap } from "../../../../types/types";
 import { constructSearchParams, groupMatchesByMonth } from "@/utils";
-import { Session } from "next-auth";
 import CreateMatchModal from "@/components/CreateMatchModal";
 
 const UpcomingMatches = () => {
@@ -15,8 +14,9 @@ const UpcomingMatches = () => {
     const [sortedMonths, setSortedMonths] = useState<string[]>([]);
     const [upcomingMatchesByMonth, setUpcomingMatchesByMonth] = useState<MatchesByMonthMap | null>(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [session, setSession] = useState<Session | null>(null);
     const [showCreateModal, setShowModal] = useState(false);
+
+    const session = useSession();
     
     useEffect(() => {
         const prepareData = async () => {
@@ -33,13 +33,7 @@ const UpcomingMatches = () => {
             setSortedMonths(sortedMonths);
         };
 
-        const prepareSession = async () => {
-            const s = await getSession();
-            setSession(s);
-        }
-
         prepareData();
-        prepareSession();
     }, []);
 
     const getMatches = async (): Promise<APIResponse<MatchT>> => {

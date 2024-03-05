@@ -42,7 +42,8 @@ const authOptions: AuthOptions = {
         return token
       } else {
         try {
-          const response = await requestRefreshOfAccessToken(token)
+          const response = await requestRefreshOfAccessToken(token);
+          console.log(response);
 
           const tokens: TokenSet = await response.json()
 
