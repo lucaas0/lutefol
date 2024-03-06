@@ -145,7 +145,7 @@ const Match = (props: OwnProps) => {
                             </button>
                         </Link>
                         {
-                            session && isUpcoming && (
+                            session && session.status === 'authenticated' && isUpcoming && (
                                 <button onClick={() => setShowDeleteModal(true)}>
                                     <Image src="/trash-ic.svg" width={18} height={18} alt='Delete' className='fill-red-400' />
                                 </button>

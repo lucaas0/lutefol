@@ -11,7 +11,7 @@ const Navbar = () => {
 
     const route = usePathname();
 
-    const { data: session } = useSession(); 
+    const session = useSession(); 
 
     useEffect(() => {
         const onWindowResize = () => {
@@ -79,7 +79,7 @@ const Navbar = () => {
                     <Image src="user-ic.svg" width={24} height={24} alt='' />
                 </Link> */}
                 {
-                    session && (
+                    session && session.status === 'authenticated' && (
                         <button onClick={() => signOut()} className='uppercase font-roboto-bold'>
                             Sign out
                         </button>

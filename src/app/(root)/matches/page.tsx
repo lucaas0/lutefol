@@ -75,7 +75,7 @@ const UpcomingMatches = () => {
                 showCreateModal && <CreateMatchModal handleMatchCreated={handleMatchCreatedDeleted} handleCloseModal={() => setShowModal(false)} />
             }
             {
-                session && (
+                session && session.status === 'authenticated' && (
                     <button className="page-header-btn" onClick={() => setShowModal(true)}>
                         Create match
                     </button>
