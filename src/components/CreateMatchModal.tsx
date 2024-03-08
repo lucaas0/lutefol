@@ -1,15 +1,14 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { Modal } from "./Modal";
 import { matchesURL } from "@/services/api";
-import { getSession } from "next-auth/react";
 import axios from 'axios';
 import CustomDatePicker from "./CustomDatePicker";
 import { createFormattedDateTime } from "@/utils";
 import CustomTimePicker from "./CustomTimePicker";
-import { Match, ToastTypes } from "@/misc";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastTypes } from "@/misc";
 import 'react-toastify/dist/ReactToastify.css';
 import showToast from "./Toast";
+import { useSession } from "next-auth/react";
 
 
 type CreateMatchModalProps = {
@@ -31,6 +30,7 @@ const CreateMatchModal = ({handleCloseModal, handleMatchCreated}: CreateMatchMod
     });
 
     const [isLoading, setIsLoading] = useState(false);
+    const session = useSession();
 
     const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.currentTarget;
@@ -41,8 +41,6 @@ const CreateMatchModal = ({handleCloseModal, handleMatchCreated}: CreateMatchMod
     }
 
     const onCreateMatch = async () => {
-        const session = await getSession();
-
         if (session && data.date && data.time) {
             const scheduledStart = createFormattedDateTime({ date: data.date, time: `${data.time?.getHours()}:${data.time?.getMinutes()}` });
             setIsLoading(true);
@@ -58,7 +56,7 @@ const CreateMatchModal = ({handleCloseModal, handleMatchCreated}: CreateMatchMod
                   },
                   {
                     headers: {
-                        'Authorization': `Bearer ${session?.accessToken}`,
+                        'Authorization': `Bearer ${session.data?.accessToken}`,
                         'club': '10000'
                     },
                 });

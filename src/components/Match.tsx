@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { MatchStatus, MatchT } from '../../types/types';
 import LogoHomeTeam from '../../public/logo-green.svg';
 import LogoAwayTeam from '../../public/logo-red.svg';
-import { getSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import { Session } from 'next-auth';
 import axios from 'axios';
 import { matchURL } from '@/services/api';
@@ -22,36 +22,39 @@ type OwnProps = {
 const Match = (props: OwnProps) => {
     const { match, isUpcoming, onMatchDeleted } = props;
 
-    const [session, setSession] = useState<Session | null>(null);
+    // const [session, setSession] = useState<Session | null>(null);
+    const session = useSession();
     const [isLoading, setIsLoading] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-    useEffect(() => {
+    // useEffect(() => {
         
-    const hasSession = async () => {
-        const session = await getSession();
-        setSession(session);
-    }
+    // const hasSession = async () => {
+    //     const session = await getSession();
+    //     setSession(session);
+    // }
 
-    hasSession();
-    }, []);
+    // hasSession();
+    // }, []);
 
     const deleteMatch = async () => {
-        try {
-            setIsLoading(true);
-            await axios.delete(matchURL(match.id), {
-                headers: {
-                    'Authorization': `Bearer ${session?.accessToken}`,
-                    'club': 10000,
-                }
-            });
-            setIsLoading(false);
-            showToast(ToastTypes.SUCCESS, 'Match Deleted Successfully');
-            setShowDeleteModal(false);
-            if (onMatchDeleted) onMatchDeleted();
-        } catch (error) {  
-            setIsLoading(false);
-            showToast(ToastTypes.ERROR, 'An error occured');
+        if (session) {
+            try {
+                setIsLoading(true);
+                await axios.delete(matchURL(match.id), {
+                    headers: {
+                        'Authorization': `Bearer ${session.data?.accessToken}`,
+                        'club': 10000,
+                    }
+                });
+                setIsLoading(false);
+                showToast(ToastTypes.SUCCESS, 'Match Deleted Successfully');
+                setShowDeleteModal(false);
+                if (onMatchDeleted) onMatchDeleted();
+            } catch (error) {  
+                setIsLoading(false);
+                showToast(ToastTypes.ERROR, 'An error occured');
+            }
         }
     }
 
@@ -142,7 +145,7 @@ const Match = (props: OwnProps) => {
                             </button>
                         </Link>
                         {
-                            session && session.user && isUpcoming && (
+                            session && session.status === 'authenticated' && isUpcoming && (
                                 <button onClick={() => setShowDeleteModal(true)}>
                                     <Image src="/trash-ic.svg" width={18} height={18} alt='Delete' className='fill-red-400' />
                                 </button>
