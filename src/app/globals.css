@@ -93,6 +93,10 @@ body {
     border-bottom: 1px solid #262626;
 }
 
+.border-bottom-414141 {
+    border-bottom: 1px solid #414141;
+}
+
 .lineup-wrapper {
     width: 250px;
     border: 1px solid #262626;
@@ -195,7 +199,7 @@ body {
 }
 
 .MuiInputAdornment-root svg {
-    fill: #393939 !important;
+    fill: #B8B8B8 !important;
 }
 .MuiInput-root::after, .MuiInput-root::before {
     border: none !important;
@@ -229,7 +233,16 @@ body {
     padding: 16px 32px;
     border-radius: 999px;
     font-family: var(--font-roboto-regular);
-  }
+}
+
+.team-container {
+    border-radius: 4px;
+}
+
+.team-container:hover, .team-container.selected {
+    background-color: #3D3D3D;
+    cursor: pointer;
+}
 
 @media only screen and (max-width: 700px) {
     .page-header-btn {

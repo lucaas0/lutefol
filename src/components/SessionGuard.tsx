@@ -1,5 +1,5 @@
 "use client";
-import { signIn, useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { ReactNode, useEffect } from "react";
 
 export default function SessionGuard({ children }: { children: ReactNode }) {
@@ -7,11 +7,14 @@ export default function SessionGuard({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (data) {
-      const now = new Date();
-      const expiration = new Date(data.expires);
+      const currentDate = new Date();
+      const expirationDate = new Date(data.expires);
 
-      if (now.getTime() > expiration.getTime()) {
-        signIn("keycloak");
+      const isTokenExpired = currentDate > expirationDate;
+
+
+      if (isTokenExpired || data.error === 'RefreshAccessTokenError') {
+        signOut();
       }
     }
   }, [data]);

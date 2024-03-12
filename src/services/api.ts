@@ -15,3 +15,11 @@ export const listClubMatchesURL = <T>(clubId: number, params: URLSearchParams) =
 export const matchURL = (id: number) => {
     return `${baseURL}/matches/${id}`;
 }
+
+export const listClubPlayers = (clubId: number) => {
+    return `${baseURL}/clubs/${clubId}/members`;
+}
+
+export const matchLineups = (matchId: number) => {
+    return `${baseURL}/matches/${matchId}/lineups`;
+}

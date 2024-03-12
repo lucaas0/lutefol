@@ -43,7 +43,6 @@ const authOptions: AuthOptions = {
       } else {
         try {
           const response = await requestRefreshOfAccessToken(token);
-          console.log(response);
 
           const tokens: TokenSet = await response.json()
 
@@ -58,7 +57,6 @@ const authOptions: AuthOptions = {
           }
           return updatedToken
         } catch (error) {
-          console.error("Error refreshing access token", error)
           return { ...token, error: "RefreshAccessTokenError" }
         }
       }
@@ -67,7 +65,7 @@ const authOptions: AuthOptions = {
       if (token) {
         session.accessToken = token.accessToken as string;
         session.refreshToken = token.refreshToken as string;
-        session.error = session.error;
+        session.error = token.error as string;
       }
       return session;
     }

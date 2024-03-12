@@ -27,12 +27,19 @@ export default function MatchesLayout({
 
     useEffect(() => {
         const getMatchDetails = async (id: number) => {
-            // try {
-            //     const { data } = await axios.get<MatchDetails>(matchURL(id));
-            //     console.log(data);
-            //     setMatch(data);
-            //     return data;
-            // } catch (error) {
+            try {
+                const { data } = await axios.get<MatchDetails>(matchURL(id));
+                let updatedData = { ...data };
+                const matchWithResults = getMatchById(String(id));
+                if (matchWithResults) {
+                    const result = matchWithResults ? getMatchResult(matchWithResults.incidents.filter((incident) => incident.type === INCIDENTS.GOAL || incident.type === INCIDENTS.OWN_GOAL) as Goal[]): null;
+                    updatedData.matchDTO.homeTeamScore = result ? result['Scallywags'] : 0;
+                    updatedData.matchDTO.awayTeamScore = result ? result['Corsairs'] : 0;
+                    updatedData.matchDTO.matchStatus = MatchStatus.COMPLETED;
+                }
+                setMatch(updatedData);
+                return data;
+            } catch (error) {
                 const oldMatch = getMatchById(params.matchId);
 
                 if (oldMatch) {
@@ -63,8 +70,7 @@ export default function MatchesLayout({
                     }
                     setMatch(newMatchTyped);
                 }
-                return undefined;
-            // }
+             }
         }
         if (params.matchId) {
             getMatchDetails(Number(params.matchId));
