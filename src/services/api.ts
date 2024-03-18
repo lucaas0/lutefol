@@ -23,3 +23,11 @@ export const listClubPlayers = (clubId: number) => {
 export const matchLineups = (matchId: number) => {
     return `${baseURL}/matches/${matchId}/lineups`;
 }
+
+export const matchStatusURL = (matchId: number) => {
+    return `${baseURL}/matches/${matchId}/status`;
+}
+
+export const matchEventURL = (matchId: number) => {
+    return `${baseURL}/matches/${matchId}/event`;
+}

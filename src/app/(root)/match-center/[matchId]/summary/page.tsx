@@ -5,23 +5,26 @@ import '../../../../../assets/styles/matchCenter.css';
 import { Goal, INCIDENTS, Match, Substitution } from '@/misc';
 import GoalIncident from '@/components/GoalIncident';
 import SubstitutionIncident from '@/components/SubstitutionIncident';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import MiniMatch from '@/components/MiniMatch';
 import Image from 'next/image';
 import Logo1 from '../../../../../../public/logo-red.svg';
 import Logo2 from '../../../../../../public/logo-green.svg';
 import Logo3 from '../../../../../../public/pirates-logo.svg';
+import { MatchContext } from '../../layout';
 
 const MatchSummary = () => {
     const params: { matchId: string } = useParams();
 
-    const [match, setMatch] = useState<Match | undefined>(undefined);
+    const match = useContext(MatchContext);
 
-    useEffect(() => {
-        const m = getMatchById(params.matchId);
+    // const [match, setMatch] = useState<Match | undefined>(undefined);
 
-        setMatch(m);
-    }, [params.matchId]);
+    // useEffect(() => {
+    //     const m = getMatchById(params.matchId);
+    //     console.log(m);
+    //     setMatch(m);
+    // }, [params.matchId]);
 
     const getMatchIncidents = () => {
         return getMatchIncidentsById(params.matchId);
@@ -116,8 +119,8 @@ const MatchSummary = () => {
 
     return (
         <div className='m-6'>
-            { match && !match.miniMatches && renderIncidents()}
-            {match && match.miniMatches && match.miniMatches.length > 0 && renderMiniMatches()}
+            { match && renderIncidents()}
+            {/* {match && match.miniMatches && match.miniMatches.length > 0 && renderMiniMatches()} */}
         </div>
     )
 };

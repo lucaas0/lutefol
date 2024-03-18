@@ -1,0 +1,80 @@
+.live-container {
+    min-width: 380px;
+    max-width: 600px;
+    align-self: center;
+}
+
+.live-container h1 {
+    font-family: var(--font-inter-bold);
+    font-size: 28px;
+}
+
+.live-container .scorer-wrapper {
+    border: 1px solid #3C3C3C;
+    border-radius: 50px;
+    padding: 8px 16px;
+    background-color: transparent;
+}
+
+.live-action-btn {
+    border-radius: 9999px;
+    padding: 16px;
+}
+
+.bg-1c1c1c {
+    background-color: #1c1c1c;
+}
+
+.live-btn-wrapper {
+    position: relative;
+}
+
+.bg-home {
+    background-color: #7B61FF;
+}
+
+.bg-away {
+    background-color: #3FAC99;
+}
+
+.live-btn-wrapper div {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #161616;
+    border-radius: 50%;
+}
+
+.live-btn-wrapper div span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    font-weight: 900;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    text-align: center;
+}
+
+@media only screen and (max-width: 480px) {
+    .live-action-btn {
+        padding: 8px;
+    }
+
+    .live-btn-wrapper div {
+        width: 22px;
+        height: 22px;
+        top: -10px;
+        right: -10px;
+    }
+
+    .live-btn-wrapper div span {
+        width: 16px;
+        height: 16px;
+        font-size: 11px;
+    }
+}

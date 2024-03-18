@@ -1,108 +1,118 @@
 'use client';
 import { PlayersArr, createFormattedDateTime, getMatchById, getMatchResult } from '@/utils';
 import { useParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import '../../../../../assets/styles/matchCenter.css';
 import Image from 'next/image';
 import { Goal, INCIDENTS, ToastTypes } from '@/misc';
 import { Session } from 'next-auth';
-import { getSession } from 'next-auth/react';
+import { getSession, useSession } from 'next-auth/react';
 import { Modal } from '@/components/Modal';
 import axios from 'axios';
 import { listClubPlayers, matchLineups, matchURL } from '@/services/api';
 import { APIResponse, ExtendedTeamPlayer, MatchDetails, MatchStatus, MatchT, Modality, TeamPlayer } from '../../../../../../types/types';
 import showToast from '@/components/Toast';
+import { MatchContext } from '../../layout';
 
 const MatchLineup = () => {
     const params: { matchId: string } = useParams();
 
-    const [match, setMatch] = useState<MatchDetails| undefined>(undefined);
-    const [session, setSession] = useState<Session | null>(null);
+    // const [match, setMatch] = useState<MatchDetails| undefined>(undefined);
+    const session = useSession();
+    const {match, setMatch} = useContext(MatchContext);
+
     const [showModal, setShowModal] = useState(false);
     const [players, setPlayers] = useState<ExtendedTeamPlayer[]>([]);
-    const [homeTeamPlayers, setHomeTeamPlayers] = useState<TeamPlayer[]>([]);
-    const [awayTeamPlayers, setAwayTeamPlayers] = useState<TeamPlayer[]>([]);
-    
+    const [homeTeamPlayers, setHomeTeamPlayers] = useState<TeamPlayer[]>(match?.homeTeamPlayers || []);
+    const [awayTeamPlayers, setAwayTeamPlayers] = useState<TeamPlayer[]>(match?.awayTeamPlayers || []);
 
     useEffect(() => {
-        const getMatch = async () => {
-            try {
-                const { data } = await axios.get<MatchDetails>(matchURL(Number(params.matchId)));
-
-                const oldMatch = getMatchById(params.matchId);
-                if (oldMatch) {
-                    const result = oldMatch ? getMatchResult(oldMatch.incidents.filter((incident) => incident.type === INCIDENTS.GOAL || incident.type === INCIDENTS.OWN_GOAL) as Goal[]): null;
-                    const newMatchTyped: MatchDetails = {
-                        awayTeamPlayers: oldMatch.teams[1].players,
-                        homeTeamPlayers: oldMatch.teams[0].players,
-                        matchEvents: [],
-                        realEnd: '',
-                        realLength: '',
-                        realStart: '',
-                        matchDTO: {
-                            awayTeamName: oldMatch.teams[1].name,
-                            awayTeamScore: result ? result['Corsairs'] : 0,
-                            homeTeamName: oldMatch.teams[0].name,
-                            homeTeamScore: result ? result['Scallywags'] : 0,
-                            createdDate: '',
-                            id: Number(oldMatch.id),
-                            lastModifiedDate: '',
-                            matchStatus: oldMatch.incidents.length > 0 ? MatchStatus.COMPLETED : MatchStatus.SCHEDULED,
-                            modality: Modality.FUTSAL,
-                            scheduledLength: '',
-                            scheduledStart: createFormattedDateTime({ date: oldMatch.date, time: oldMatch.time }),
-                            venueId: 1,
-                            venueName: oldMatch.location
-                        }
-                    }
-                    setMatch(newMatchTyped);
-                } else {
-                    setMatch(data);
-                    setHomeTeamPlayers(data.homeTeamPlayers);
-                    setAwayTeamPlayers(data.awayTeamPlayers);
-                }
-            } catch (error) {
-                const oldMatch = getMatchById(params.matchId);
-
-                if (oldMatch) {
-                    const result = oldMatch ? getMatchResult(oldMatch.incidents.filter((incident) => incident.type === INCIDENTS.GOAL || incident.type === INCIDENTS.OWN_GOAL) as Goal[]): null;
-
-                    const newMatchTyped: MatchDetails = {
-                        awayTeamPlayers: oldMatch.teams[1].players,
-                        homeTeamPlayers: oldMatch.teams[0].players,
-                        matchEvents: [],
-                        realEnd: '',
-                        realLength: '',
-                        realStart: '',
-                        matchDTO: {
-                            awayTeamName: oldMatch.teams[1].name,
-                            awayTeamScore: result ? result['Corsairs'] : 0,
-                            homeTeamName: oldMatch.teams[0].name,
-                            homeTeamScore: result ? result['Scallywags'] : 0,
-                            createdDate: '',
-                            id: Number(oldMatch.id),
-                            lastModifiedDate: '',
-                            matchStatus: oldMatch.incidents.length > 0 ? MatchStatus.COMPLETED : MatchStatus.SCHEDULED,
-                            modality: Modality.FUTSAL,
-                            scheduledLength: '',
-                            scheduledStart: createFormattedDateTime({ date: oldMatch.date, time: oldMatch.time }),
-                            venueId: 1,
-                            venueName: oldMatch.location
-                        }
-                    }
-                    setMatch(newMatchTyped);
-                }
-            }
+        if (match) {
+            setHomeTeamPlayers(match.homeTeamPlayers);
+            setAwayTeamPlayers(match.awayTeamPlayers);
         }
+    }, [match]);
+    
 
-        const defineSession = async () => {
-            const s = await getSession();
-            setSession(s);
-        }
+    // useEffect(() => {
+    //     const getMatch = async () => {
+    //         try {
+    //             const { data } = await axios.get<MatchDetails>(matchURL(Number(params.matchId)));
 
-        getMatch();
-        defineSession();
-    }, [params.matchId]);
+    //             const oldMatch = getMatchById(params.matchId);
+    //             if (oldMatch) {
+    //                 const result = oldMatch ? getMatchResult(oldMatch.incidents.filter((incident) => incident.type === INCIDENTS.GOAL || incident.type === INCIDENTS.OWN_GOAL) as Goal[]): null;
+    //                 const newMatchTyped: MatchDetails = {
+    //                     awayTeamPlayers: oldMatch.teams[1].players,
+    //                     homeTeamPlayers: oldMatch.teams[0].players,
+    //                     matchEvents: [],
+    //                     realEnd: '',
+    //                     realLength: '',
+    //                     realStart: '',
+    //                     matchDTO: {
+    //                         awayTeamName: oldMatch.teams[1].name,
+    //                         awayTeamScore: result ? result['Corsairs'] : 0,
+    //                         homeTeamName: oldMatch.teams[0].name,
+    //                         homeTeamScore: result ? result['Scallywags'] : 0,
+    //                         createdDate: '',
+    //                         id: Number(oldMatch.id),
+    //                         lastModifiedDate: '',
+    //                         status: oldMatch.incidents.length > 0 ? MatchStatus.COMPLETED : MatchStatus.SCHEDULED,
+    //                         modality: Modality.FUTSAL,
+    //                         scheduledLength: '',
+    //                         scheduledStart: createFormattedDateTime({ date: oldMatch.date, time: oldMatch.time }),
+    //                         venueId: 1,
+    //                         venueName: oldMatch.location
+    //                     }
+    //                 }
+    //                 setMatch(newMatchTyped);
+    //             } else {
+    //                 setMatch(data);
+    //                 setHomeTeamPlayers(data.homeTeamPlayers);
+    //                 setAwayTeamPlayers(data.awayTeamPlayers);
+    //             }
+    //         } catch (error) {
+    //             const oldMatch = getMatchById(params.matchId);
+
+    //             if (oldMatch) {
+    //                 const result = oldMatch ? getMatchResult(oldMatch.incidents.filter((incident) => incident.type === INCIDENTS.GOAL || incident.type === INCIDENTS.OWN_GOAL) as Goal[]): null;
+
+    //                 const newMatchTyped: MatchDetails = {
+    //                     awayTeamPlayers: oldMatch.teams[1].players,
+    //                     homeTeamPlayers: oldMatch.teams[0].players,
+    //                     matchEvents: [],
+    //                     realEnd: '',
+    //                     realLength: '',
+    //                     realStart: '',
+    //                     matchDTO: {
+    //                         awayTeamName: oldMatch.teams[1].name,
+    //                         awayTeamScore: result ? result['Corsairs'] : 0,
+    //                         homeTeamName: oldMatch.teams[0].name,
+    //                         homeTeamScore: result ? result['Scallywags'] : 0,
+    //                         createdDate: '',
+    //                         id: Number(oldMatch.id),
+    //                         lastModifiedDate: '',
+    //                         status: oldMatch.incidents.length > 0 ? MatchStatus.COMPLETED : MatchStatus.SCHEDULED,
+    //                         modality: Modality.FUTSAL,
+    //                         scheduledLength: '',
+    //                         scheduledStart: createFormattedDateTime({ date: oldMatch.date, time: oldMatch.time }),
+    //                         venueId: 1,
+    //                         venueName: oldMatch.location
+    //                     }
+    //                 }
+    //                 setMatch(newMatchTyped);
+    //             }
+    //         }
+    //     }
+
+    //     const defineSession = async () => {
+    //         const s = await getSession();
+    //         setSession(s);
+    //     }
+
+    //     getMatch();
+    //     defineSession();
+    // }, [params.matchId]);
 
     const renderLineups = (team: 'home' | 'away') => {
         const players = (match && team === 'home' ? match?.homeTeamPlayers : match?.awayTeamPlayers) || [];
@@ -140,7 +150,7 @@ const MatchLineup = () => {
         try {
             const { data } = await axios.get<APIResponse<ExtendedTeamPlayer>>(listClubPlayers(10000), {
                 headers: {
-                    Authorization: `Bearer ${session?.accessToken}`,
+                    Authorization: `Bearer ${session?.data?.accessToken}`,
                     club: 10000,
                 }
             });
@@ -209,7 +219,7 @@ const MatchLineup = () => {
                 awayTeamPlayers: awayTeamPlayers.length === 0 ? [] : awayTeamPlayers.map((a) => a.id),
             }, {
                 headers: {
-                    Authorization: `Bearer ${session?.accessToken}`,
+                    Authorization: `Bearer ${session?.data?.accessToken}`,
                     club: 10000,
                 },
             });
@@ -223,6 +233,8 @@ const MatchLineup = () => {
             showToast(ToastTypes.SUCCESS, 'Lineups Updated!');
             setShowModal(false);
         } catch (error) {
+            setHomeTeamPlayers(match?.homeTeamPlayers || []);
+            setAwayTeamPlayers(match?.awayTeamPlayers || []);
             showToast(ToastTypes.ERROR, 'Match Lineups Error');
         }
     }
@@ -231,7 +243,7 @@ const MatchLineup = () => {
         <React.Fragment>
             {
                 showModal && players.length > 0 && (
-                    <Modal.Root containerClass='flex flex-col'>
+                    <Modal.Root containerClass='flex flex-col !md:w-1/3'>
                         <Modal.Header title='Create lineups' handleClose={() => setShowModal(false)} />
                         <Modal.Content>
                             <div className='flex flex-col overflow-scroll gap-4 my-8'>
@@ -246,10 +258,10 @@ const MatchLineup = () => {
                                             </div>
                                             <div className='flex gap-2 md:gap-12'>
                                                 <button className={`px-4 py-2 team-container${isSelectedHome ? ' selected' : ''}`} onClick={() => addTeamPlayer(p, 'home')}>
-                                                    <Image src="/logo-green.svg" alt='' width={48} height={48} />
+                                                    <Image src="/logo-green.svg" alt='' width={32} height={32} />
                                                 </button>
                                                 <button className={`px-4 py-2 team-container${isSelectedAway ? ' selected' : ''}`} onClick={() => addTeamPlayer(p, 'away')}>
-                                                    <Image src="/logo-red.svg" alt='' width={48} height={48} />
+                                                    <Image src="/logo-red.svg" alt='' width={32} height={32} />
                                                 </button>
                                             </div>
                                         </div>
@@ -269,7 +281,7 @@ const MatchLineup = () => {
                 {renderLineups('home')}
                 {renderLineups('away')}
                 </div>
-                { session && session.user && match && match.matchDTO.matchStatus !== MatchStatus.COMPLETED && renderAddLineupsBtn() }
+                { session && session.status === 'authenticated' && match && match.matchDTO.status !== MatchStatus.COMPLETED && renderAddLineupsBtn() }
             </div>
         </React.Fragment>
     )

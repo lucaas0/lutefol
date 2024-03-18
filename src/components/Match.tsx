@@ -82,7 +82,7 @@ const Match = (props: OwnProps) => {
 
     const renderResultOrVS = () => {
         return (
-                match.matchStatus === MatchStatus.COMPLETED ? (
+                match.status === MatchStatus.COMPLETED ? (
                     <React.Fragment>
                         <h2 className="font-bold text-xl">{match.homeTeamScore}</h2>
                         <h2 className="font-bold text-xl">-</h2>
@@ -120,7 +120,7 @@ const Match = (props: OwnProps) => {
                             </span>
                             <div className='flex flex-col items-start justify-center'>
                                 <span className='text-base font-bold'>{ Weekday[matchStartDate.getDay()]}</span>
-                                {`${matchStartDate.getHours()}:${matchStartDate.getMinutes()} - ${match.venueName}`}
+                                {`${matchStartDate.getHours()}:${matchStartDate.getMinutes() < 10 ? `0${matchStartDate.getMinutes()}`: matchStartDate.getMinutes()} - ${match.venueName}`}
                             </div>
                         </div>
                     </div>

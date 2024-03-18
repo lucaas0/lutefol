@@ -6,14 +6,21 @@ export enum Modality {
 };
 
 export enum MatchStatus {
-    SCHEDULED, 
-    LIVE,
-    COMPLETED,
-    CANCELED,
+    SCHEDULED = 'SCHEDULED', 
+    LIVE = 'LIVE',
+    COMPLETED = 'COMPLETED',
+    CANCELED = 'CANCELED',
 };
 
 export enum MatchEventType {
-    ASSIST, GOAL, OWN_GOAL, INJURY, SUBSTITUTION, FAULT, YELLOW_CARD, RED_CARD
+    ASSIST = 'ASSIST',
+    GOAL = 'GOAL', 
+    OWN_GOAL = 'OWN_GOAL',
+    INJURY = 'INJURY',
+    SUBSTITUTION = 'SUBSTITUTION',
+    FAULT = 'FAULT',
+    YELLOW_CARD = 'YELLOW_CARD', 
+    RED_CARD = 'RED_CARD'
 };
 
 export type MatchT = {
@@ -29,7 +36,7 @@ export type MatchT = {
     modality: Modality;
     homeTeamScore: number;
     awayTeamScore: number;
-    matchStatus: MatchStatus;
+    status: MatchStatus;
     [key: string]: any;
 };
 
@@ -72,6 +79,12 @@ export type MatchDetails = {
     realStart: string;
     realEnd: string;
     realLength: string;
+}
+
+export type Event = {
+    performerPlayerId: number | null;
+    action: MatchEventType;
+    targetPlayerId: number | null;
 }
 
 export type Stats = ['OVR', 'ATA', 'DEF', 'TEC', 'WR', 'AGRE', 'RES', 'FIN', 'SPE', 'DRI', 'PHY', 'PAS'];

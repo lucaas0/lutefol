@@ -249,7 +249,7 @@ export const groupMatchesByMonth = (
     return matchesByMonth;
   };
 
-export const constructSearchParams = (params: Record<string, string | number | boolean>): URLSearchParams => {
+export const constructSearchParams = (params: Record<string, string | number | boolean | string[]>): URLSearchParams => {
     const searchParams = new URLSearchParams();
 
     for (const key in params) {
