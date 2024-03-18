@@ -23,20 +23,20 @@ const MatchesResults = () => {
     const session = useSession();
     
     useEffect(() => {
-        const prepareData = async () => {
-            const matchesByMonth = groupMatchesByMonth(PastMatchesResults, OrderingType.DESCENDING);
-            setResultMatchesByMonth(matchesByMonth);
-
-            const sortedMonths = Object.keys(matchesByMonth).sort((a, b) => {
-                return new Date(b).getTime() - new Date(a).getTime();
-            });
-
-            setSortedMonths(sortedMonths);
-        };
-
         prepareData();
         getMatches();
     }, []);
+
+    const prepareData = async () => {
+        const matchesByMonth = groupMatchesByMonth(PastMatchesResults, OrderingType.DESCENDING);
+        setResultMatchesByMonth(matchesByMonth);
+
+        const sortedMonths = Object.keys(matchesByMonth).sort((a, b) => {
+            return new Date(b).getTime() - new Date(a).getTime();
+        });
+
+        setSortedMonths(sortedMonths);
+    };
 
     const getMatches = async (): Promise<APIResponse<MatchT>> => {
         setIsLoading(true);
@@ -62,6 +62,12 @@ const MatchesResults = () => {
         }
     };
 
+    const handleMatchDeleted = async () => {
+        await prepareData();
+        await getMatches();
+
+    }
+
     return (
         <React.Fragment>
             {
@@ -78,7 +84,7 @@ const MatchesResults = () => {
                                     </h2>
                                         {apiResultsByMonth && apiResultsByMonth[m].map((match) => (
                                             <div key={match.id}>
-                                                <Match match={match} key={`match-result-${match.date}`} />
+                                                <Match match={match} key={`match-result-${match.date}`} canBeDeleted onMatchDeleted={handleMatchDeleted} />
                                             </div>
                                         ))}
                                 </div>

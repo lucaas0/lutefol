@@ -91,7 +91,7 @@ const UpcomingMatches = () => {
                         <h2 className="text-4xl font-bold uppercase">{new Date(month).toLocaleString('default', { month: 'long', year: 'numeric' })}</h2>
                         {upcomingMatchesByMonth && upcomingMatchesByMonth[month].map((match) => (
                             <div key={match.id}>
-                                <Match match={match} key={`match-result-${match.date}`} onMatchDeleted={handleMatchCreatedDeleted} isUpcoming />
+                                <Match match={match} key={`match-result-${match.date}`} onMatchDeleted={handleMatchCreatedDeleted} isUpcoming canBeDeleted />
                             </div>
                         ))}
                     </div>

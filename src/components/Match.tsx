@@ -17,10 +17,11 @@ type OwnProps = {
     match: MatchT;
     isUpcoming?: boolean;
     onMatchDeleted?(): void;
+    canBeDeleted?: boolean;
 }
 
 const Match = (props: OwnProps) => {
-    const { match, isUpcoming, onMatchDeleted } = props;
+    const { match, isUpcoming, onMatchDeleted, canBeDeleted } = props;
 
     // const [session, setSession] = useState<Session | null>(null);
     const session = useSession();
@@ -145,7 +146,7 @@ const Match = (props: OwnProps) => {
                             </button>
                         </Link>
                         {
-                            session && session.status === 'authenticated' && isUpcoming && (
+                            session && session.status === 'authenticated' && canBeDeleted && (
                                 <button onClick={() => setShowDeleteModal(true)}>
                                     <Image src="/trash-ic.svg" width={18} height={18} alt='Delete' className='fill-red-400' />
                                 </button>
