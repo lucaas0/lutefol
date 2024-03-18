@@ -37,7 +37,7 @@ const LiveMatchWrapper = ({ children }: { children: ReactNode }) => {
             const currentTime = new Date().getTime();
             const elapsedTime = currentTime - startTime;
             setMatchTime(elapsedTime);
-        }, 60000);
+        }, 10000);
 
         return () => clearInterval(interval); // Cleanup interval on component unmount
       }, [liveMatch]);
