@@ -5,7 +5,7 @@ import { listClubMatchesURL } from "@/services/api";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { APIResponse, MatchT, MatchesByMonthMap } from "../../../../types/types";
+import { APIResponse, MatchStatus, MatchT, MatchesByMonthMap } from "../../../../types/types";
 import { constructSearchParams, groupMatchesByMonth } from "@/utils";
 import CreateMatchModal from "@/components/CreateMatchModal";
 import Loader from "@/components/Loader";
@@ -40,7 +40,7 @@ const UpcomingMatches = () => {
     const getMatches = async (): Promise<APIResponse<MatchT>> => {
         setIsLoading(true);
         try {
-            const params = constructSearchParams({upcoming: true, ascending: true});
+            const params = constructSearchParams({upcoming: true, ascending: true, matchStatuses: MatchStatus.SCHEDULED});
             const { data } = await axios.get<APIResponse<MatchT>>(listClubMatchesURL(10000, params));
             setIsLoading(false);
             return data;
