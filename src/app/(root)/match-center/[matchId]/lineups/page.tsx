@@ -1,5 +1,5 @@
 'use client';
-import { PlayersArr, createFormattedDateTime, getMatchById, getMatchResult } from '@/utils';
+import { PlayersArr, createFormattedDateTime, getMatchResult } from '@/utils';
 import { useParams } from 'next/navigation';
 import React, { useContext, useEffect, useState } from 'react';
 import '../../../../../assets/styles/matchCenter.css';

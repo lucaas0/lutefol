@@ -88,6 +88,10 @@ body {
     transform: translate(-50%, 0%);
 }
 
+.event-container {
+    width: 420px;
+}
+
 .goal-line {
     width: 420px;
     border-bottom: 1px solid #262626;
@@ -258,6 +262,15 @@ body {
 
 .bg-orange-F1A33B {
     background-color: #F1A33B;
+}
+
+.live-blink {
+    animation: blinker 1.5s cubic-bezier(.5, 0, 1, 1) infinite alternate;  
+}
+
+@keyframes blinker {  
+    from { opacity: 1; }
+    to { opacity: 0; }
 }
 
 @media only screen and (max-width: 700px) {

@@ -49,25 +49,30 @@ export default function MatchesLayout({
         const getMatchDetails = async (id: number) => {
             try {
                 const { data } = await axios.get<MatchDetails>(matchURL(id));
-                let updatedData = { ...data };
-                const matchWithResults = getMatchById(String(id));
-                if (matchWithResults) {
-                    const result = matchWithResults ? getMatchResult(matchWithResults.incidents.filter((incident) => incident.type === INCIDENTS.GOAL || incident.type === INCIDENTS.OWN_GOAL) as Goal[]): null;
-                    updatedData.matchDTO.homeTeamScore = result ? result['Scallywags'] : 0;
-                    updatedData.matchDTO.awayTeamScore = result ? result['Corsairs'] : 0;
-                    updatedData.matchDTO.status = MatchStatus.COMPLETED;
+                if (data && data.matchDTO.status === MatchStatus.COMPLETED) {
+                    setMatch(data);
+                    return;
+                } else {
+                    let updatedData = { ...data };
+                    const matchWithResults = getMatchById(String(id));
+                    if (matchWithResults) {
+                        const result = matchWithResults ? getMatchResult(matchWithResults.incidents.filter((incident) => incident.type === INCIDENTS.GOAL || incident.type === INCIDENTS.OWN_GOAL) as Goal[]): null;
+                        updatedData.matchDTO.homeTeamScore = data.matchDTO.homeTeamScore > 0 ? data.matchDTO.homeTeamScore : result ? result['Scallywags'] : 0;
+                        updatedData.matchDTO.awayTeamScore = data.matchDTO.awayTeamScore > 0 ? data.matchDTO.awayTeamScore : result ? result['Corsairs'] : 0;
+                        updatedData.matchDTO.status = MatchStatus.COMPLETED;
+                        updatedData.homeTeamPlayers = matchWithResults.teams[0].players;
+                        updatedData.awayTeamPlayers = matchWithResults.teams[1].players;
+                    }
+                    setMatch(updatedData);
                 }
-                setMatch(updatedData);
-                return data;
             } catch (error) {
                 const oldMatch = getMatchById(params.matchId);
-
                 if (oldMatch) {
                     const result = oldMatch ? getMatchResult(oldMatch.incidents.filter((incident) => incident.type === INCIDENTS.GOAL || incident.type === INCIDENTS.OWN_GOAL) as Goal[]): null;
 
                     const newMatchTyped: MatchDetails = {
-                        awayTeamPlayers: [],
-                        homeTeamPlayers: [],
+                        awayTeamPlayers: oldMatch ? oldMatch.teams[1].players : [],
+                        homeTeamPlayers: oldMatch ? oldMatch.teams[0].players : [],
                         matchEvents: [],
                         realEnd: '',
                         realLength: '',
@@ -94,7 +99,6 @@ export default function MatchesLayout({
         }
         if (params.matchId) {
             getMatchDetails(Number(params.matchId));
-
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [params.matchId]);
@@ -205,9 +209,7 @@ export default function MatchesLayout({
                                     </button>
                                 )
                             }
-                            {
-                               (!session || (session && session.status === 'unauthenticated') || match.homeTeamPlayers.length === 0 || match.awayTeamPlayers.length === 0) && renderResultOrVS()
-                            }
+                            { match && match.matchDTO.status !== MatchStatus.SCHEDULED && renderResultOrVS() }
                             {
                                 renderTeam(match.matchDTO.awayTeamName, false)
                             }

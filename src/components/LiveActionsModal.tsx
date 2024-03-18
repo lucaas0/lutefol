@@ -34,7 +34,6 @@ const LiveActionsModal = (props: Props) => {
     }
 
     const handlePerformerSelected = (performer: TeamPlayer) => {
-        console.log(event);
         if (event) {
             setEvent({ ...event, performerPlayerId: performer.id });
             setShowPerformerModal(false);
@@ -48,7 +47,6 @@ const LiveActionsModal = (props: Props) => {
     }
 
     const handleTargetSelected = (targetPlayer: TeamPlayer) => {
-        console.log(event);
         if (event) {
             const eventToSend: Event = {
                 ...event,

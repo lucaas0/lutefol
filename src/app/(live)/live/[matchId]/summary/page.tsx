@@ -18,7 +18,6 @@ const LiveSummary = () => {
     }
 
     const formatSecondsTime = (seconds: number) => {
-        console.log(seconds);
         const minutes = Math.ceil(seconds / 60);
         const hours = Math.floor(minutes / 60);
       

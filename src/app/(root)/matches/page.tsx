@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { APIResponse, MatchT, MatchesByMonthMap } from "../../../../types/types";
 import { constructSearchParams, groupMatchesByMonth } from "@/utils";
 import CreateMatchModal from "@/components/CreateMatchModal";
+import Loader from "@/components/Loader";
 
 const UpcomingMatches = () => {
     const [upcomingMatchesCursor, setUpcomingMatchesCursor] = useState<string>('');
@@ -71,6 +72,9 @@ const UpcomingMatches = () => {
 
     return (
         <div className="w-full relative">
+            {
+                isLoading && <Loader />
+            }
             {
                 showCreateModal && <CreateMatchModal handleMatchCreated={handleMatchCreatedDeleted} handleCloseModal={() => setShowModal(false)} />
             }

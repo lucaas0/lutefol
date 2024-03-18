@@ -99,10 +99,8 @@ const LiveMatchWrapper = ({ children }: { children: ReactNode }) => {
         setIsFetching(true);
         try {
             const { data } = await axios.get<MatchDetails>(matchURL(Number(params.matchId)));
-            console.log(data);
             return data;
         } catch (error) {
-            console.log(error);
             return null;
         } finally {
             setIsFetching(false);
@@ -110,7 +108,6 @@ const LiveMatchWrapper = ({ children }: { children: ReactNode }) => {
     }
 
     const onSaveEvents = async (events: MatchEvent[]) => {
-        console.log(events);
         setIsFetching(true);
         try {
             await axios.post(matchEventURL(Number(params.matchId)), {
@@ -126,7 +123,6 @@ const LiveMatchWrapper = ({ children }: { children: ReactNode }) => {
             setLiveMatch(updatedMatch);
             setShowActionsModal(false);
         } catch (error) {
-            console.log(error);
         } finally {
             setIsFetching(false);
         }
@@ -149,6 +145,7 @@ const LiveMatchWrapper = ({ children }: { children: ReactNode }) => {
 
     const handleEndGame = async () => {
         if (liveMatch) {
+            setIsFetching(true);
             try {
                 const { data: updatedMatchDTO } = await axios.put<MatchT>(matchStatusURL(liveMatch?.matchDTO.id), {matchStatus: MatchStatus.COMPLETED}, {
                     headers: {
@@ -161,14 +158,16 @@ const LiveMatchWrapper = ({ children }: { children: ReactNode }) => {
                     matchDTO: updatedMatchDTO,
                 })
                 showToast(ToastTypes.SUCCESS, 'Match ended!');
+                setShowActionsModal(false);
             } catch (error) {
                 showToast(ToastTypes.ERROR, 'Error ending match');
+            } finally {
+                setIsFetching(false);
             }
         }
     }
 
     const formatSecondsTime = (seconds: number) => {
-        console.log(seconds);
         const minutes = Math.floor(seconds / 60);
         const hours = Math.floor(minutes / 60);
       
@@ -203,7 +202,7 @@ const LiveMatchWrapper = ({ children }: { children: ReactNode }) => {
                     {liveMatch && liveMatch.matchDTO.status === MatchStatus.LIVE ? (
                     <>
                         <div className="flex gap-3 items-center">
-                            <span className="w-2 h-2 bg-red-500 rounded-full" />
+                            <span className="w-2 h-2 bg-red-500 rounded-full live-blink" />
                             <h1>Live</h1>
                         </div>
                         <h1 className="text-red-500">{`${formatTime(matchTime)}'`}</h1>
