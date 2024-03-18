@@ -137,7 +137,7 @@ const LiveMatchActions = (props: Props) => {
                     </Modal.Content>
                 </Modal.Root>
             ) }
-            <section className="flex justify-center gap-12 p-6">
+            <section className="flex justify-center gap-12 p-2 md:p-6">
             <button className="live-action-btn bg-1c1c1c" onClick={onShowLiveActionsModal}>
                 <Image src="/plus-icon.svg" width={32} height={32} alt="+" />
             </button>

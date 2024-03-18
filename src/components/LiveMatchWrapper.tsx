@@ -183,7 +183,7 @@ const LiveMatchWrapper = ({ children }: { children: ReactNode }) => {
             {
                 isFetching && <Loader />
             }
-            <main className="flex flex-col items-center live-container p-6 gap-7 h-full">
+            <main className="flex flex-col items-center live-container p-6 gap-2 md:gap-7 h-full">
                 {
                     showActionsModal &&
                     <LiveActionsModal
