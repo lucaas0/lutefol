@@ -209,7 +209,7 @@ const LiveMatchWrapper = ({ children }: { children: ReactNode }) => {
                     </>
                     ) : (
                             <div className="flex gap-3 items-center justify-center w-full my-3">
-                                <h1 className="uppercase !text-base">Completed</h1>
+                                <h1 className="uppercase !text-base">{liveMatch?.matchDTO.status}</h1>
                                {liveMatch && liveMatch.realLength && (
                                  <h1 className="text-red-500 !text-base">{`${formatSecondsTime(Number(liveMatch?.realLength))}'`}</h1>
                                )}
