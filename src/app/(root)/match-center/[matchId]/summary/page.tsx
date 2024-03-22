@@ -69,7 +69,7 @@ const MatchSummary = () => {
             case MatchEventType.GOAL:
                 return (
                     <div className={`flex gap-3 ${!isPerformerPlayerInHomeTeam ? 'justify-end' : ''} pb-2 w-full border-bottom-262626`} key={`event-goal-${event.id}`}>
-                        {/* <span className="font-bold color-brand-400">{`${formatSecondsTime(Number(event.timeAtGame))}'`}</span> */}
+                        <span className="font-bold color-brand-400">{`${formatSecondsTime(Number(event.timeAtGame))}'`}</span>
                         <div className='flex gap-2'>
                             <span>{idToPlayer(event.performerPlayerId)?.nickName}</span>
                             {assistPlayerId && (
@@ -82,7 +82,7 @@ const MatchSummary = () => {
             case MatchEventType.SUBSTITUTION:
                 return (
                     <div className='flex gap-3 pb-2 w-full justify-center border-bottom-262626' key={`event-sub-${event.id}`}>
-                        {/* <span className="font-bold color-brand-400">{ `${formatSecondsTime(Number(event.timeAtGame))}'` }</span> */}
+                        <span className="font-bold color-brand-400">{ `${formatSecondsTime(Number(event.timeAtGame))}'` }</span>
                         <span>{idToPlayer(event.performerPlayerId)?.nickName}</span>
                         <Image src={'/substitution-ic.svg'} width={18} height={18} alt='' />
                         <span className='grey-949494'>{`(${idToPlayer(event.targetPlayerId)?.nickName})`}</span>
@@ -91,7 +91,7 @@ const MatchSummary = () => {
             case MatchEventType.INJURY:
                 return (
                     <div className='flex gap-3 pb-2 w-full justify-center items-center border-bottom-262626' key={`event-injury-${event.id}`}>
-                        {/* <span className="font-bold color-brand-400">{ `${formatSecondsTime(Number(event.timeAtGame))}'` }</span> */}
+                        <span className="font-bold color-brand-400">{ `${formatSecondsTime(Number(event.timeAtGame))}'` }</span>
                         <span className="bg-red-500 rounded-full p-2">
                             <Image src={'/injury-ic.svg'} width={18} height={18} alt='' />
                         </span>
@@ -101,7 +101,7 @@ const MatchSummary = () => {
             case MatchEventType.RED_CARD:
                 return (
                     <div className='flex gap-3 pb-2 w-full justify-center items-center border-bottom-262626' key={`event-redcard-${event.id}`}>
-                        {/* <span className="font-bold color-brand-400">{ `${formatSecondsTime(Number(event.timeAtGame))}'` }</span> */}
+                        <span className="font-bold color-brand-400">{ `${formatSecondsTime(Number(event.timeAtGame))}'` }</span>
                         <span>
                             <Image src={'/red-card.svg'} width={18} height={18} alt='' />
                         </span>
@@ -111,7 +111,7 @@ const MatchSummary = () => {
             case MatchEventType.YELLOW_CARD:
                 return (
                     <div className='flex gap-3 pb-2 w-full justify-center items-center border-bottom-262626' key={`event-yellowcard-${event.id}`}>
-                        {/* <span className="font-bold color-brand-400">{ `${formatSecondsTime(Number(event.timeAtGame))}'` }</span> */}
+                        <span className="font-bold color-brand-400">{ `${formatSecondsTime(Number(event.timeAtGame))}'` }</span>
                         <span>
                             <Image src={'/yellow-card.svg'} width={18} height={18} alt='' />
                         </span>
