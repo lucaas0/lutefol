@@ -167,8 +167,7 @@ const LiveMatchActions = (props: Props) => {
                     { isRecording ?
                     <Image src="/stop-recording.svg" width={32} height={32} alt="" /> :
                     <Image src="/microphone.svg" width={32} height={32} alt="" />
-                }
-                    
+                }      
                 </button>
         </section>
         </React.Fragment>
