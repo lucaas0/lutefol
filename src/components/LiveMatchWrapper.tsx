@@ -18,6 +18,7 @@ import Loader from "./Loader";
 import showToast from "./Toast";
 import { ToastTypes } from "@/misc";
 import Link from "next/link";
+import LiveAudioRecorder from "./LiveMatchEventRecorder";
 
 
 export const LiveMatchContext = React.createContext<MatchDetails | null>(null);
@@ -27,8 +28,8 @@ const LiveMatchWrapper = ({ children }: { children: ReactNode }) => {
     const [showActionsModal, setShowActionsModal] = useState(false);
     const [isFetching, setIsFetching] = useState(false);
     const [playersOut, setPlayersOut] = useState<TeamPlayer[]>([]);
-
     const [matchTime, setMatchTime] = useState<number>(0);
+    const [isRecording, setIsRecording] = useState(false);
 
     useEffect(() => {
         if (!liveMatch || (liveMatch && liveMatch.matchDTO.status !== MatchStatus.LIVE)) return;
@@ -185,6 +186,12 @@ const LiveMatchWrapper = ({ children }: { children: ReactNode }) => {
             }
             <main className="flex flex-col items-center live-container p-6 gap-2 md:gap-7 h-full">
                 {
+                    isRecording && ( <LiveAudioRecorder onBack={() => setIsRecording(false)} /> )
+                }
+                {
+                    !isRecording && (
+                        <React.Fragment>
+                                            {
                     showActionsModal &&
                     <LiveActionsModal
                         onCloseModal={() => setShowActionsModal(false)}
@@ -216,47 +223,47 @@ const LiveMatchWrapper = ({ children }: { children: ReactNode }) => {
                             </div>
                     )}
                 </section>
-            {
-                liveMatch && (
                     <section className="flex items-center w-full justify-between">
                         <div className="flex gap-4 items-center">
-                            <h2 className="font-bold uppercase text-sm md:text-xl">{liveMatch.matchDTO.homeTeamName.slice(0, 3)}</h2>
+                            <h2 className="font-bold uppercase text-sm md:text-xl">{liveMatch?.matchDTO.homeTeamName.slice(0, 3)}</h2>
                             <Image src={LogoHomeTeam} alt="" width={52} height={52} />
                         </div>
                         <div className="flex gap-3 scorer-wrapper">
-                            <h2 className="font-bold text-sm md:text-xl">{liveMatch.matchDTO.homeTeamScore}</h2>
+                            <h2 className="font-bold text-sm md:text-xl">{liveMatch?.matchDTO.homeTeamScore}</h2>
                             <h2 className="font-bold text-sm md:text-xl">:</h2>
-                            <h2 className="font-bold text-sm md:text-xl">{liveMatch.matchDTO.awayTeamScore}</h2>
+                            <h2 className="font-bold text-sm md:text-xl">{liveMatch?.matchDTO.awayTeamScore}</h2>
                         </div>
                         <div className="flex gap-4 items-center">
-                            <h2 className="font-bold uppercase text-sm md:text-xl">{liveMatch.matchDTO.awayTeamName.slice(0, 3)}</h2>
+                            <h2 className="font-bold uppercase text-sm md:text-xl">{liveMatch?.matchDTO.awayTeamName.slice(0, 3)}</h2>
                             <Image src={LogoAwayTeam} alt="" width={52} height={52} />
                         </div>
                     </section>
-                )
-            }
-            <section className="w-full">
-                <CustomTabs tabPosition="items-center justify-center">
-                    <Tab title="summary" route={`/live/${params.matchId}/summary`} selected={route === `/live/${params.matchId}/summary`} />
-                    <Tab title="lineups" route={`/live/${params.matchId}/lineups`} selected={route === `/live/${params.matchId}/lineups`} />
-                </CustomTabs>
-            </section>
-            <LiveMatchContext.Provider value={liveMatch}>
-            <section className='w-full flex-1 overflow-hidden'>
-                {children}
-            </section>
-            </LiveMatchContext.Provider>
-            {
-                session && session.status === 'authenticated' && liveMatch && liveMatch.matchDTO.status === MatchStatus.LIVE && (
-                    <LiveMatchActions
-                        onShowLiveActionsModal={() => setShowActionsModal(true)}
-                        onRegisterEvents={onSaveEvents}
-                        homeTeamPlayers={liveMatch?.homeTeamPlayers || []}
-                        awayTeamPlayers={liveMatch?.awayTeamPlayers || []}
-                    />
-                )
-            }
-        </main>
+                <section className="w-full">
+                    <CustomTabs tabPosition="items-center justify-center">
+                        <Tab title="summary" route={`/live/${params.matchId}/summary`} selected={route === `/live/${params.matchId}/summary`} />
+                        <Tab title="lineups" route={`/live/${params.matchId}/lineups`} selected={route === `/live/${params.matchId}/lineups`} />
+                    </CustomTabs>
+                </section>
+                <LiveMatchContext.Provider value={liveMatch}>
+                <section className='w-full flex-1 overflow-hidden'>
+                    {children}
+                </section>
+                </LiveMatchContext.Provider>
+                {
+                    session && session.status === 'authenticated' && liveMatch && liveMatch.matchDTO.status === MatchStatus.LIVE && (
+                        <LiveMatchActions
+                            onShowLiveActionsModal={() => setShowActionsModal(true)}
+                            onRegisterEvents={onSaveEvents}
+                            homeTeamPlayers={liveMatch?.homeTeamPlayers || []}
+                            awayTeamPlayers={liveMatch?.awayTeamPlayers || []}
+                            onRecording={(value) => setIsRecording(value)}
+                        />
+                    )
+                }
+                        </React.Fragment>
+                    )
+                }
+            </main>
         </React.Fragment>
     )
 };

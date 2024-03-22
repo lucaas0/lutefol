@@ -2,21 +2,27 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { Modal } from "./Modal";
 import { Event, MatchEventType, TeamPlayer } from "../../types/types";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 
 type Props = {
     onShowLiveActionsModal(): void;
     onRegisterEvents(events: Event[]): void;
     homeTeamPlayers: TeamPlayer[];
     awayTeamPlayers: TeamPlayer[];
+    onRecording(isRecording: boolean): void;
 }
 
 const LiveMatchActions = (props: Props) => {
-    const { onShowLiveActionsModal, onRegisterEvents, homeTeamPlayers, awayTeamPlayers } = props;
+    const { onShowLiveActionsModal, onRegisterEvents, homeTeamPlayers, awayTeamPlayers, onRecording } = props;
+
+    const params: { matchId: string } = useParams();
 
     const [showGoalModal, setShowGoalModal] = useState<'home' | 'away' | null>(null);
     const [showAssistModal, setShowAssistModal] = useState<'home' | 'away' | null>(null);
     const [isOwnGoal, setIsOwnGoal] = useState(false);
     const [scorer, setScorer] = useState<TeamPlayer | null>(null);
+    const [isRecording, setIsRecording] = useState(false);
 
     const getPlayersToShow = () => {
         if (showGoalModal && showGoalModal === 'home') {
@@ -157,9 +163,13 @@ const LiveMatchActions = (props: Props) => {
                     <span className="bg-away">2</span>
                 </div>
             </div>
-            <button className="live-action-btn bg-1c1c1c ">
-                <Image src="/microphone.svg" width={32} height={32} alt="" />
-            </button>
+                <button className="live-action-btn bg-1c1c1c" onClick={() => setIsRecording(!isRecording)}>
+                    { isRecording ?
+                    <Image src="/stop-recording.svg" width={32} height={32} alt="" /> :
+                    <Image src="/microphone.svg" width={32} height={32} alt="" />
+                }
+                    
+                </button>
         </section>
         </React.Fragment>
     )
