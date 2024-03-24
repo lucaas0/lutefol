@@ -4,6 +4,11 @@ import Image from "next/image";
 import '../assets/styles/statsTable.css';
 import { useEffect, useState } from "react";
 import { getPlayerStats, getPlayerStatsMiniMatches } from "@/Stats";
+import { seasons } from "@/misc";
+
+type Props = {
+    season: seasons;
+}
 
 enum Order {
     OVR_ASC = 'OVR_ASC',
@@ -14,7 +19,9 @@ enum Order {
     ASSISTS_DESC = 'ASSISTS_DESC',
 }
 
-const PlayersStatsTable = () => {
+const PlayersStatsTable = (props: Props) => {
+    const { season } = props;
+
     const [order, setOrder] = useState<Order>(Order.OVR_DESC);
     const [orderedPlayersArr, setOrderedPlayersArr] = useState(PlayersArr);
 
@@ -30,11 +37,11 @@ const PlayersStatsTable = () => {
     useEffect(() => {
         const copy = [...PlayersArr];
         copy.forEach((p) => {
-            p.goals = getPlayerStats(p.nickName).goals + getPlayerStatsMiniMatches(p.nickName).goals;
-            p.assists = getPlayerStats(p.nickName).assists + getPlayerStatsMiniMatches(p.nickName).assists; 
+            p.goals = season === seasons.JAN_MAR ? getPlayerStats(p.nickName).goals + getPlayerStatsMiniMatches(p.nickName).goals : 0;
+            p.assists = season === seasons.JAN_MAR ? getPlayerStats(p.nickName).assists + getPlayerStatsMiniMatches(p.nickName).assists : 0; 
         });
         setOrderedPlayersArr(copy);
-    }, []);
+    }, [season]);
 
     useEffect(() => {
         if (order === Order.OVR_ASC) {

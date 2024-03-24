@@ -87,3 +87,8 @@ export enum ToastTypes {
     WARNING = 'WARNING',
     ERROR = 'ERROR'
 };
+
+export enum seasons {
+    JAN_MAR = 'JAN_MAR',
+    APR_MAY = 'APR_MAY'
+}
